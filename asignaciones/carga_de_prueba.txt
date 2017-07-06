@@ -1,0 +1,12 @@
+41588290
+41588291
+41588291
+
+
+-------------------------------------NO INCLUIR ESTAS LINEAS------------------------------
+OBSERVACIONES:
+- El archivo no tiene titulos de cabecera.
+- Solo deben indicarse el número de DNI de 8 dígitos teniendo en cuento los 0(ceros) adelante.
+- El formato valido es archivo de texto (.txt).
+- Limitar el archivo a 100 registros por vez.
+- En la parte superior se muestran 3 registros de ejemplo. 

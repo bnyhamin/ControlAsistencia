@@ -1,0 +1,265 @@
+<?php header("Expires: 0"); ?>
+<?php
+session_start();
+if (!isset($_SESSION["empleado_codigo"])){
+?>	 <script language="JavaScript">
+    alert("Su sesión a caducado!!, debe volver a registrarse.");
+    document.location.href = "login.php";
+  </script>
+	<?php
+	exit;
+}
+
+$id=$_SESSION["empleado_codigo"];
+$nombre=$_SESSION["empleado_nombres"];
+require_once("../includes/Connection.php");
+require_once("../includes/Constantes.php");
+require_once("../includes/mantenimiento.php");
+require_once("includes/clsCA_Asistencias.php");
+require_once("includes/clsCA_Menu.php");
+
+$cad="";
+$o = new ca_menu();
+$o->MyUrl = db_host();
+$o->MyUser= db_user();
+$o->MyPwd = db_pass();
+$o->MyDBName= db_name();
+
+$obj = new ca_asistencia();
+$obj->setMyUrl(db_host());
+$obj->setMyUser(db_user());
+$obj->setMyPwd(db_pass());
+$obj->setMyDBName(db_name());
+
+$obj->empleado_codigo=$id;
+$cod=$obj->validar_asistencia();
+$rp = $obj->validar();
+$asistencia_codigo=$obj->asistencia_codigo;
+$tip= $obj->tip;
+
+//if($rp!=0){
+	//$obj->asistencia_codigo=$rp;
+	//$obj->entrada_anterior();
+	//$turno_duo=$obj->turno_duo;
+	//$tip= $obj->tip;
+	//echo $turno_duo;
+	//echo $tip
+//}
+
+
+$o->empleado_codigo=$id;
+$o->alineacion="H";
+$o->myWidth="82";
+$o->myHeight="18";
+$o->myLeft="1";
+$o->myTop="80"; //298
+$o->myImagen="";
+$o->myColorFondo="#DEE2DF"; //#DEE2DF
+$o->myColorSeleccion="#CBD9DC"; //#CBD9DC
+$o->myStyle="vertical-align:middle; BORDER-TOP: 1px solid; BORDER-BOTTOM: 0px solid; BORDER-RIGHT: 1px inside; BORDER-LEFT: 2px inside; background: white url(images/fondoazul_menu.jpg); "; //fondoazul_menu.jpg
+$o->myFont="color=#004080 style='font-size:xx-small; font-style: normal; font-weight: bold; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; border-color: Blue; '";
+$cad=$o->Construir();
+
+?>
+<html>
+<head>
+<title><?php echo tituloGAP() ?>Menu Principal</title>
+<meta http-equiv="pragma" content="no-cache">
+<META NAME="AUTHOR" Content="TUMI Solutions S.A.C.">
+<meta http-equiv="" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="../default.js"></script>
+<script language="JavaScript" src="jscript.js"></script>
+<script language="JavaScript" src="no_teclas.js"></script> 
+<script language="JavaScript" src="mouse_keyright.js"></script>
+<link rel="stylesheet" type="text/css" href="style/tstyle.css">
+</head>
+<script language="JavaScript">
+var alternate=0;
+var SmallSizeWidth  = 650;
+var SmallSizeHeight = 500;
+var SmallSizeX      = 2;
+var SmallSizeY      = 2;
+var i=0;
+
+function redimensionar(){
+	//var i = WindowResize(500,415,'otro');
+	var i = WindowResizeXY(525,360);
+}
+
+function validar_asistencia(){
+var cod="<?php echo $cod ?>";
+var asistencia_codigo="<?php echo $asistencia_codigo ?>";
+var tip="<?php echo $tip ?>";
+if(cod==0){
+	if(asistencia_codigo==0){ self.location.href="asistencias/registrar_asistencia.php?cod=" + asistencia_codigo + "&tip=1";
+	}else{
+         if(tip==0) self.location.href="asistencias/consultar_salida_pendiente.php?cod=" + asistencia_codigo + "&tip=0&r=2";
+		 else self.location.href="asistencias/registrar_asistencia.php?cod=" + asistencia_codigo + "&tip=1";
+	  }
+   }
+else{
+     alert("Su asistencia ya tiene entrada y salida registradas!!");
+	 return false;
+   }
+}
+
+function salir(){
+window.resizeTo(window.screen.availWidth/SmallSizeWidth, window.screen.availHeight/SmallSizeHeight);
+//window.resizeTo(screen.width/SmallSizeWidth, screen.height/SmallSizeHeight);
+window.moveTo(SmallSizeX , SmallSizeY);
+document.location.href = "login.php";
+}
+
+function hora_server(){
+frames['ifrm'].location.href ="horaserver.php?opt=1";
+}
+
+function hora(opcion, fecha, hora){
+document.getElementById('h').value=hora.substring(0,2);
+document.getElementById('m').value=hora.substring(3,5);
+document.getElementById('s').value=hora.substring(6,8);
+document.getElementById('di').value=fecha.substring(0,2);
+document.getElementById('me').value=fecha.substring(3,5);
+document.getElementById('an').value=fecha.substring(6,10);
+show();
+}
+
+function show(){
+var o=document.getElementById('hora');
+
+var hh=document.getElementById('h').value * 1;
+var mm=document.getElementById('m').value * 1;
+var ss=document.getElementById('s').value * 1;
+var d=document.getElementById('di').value * 1;
+var m=document.getElementById('me').value * 1;
+var a=document.getElementById('an').value * 1;
+
+var Digital=new Date();
+
+	Digital.setYear(a);
+	Digital.setMonth(m);
+	Digital.setDate(d);
+
+	Digital.setHours(hh);
+	Digital.setMinutes(mm);
+	Digital.setSeconds(ss + i);
+
+	var anio=Digital.getYear();
+	var mes=Digital.getMonth();
+	var day=Digital.getDate();
+	if(mes<10) mes="0" + mes;
+
+	var hours=Digital.getHours();
+	var minutes=Digital.getMinutes();
+	var seconds = Digital.getSeconds();
+
+	var dn="AM";
+
+	if (hours==12){
+		dn="PM";
+	}
+	if (hours>12){
+		dn="PM";
+	 }
+
+	if (hours==0) hours=0;
+	if (hours.toString().length==1){
+		hours="0" + hours;
+	}
+	if (minutes<=9){
+	   minutes="0" + minutes;
+	}
+
+	if (seconds<=9){
+	   seconds="0" + seconds;
+	 }
+
+	if (alternate==0){
+		o.value="" + hours +":"+ minutes +":"+ seconds +"";
+
+	}
+	else{
+		 o.value="" + hours +":"+ minutes +":"+ seconds +"";
+	}
+	alternate = (alternate==0)? 1 : 0;
+	setTimeout("show()",1000);
+	i++;
+}
+</script>
+<body  topmargin="0" rightmargin="0" leftmargin="0" bottommargin="0"  onLoad="redimensionar() ">
+<form name='frm' id='frm' action='<?php echo $_SERVER["PHP_SELF"] ?>' method='post' onSubmit='javascript:return ok();'>
+<table align="center" class="tablefondomaint" style="width:100%; height:100%" cellpadding="0" cellspacing="0" border="0"  >
+<tr>
+    <td align="right" valign="top">
+    <table width="180px" border="0" cellspacing="0" cellpadding="0" align="right" class="sinborde">
+			<tr>
+				<td >
+					<br>
+					<br>
+					<center>
+					<font size='19px' color="#F2F2F2">Buen día<br><b><?php echo $nombre?></b></font></td>
+					</center>
+			</tr>
+		</table>
+    </td>
+</tr>
+ <tr height="200px">
+ <td>
+    <table width="180px" border="0" cellspacing="0" cellpadding="0" align="right" class="sinborde" >
+    <tr>
+    <td style="width:100%; padding-top:0px;" align=center>
+      <?php
+        //--preguntar si existe archivo de foto
+        function RutaFoto($ft){
+        $car='';
+        //echo Fotografias() . $ft . '.jpg';
+        return Fotografias() . $ft . '.jpg';
+        }
+        $Dni=$_SESSION["empleado_dni_nro"];
+        if (file_exists(RutaFoto($Dni))){
+        //echo $Dni;
+        ?>
+		    <img id="foto" name="foto" src="<%=RutaFoto($Dni)%>" width="140px" height="140px" border="0"  
+        style="border-color: #000000; border-top: 1px solid; border-bottom: 1px solid; border-left: 1px solid; border-right: 1px solid;">
+	     <?php }else{ ?>
+	  	  <img id="foto" name="foto" src="../images/nopicture.jpg" width="140px" height="140px" border="0" alt="Imagen no disponible" style="border-color: #000000; border-top: 1px solid; border-bottom: 1px solid; border-left: 1px solid; border-right: 1px solid;">
+	     <?php } ?>
+    </td>
+  </tr>
+ </td>                                                     
+ </tr>
+
+</table>
+<table>
+ <tr><td><a href="../wfm/main_wfm_empleado.php">WFM</a></td>
+ </tr>
+ <tr><td><a href="../wfm/main_restricciones.php">Restricciones</a></td>
+ </tr>
+ <tr><td><a href="../wfm/main_reprogramar_restricciones.php">Reprogramar Restricciones</a></td>
+</tr
+<!--
+<tr><td><a href="gestionturnos/registra_empleado_restriciones.php">Restricciones Empleado</a></td>
+</tr>-->
+ <!--<tr><td><a href="../lista_disponibilidad_empleado.php">Empleado disponibilidad</a></td>
+ </tr>
+ -->
+</table>
+<?php echo $cad;
+?>
+<input type='hidden' id='hddaccion' name='hddaccion' value=''>
+<input type='hidden' id='rp' name='rp' value=''>
+<input type='hidden' id='tip' name='tip' value=''>
+<input type='hidden' id='h' name='h' value=''>
+<input type='hidden' id='m' name='m' value=''>
+<input type='hidden' id='s' name='s' value=''>
+<input type='hidden' id='me' name='me' value=''>
+<input type='hidden' id='di' name='di' value=''>
+<input type='hidden' id='an' name='an' value=''>
+<iframe src="" id="ifrm" name="ifrm" width="0px" height="0px"></iframe>
+<iframe src="" id="hfrm" name="hfrm" width="0px" height="0px"></iframe>
+
+
+</form>
+
+</body>
+</html>

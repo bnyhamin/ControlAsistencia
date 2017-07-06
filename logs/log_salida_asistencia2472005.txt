@@ -1,0 +1,24 @@
+ Ocurrio un error en Asistencias en el cual Entrada:  es menor o igual a Salida:
+ Parametros : empleado_codigo :4927,asistencia_codigo :38
+ Ocurrio un error en Asistencias en el cual Entrada:  es menor o igual a Salida:
+ Parametros : empleado_codigo :5084,asistencia_codigo :22
+ Ocurrio un error en Asistencias en el cual Entrada:  es menor o igual a Salida:
+ Parametros : empleado_codigo :6650,asistencia_codigo :38
+ Ocurrio un error en Asistencias en el cual Entrada:  es menor o igual a Salida:
+ Parametros : empleado_codigo :4919,asistencia_codigo :36
+ Ocurrio un error en Asistencias en el cual Entrada:  es menor o igual a Salida:
+ Parametros : empleado_codigo :1142,asistencia_codigo :39
+ Ocurrio un error en Asistencias en el cual Entrada:  es menor o igual a Salida:
+ Parametros : empleado_codigo :4448,asistencia_codigo :37
+ Ocurrio un error en Asistencias en el cual Entrada:  es menor o igual a Salida:
+ Parametros : empleado_codigo :6413,asistencia_codigo :39
+ Ocurrio un error en Asistencias en el cual Entrada:  es menor o igual a Salida:
+ Parametros : empleado_codigo :6423,asistencia_codigo :38
+ Ocurrio un error en Asistencias en el cual Entrada:  es menor o igual a Salida:
+ Parametros : empleado_codigo :6121,asistencia_codigo :35
+ Ocurrio un error en Asistencias en el cual Entrada:  es menor o igual a Salida:
+ Parametros : empleado_codigo :6434,asistencia_codigo :37
+ Ocurrio un error en Asistencias en el cual Entrada:  es menor o igual a Salida:
+ Parametros : empleado_codigo :6406,asistencia_codigo :38
+ Ocurrio un error en Asistencias en el cual Entrada:  es menor o igual a Salida:
+ Parametros : empleado_codigo :6273,asistencia_codigo :37

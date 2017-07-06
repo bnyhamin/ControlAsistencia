@@ -1,0 +1,118 @@
+    body {
+        margin: 0px;
+        padding: 0px;
+        font-family:  Arial, Helvetica, sans-serif,verdana;
+        font-size: 12px;
+        background-color:#DFE8F6;
+    }
+    /*#mensaje{
+    	height:20px; 
+    	width: 300px;
+    	border: solid 1px #69c;
+    	margin-top:10px;
+    	display: none;
+    }
+    #mensaje p{
+    	margin : 0px;
+    	padding: 2px 5px;
+    	
+    }*/
+    
+    #carga{
+    	display: none;
+    }
+    
+    #contenedor{
+        padding-top:5px;
+        /*background-color: #DFE8F6;*/
+        height: 30px; 
+        width   : 100%;   
+        text-align: right;
+        padding-bottom: 5px;
+    }
+    
+    .btn{
+        padding:1px;
+        color:#444;
+        background-color:#abc7ec;
+        border:1px solid #4E78B1;
+        cursor: pointer;
+    }
+    
+    #nombre_sistema{
+        width: 30%;/*40*/
+        float: left;
+        /*border: 1px solid red;*/
+    }
+    
+    #login{
+        text-align: right;
+        width: 68%;/*60*/
+        float: left;
+        /*border: 1px solid blue;*/
+    }
+    
+    
+    #nombre_sistema1{
+        /*width: 420px;*//*40*/
+        width: 30%;
+        float: left;
+        text-align: left;
+        /*border: 1px solid red;*/
+    }
+    
+    #login1{
+        text-align: right;
+        /*width: 850px;*//*60*/
+        width: 68%;
+        float: left;
+        /*border: 1px solid blue;*/
+    }
+    
+    .titulo_logo{
+        float:left;
+        margin:0px;
+    }
+    
+    .arriba_5{
+        padding-top:5px;
+    }
+    .texto_12{
+    	font-size:12px;
+    	font-family:  Arial, Helvetica, sans-serif,verdana;
+    }
+    .texto_14{
+    	font-size:14px;
+    	font-family:  Arial, Helvetica, sans-serif,verdana;
+    }
+    
+    .negrita{
+    	font-weight: bold;
+    }
+    .naranja{
+    	color: #aa1234;
+    }
+    
+    .error{
+    	color: #f00;
+    	/*text-align: center;*/
+        text-align: left;
+    }
+    
+    .fondo_blanco{
+    	background: #fbf9ea;
+    }
+    .plomo{
+    	color: #777;
+    }
+    
+    .blanco{
+    	color: #fff;
+    }
+    
+    .rojo{
+    	color: #f00;
+    }
+    .click{
+        	cursor : pointer;
+    }

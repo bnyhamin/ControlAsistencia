@@ -1,0 +1,17 @@
+Ejemplo de carga:
+-----------------------------------------------
+40786203|NUÑEZ CACERES CARLOS
+41474053|MENDOZA GUEVARA RAUL
+41942218|BENITEZ PORTOCARRERA LAURA CARMEN
+42528588|CHAVEZ VALLEJO RENZO RAUL
+44394863|LOZANO CARRILLO MIRNA
+-----------------------------------------------
+Leyenda:
+
+Columna 1: DNI/RUT
+Columna 2: NOMBRE DE EMPLEADO
+
+
+Nota: La separacion es por "|", No considerar las lineas punteadas.
+Ejemplo: 
+43358112|LOZANO CARRILLO MIRNA

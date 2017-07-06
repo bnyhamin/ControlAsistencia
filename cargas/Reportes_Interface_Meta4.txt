@@ -1,0 +1,3188 @@
+/*
+ * Reportes_Interfases_Meta4.java
+ *
+ * Created on 7 de agosto de 2007, 03:45 PM
+ */
+
+package Reportes_RRHH;
+import librerias.*;
+import Reportes_Gap.*;
+import java.sql.*;
+import java.text.*;
+import java.util.*;
+import java.io.*; 
+import org.apache.poi.hssf.usermodel.*;
+import org.apache.poi.hssf.util.*;
+import org.apache.poi.poifs.filesystem.*;
+
+/**
+ *
+ * @author  rrodriguezm
+ */
+public class Reportes_Interfases_Meta4 extends constantes {
+    private FileOutputStream fileOut;    
+    private FileInputStream fileIn;
+    
+    private String fecha_del;
+    private String fecha_al;
+    private int empleado_codigo;
+    
+    /**
+     * Holds value of property empresa_codigo.
+     */
+    private int empresa_codigo;
+    
+    /**
+     * Holds value of property anio_codigo.
+     */
+    private int anio_codigo;
+    
+    /**
+     * Holds value of property mes_codigo.
+     */
+    private int mes_codigo;
+    
+    /**
+     * Holds value of property email.
+     */
+    private String email;
+    
+    /**
+     * Holds value of property proceso_codigo.
+     */
+    private int proceso_codigo;
+    
+    /**
+     * Holds value of property empresa_ruc.
+     */
+    private String empresa_ruc;
+    
+    /**
+     * Constante para campo vacio en archivos de texto.
+     */
+    private String CAMPO_VACIO = "";
+    
+    /** Creates a new instance of Reportes_Interfases_Meta4 */
+    public Reportes_Interfases_Meta4() {
+    }
+    
+
+public String Interfase_licencias(){
+    String rpta="OK", id="";
+    String ssql="";
+    Statement stmt;
+    ResultSet rs, rsp;
+
+    rpta=this.ConectarmeBLOB();
+    if(rpta.compareTo("OK")==0){
+     try{
+        //generar nombre de archivo xls
+        id = "Interfase_Licencias_" + this.Nombre_fecha() + ".xls";
+        this.setReporte_nombre(id);
+        this.setReporte_ruta_completa(this.getReporte_dir_destino() + this.getReporte_nombre());
+                
+        HSSFWorkbook wb=null;        
+        fileOut = new FileOutputStream(this.getReporte_ruta_completa());
+        wb = new HSSFWorkbook();
+        HSSFSheet sheet = wb.createSheet("Licencias");
+        
+        HSSFCellStyle styTitulo = this.getStyTitulo(wb);
+        HSSFCellStyle stySubTitulo = this.getStySubTitulo(wb);
+        HSSFCellStyle styTexto = this.getStyTexto(wb);
+        HSSFCellStyle styTextoCentro = this.getStyTextoCentro(wb);
+        HSSFCellStyle styTexto_GreyBackGround = this.getStyTexto_GreyBackGround(wb);
+        HSSFCellStyle styTextoCentro_GreyBackGround = this.getStyTextoCentro_GreyBackGround(wb);
+        HSSFCellStyle styEntero_GreyBackGround = this.getStyEntero_GreyBackGround(wb);
+        
+        HSSFRow row;
+        HSSFCell cell;
+        short rowNum = 0;
+        short colNum = 0;
+        
+        row = sheet.createRow(rowNum++);
+        sheet.setColumnWidth((short) (0), (short) ((15 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (1), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (2), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (3), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (4), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (5), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (6), (short) ((50 * 8) / ((double) 1 / 20)));
+        /*
+        sheet.addMergedRegion(new Region(rowNum-1,(short)2,rowNum-1,(short)5));
+        
+        cell = row.createCell((short)2);
+        cell.setCellValue("FORMATO DE CESES PARA META4");
+        cell.setCellStyle(styTitulo);
+        */
+        //-- CONSULTAR POR RANGO DE FECHA EXTRAER
+        ssql="EXEC spNOM_FECHA_PERIODO_PROCESO " + this.getAnio_codigo() + ", " + this.getMes_codigo() + ", " + String.valueOf(this.getProceso_codigo());
+        
+        stmt=this.getMyconeccion().createStatement();
+        rsp=stmt.executeQuery(ssql);
+        
+        if (!rsp.next()){
+            rpta="Error, Periodo de proceso incorrecto o no existe programación de Licencias";
+            return rpta;
+        }
+        cell = row.createCell((short)1);
+        //row = sheet.createRow(rowNum++);
+        this.xls_valor( row, cell, (short)0, stySubTitulo,"Licencias Registradas Del ");
+        this.xls_valor( row, cell, (short)1, stySubTitulo,rsp.getString("FECHA_ANTERIOR"));
+	this.xls_valor( row, cell, (short)2, stySubTitulo," Al ");
+        this.xls_valor( row, cell, (short)3, stySubTitulo,rsp.getString("FECHA_ACTUAL"));
+        this.xls_valor( row, cell, (short)5, stySubTitulo, "Fecha Reporte: " + this.getFecha_Server());
+       
+        row = sheet.createRow(rowNum++);
+        this.xls_valor( row, cell, (short)0, this.getStyCabeceraTabla(wb), "CIP");
+        this.xls_valor( row, cell, (short)1, this.getStyCabeceraTabla(wb), "DEL");
+        this.xls_valor( row, cell, (short)2, this.getStyCabeceraTabla(wb), "AL");
+        this.xls_valor( row, cell, (short)3, this.getStyCabeceraTabla(wb), "LICENCIA");
+        this.xls_valor( row, cell, (short)4, this.getStyCabeceraTabla(wb), "DIAS APLICA");
+        this.xls_valor( row, cell, (short)5, this.getStySubTituloCentro(wb), "Movimiento");
+        this.xls_valor( row, cell, (short)6, this.getStySubTituloCentro(wb), "Empleado");        
+        this.xls_valor( row, cell, (short)7, this.getStySubTituloCentro(wb), "Estado");        
+        this.xls_valor( row, cell, (short)8, this.getStySubTituloCentro(wb), "Inicio");        
+        this.xls_valor( row, cell, (short)9, this.getStySubTituloCentro(wb), "Fin");                
+        this.xls_valor( row, cell, (short)10, this.getStySubTituloCentro(wb), "Diferencia");        
+        this.xls_valor( row, cell, (short)11, this.getStySubTituloCentro(wb), "Fecha Reg.");        
+        this.xls_valor( row, cell, (short)12, this.getStySubTituloCentro(wb), "Area Codigo");        
+        this.xls_valor( row, cell, (short)13, this.getStySubTituloCentro(wb), "Area Nombre");        
+        
+        this.setFecha_del(rsp.getString("FECHA_ANTERIOR"));
+        this.setFecha_al(rsp.getString("FECHA_ACTUAL"));
+        
+        ssql="EXEC spNOM_GENERA_INTERFASE_LICENCIAS " + String.valueOf(this.getEmpresa_codigo()) + ", '" + rsp.getTimestamp("FECHA_ANTERIOR") + "', '" + rsp.getTimestamp("FECHA_ACTUAL") + "'";
+        //System.out.println(ssql);
+        stmt=this.getMyconeccion().createStatement();
+        rs=stmt.executeQuery(ssql);
+        String nombre_area="";
+        int Total_titulares=0;
+        int Total_conyuges=0;
+        int Total_registros=0;
+        String sCarnet="";
+        while(rs.next()){
+            row = sheet.createRow(rowNum++);
+            Total_registros+=1;
+            sCarnet=rs.getString("Carnet");
+            this.xls_valor( row, cell, (short)0, styTextoCentro, sCarnet);
+            this.xls_valor( row, cell, (short)1, styTexto, rs.getString("Del"));
+            this.xls_valor( row, cell, (short)2, styTextoCentro, rs.getString("Al"));
+            this.xls_valor( row, cell, (short)3, styTexto, rs.getString("Licencia"));
+            this.xls_valor( row, cell, (short)4, styTexto, rs.getString("Dias_aplica"));
+            this.xls_valor( row, cell, (short)5, styTexto, rs.getString("Emp_mov_codigo"));
+            this.xls_valor( row, cell, (short)6, styTexto, rs.getString("Empleado"));
+            this.xls_valor( row, cell, (short)7, styTexto, rs.getString("Estado_Descripcion"));
+            this.xls_valor( row, cell, (short)8, styTexto, rs.getString("Inicio"));
+            this.xls_valor( row, cell, (short)9, styTexto, rs.getString("Fin"));
+            this.xls_valor( row, cell, (short)10, styTexto, rs.getString("Diferencia"));
+            this.xls_valor( row, cell, (short)11, styTexto, rs.getString("fecha_reg"));
+            this.xls_valor( row, cell, (short)12, styTexto, rs.getString("area_codigo"));
+            this.xls_valor( row, cell, (short)13, styTexto, rs.getString("area_descripcion"));
+        }            
+        
+        wb.write(fileOut);
+        fileOut.close(); 
+        if (Total_registros==0){
+            //-- Eliminar archivo excel
+            rpta= this.DeleteFile(this.getReporte_ruta_completa());
+            rpta="No hay registros en el periodo de fecha solicitado. No se generó archivo interfase.";
+            return rpta;
+        }
+        rpta=this.Registrar_reporte_basedatos();
+        if (rpta.compareTo("OK")!=0){
+            return rpta;
+        }
+        //-- Eliminar archivo excel
+        rpta= this.DeleteFile(this.getReporte_ruta_completa());
+        
+     }catch(Exception e){
+         rpta=e.getMessage();     
+     }    
+    }
+    return rpta;
+}
+
+public String Interfase_ceses(){
+    String rpta="OK", id="";
+    String ssql="";
+    Statement stmt;
+    ResultSet rs, rsp, rsf;
+
+    rpta=this.ConectarmeBLOB();
+    if(rpta.compareTo("OK")==0){
+     try{
+        //generar nombre de archivo xls
+        id = "Interfase_Ceses_" + this.Nombre_fecha() + ".xls";
+        this.setReporte_nombre(id);
+        this.setReporte_ruta_completa(this.getReporte_dir_destino() + this.getReporte_nombre());
+                
+        HSSFWorkbook wb=null;        
+        fileOut = new FileOutputStream(this.getReporte_ruta_completa());
+        wb = new HSSFWorkbook();
+        HSSFSheet sheet = wb.createSheet("Bajas");
+        HSSFSheet sheet2 = wb.createSheet("Detalle Faltas");
+        HSSFSheet sheet3 = wb.createSheet("Detalle Tardanzas");
+        
+        HSSFCellStyle styTitulo = this.getStyTitulo(wb);
+        HSSFCellStyle stySubTitulo = this.getStySubTitulo(wb);
+        HSSFCellStyle styTexto = this.getStyTexto(wb);
+        HSSFCellStyle styTextoCentro = this.getStyTextoCentro(wb);
+        HSSFCellStyle styTexto_GreyBackGround = this.getStyTexto_GreyBackGround(wb);
+        HSSFCellStyle styTextoCentro_GreyBackGround = this.getStyTextoCentro_GreyBackGround(wb);
+        HSSFCellStyle styEntero_GreyBackGround = this.getStyEntero_GreyBackGround(wb);
+        
+        HSSFRow row;
+        HSSFCell cell;
+        HSSFRow row2;
+        HSSFCell cell2;
+        HSSFRow row3;
+        HSSFCell cell3;
+        short rowNum = 0;
+        short colNum = 0;
+        short rowNum2 = 0;
+        short colNum2 = 0;
+        short rowNum3 = 0;
+        short colNum3 = 0;
+        
+        row = sheet.createRow(rowNum++);
+        sheet.setColumnWidth((short) (0), (short) ((15 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (1), (short) ((50 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (2), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (3), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (4), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (5), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (6), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (7), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (8), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (9), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (10), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (11), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (12), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (13), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (14), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (15), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (16), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (17), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (18), (short) ((20 * 8) / ((double) 1 / 20)));
+        
+        row2 = sheet2.createRow(rowNum2++);
+        sheet2.setColumnWidth((short) (0), (short) ((15 * 8) / ((double) 1 / 20)));
+        sheet2.setColumnWidth((short) (1), (short) ((50 * 8) / ((double) 1 / 20)));
+        sheet2.setColumnWidth((short) (2), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet2.setColumnWidth((short) (3), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet2.setColumnWidth((short) (4), (short) ((20 * 8) / ((double) 1 / 20)));
+        
+        row3 = sheet3.createRow(rowNum3++);
+        sheet3.setColumnWidth((short) (0), (short) ((15 * 8) / ((double) 1 / 20)));
+        sheet3.setColumnWidth((short) (1), (short) ((50 * 8) / ((double) 1 / 20)));
+        sheet3.setColumnWidth((short) (2), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet3.setColumnWidth((short) (3), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet3.setColumnWidth((short) (4), (short) ((20 * 8) / ((double) 1 / 20)));
+        
+        sheet.addMergedRegion(new Region(rowNum-1,(short)2,rowNum-1,(short)5));
+            
+        cell = row.createCell((short)2);
+        cell.setCellValue("FORMATO DE CESES PARA META4");
+        cell.setCellStyle(styTitulo);
+        
+        cell2 = row2.createCell((short)2);
+        cell2.setCellValue("DETALLE DE FALTAS");
+        cell2.setCellStyle(styTitulo);
+        
+        cell3 = row3.createCell((short)2);
+        cell3.setCellValue("DETALLE DE TARDANZAS");
+        cell3.setCellStyle(styTitulo);
+        
+        //-- CONSULTAR POR RANGO DE FECHA EXTRAER
+        ssql="EXEC spNOM_FECHA_PERIODO_PROCESO " + this.getAnio_codigo() + ", " + this.getMes_codigo() + ", " + String.valueOf(this.getProceso_codigo());
+        
+        stmt=this.getMyconeccion().createStatement();
+        rsp=stmt.executeQuery(ssql);
+        
+        if (!rsp.next()){
+            rpta="Error, Periodo de proceso incorrecto o no existe programación de Ceses";
+            return rpta;
+        }
+        
+        row = sheet.createRow(rowNum++);
+            this.xls_valor( row, cell, (short)0, stySubTitulo,"Personal Cesado Del ");
+            this.xls_valor( row, cell, (short)1, stySubTitulo,rsp.getString("FECHA_ANTERIOR"));
+            this.xls_valor( row, cell, (short)2, stySubTitulo," Al ");
+            this.xls_valor( row, cell, (short)3, stySubTitulo,rsp.getString("FECHA_ACTUAL"));
+            this.xls_valor( row, cell, (short)5, stySubTitulo, "Fecha Reporte: " + this.getFecha_Server());
+
+        row2 = sheet2.createRow(rowNum2++);
+            this.xls_valor( row2, cell2, (short)0, stySubTitulo,"Detalle de Faltas");
+            
+        row3 = sheet3.createRow(rowNum3++);
+            this.xls_valor( row3, cell3, (short)0, stySubTitulo,"Detalle de Tardanzas");
+            
+        row = sheet.createRow(rowNum++);
+        this.xls_valor( row, cell, (short)0, this.getStyCabeceraTabla(wb), "CIP");
+        this.xls_valor( row, cell, (short)1, this.getStyCabeceraTabla(wb), "NOMBRES");
+        this.xls_valor( row, cell, (short)2, this.getStyCabeceraTabla(wb), "CARGO");//ADD       
+        this.xls_valor( row, cell, (short)3, this.getStyCabeceraTabla(wb), "AREA");//ADD        
+        this.xls_valor( row, cell, (short)4, this.getStyCabeceraTabla(wb), "FECHA CESE");
+        this.xls_valor( row, cell, (short)5, this.getStyCabeceraTabla(wb), "TIPO CESE");
+        this.xls_valor( row, cell, (short)6, this.getStyCabeceraTabla(wb), "MOTIVO");
+        this.xls_valor( row, cell, (short)7, this.getStyCabeceraTabla(wb), "DNI");
+        this.xls_valor( row, cell, (short)8, this.getStyCabeceraTabla(wb), "OBSERVACIONES"); 
+        this.xls_valor( row, cell, (short)9, this.getStyCabeceraTabla(wb), "FECHA INGRESO");        
+        this.xls_valor( row, cell, (short)10, this.getStyCabeceraTabla(wb), "MODALIDAD");        
+        this.xls_valor( row, cell, (short)11, this.getStyCabeceraTabla(wb), "VAC VENC USO");        
+        this.xls_valor( row, cell, (short)12, this.getStyCabeceraTabla(wb), "VAC VENC PAGO");        
+        this.xls_valor( row, cell, (short)13, this.getStyCabeceraTabla(wb), "VAC PEND USO");        
+        this.xls_valor( row, cell, (short)14, this.getStyCabeceraTabla(wb), "VAC PEND PAGO");        
+        this.xls_valor( row, cell, (short)15, this.getStyCabeceraTabla(wb), "VAC TRUN USO");        
+        this.xls_valor( row, cell, (short)16, this.getStyCabeceraTabla(wb), "VAC TRUN PAGO");        
+        this.xls_valor( row, cell, (short)17, this.getStyCabeceraTabla(wb), "FALTAS");        
+        this.xls_valor( row, cell, (short)18, this.getStyCabeceraTabla(wb), "TARDANZAS");
+        
+        row2 = sheet2.createRow(rowNum2++);
+        this.xls_valor( row2, cell2, (short)0, this.getStyCabeceraTabla(wb), "CIP");
+        this.xls_valor( row2, cell2, (short)1, this.getStyCabeceraTabla(wb), "NOMBRES");
+        this.xls_valor( row2, cell2, (short)2, this.getStyCabeceraTabla(wb), "DNI");
+        this.xls_valor( row2, cell2, (short)3, this.getStyCabeceraTabla(wb), "FECHA");
+        this.xls_valor( row2, cell2, (short)4, this.getStyCabeceraTabla(wb), "MINUTOS");
+        
+        row3 = sheet3.createRow(rowNum3++);
+        this.xls_valor( row3, cell3, (short)0, this.getStyCabeceraTabla(wb), "CIP");
+        this.xls_valor( row3, cell3, (short)1, this.getStyCabeceraTabla(wb), "NOMBRES");
+        this.xls_valor( row3, cell3, (short)2, this.getStyCabeceraTabla(wb), "DNI");
+        this.xls_valor( row3, cell3, (short)3, this.getStyCabeceraTabla(wb), "FECHA");
+        this.xls_valor( row3, cell3, (short)4, this.getStyCabeceraTabla(wb), "MINUTOS");
+        
+        this.setFecha_del(rsp.getString("FECHA_ANTERIOR"));
+        this.setFecha_al(rsp.getString("FECHA_ACTUAL"));
+        
+        ssql="EXEC spRRHH_M4_INTERFASE_CESES " + String.valueOf(this.getEmpresa_codigo()) + ", '" + rsp.getTimestamp("FECHA_ANTERIOR") + "', '" + rsp.getTimestamp("FECHA_ACTUAL") + "'";
+        stmt=this.getMyconeccion().createStatement();
+        rs=stmt.executeQuery(ssql);
+        String nombre_area="";
+        int Total_titulares=0;
+        int Total_conyuges=0;
+        int Total_registros=0;
+        String sCarnet="";
+        String[] venc;
+        String[] pend;
+        String[] trun;
+        while(rs.next()){
+            row = sheet.createRow(rowNum++);
+            Total_registros+=1;
+            sCarnet=rs.getString("Empleado_Carnet");
+            venc=rs.getString("vencidas").trim().split("_");
+            pend=rs.getString("pendientes").split("_");
+            trun=rs.getString("truncos").split("_");
+            this.xls_valor( row, cell, (short)0, styTextoCentro, this.Completar(sCarnet, 9, "0", "izq") );
+            this.xls_valor( row, cell, (short)1, styTexto, rs.getString("Empleado"));
+            this.xls_valor( row, cell, (short)2, styTexto, rs.getString("cargo"));//add
+            this.xls_valor( row, cell, (short)3, styTexto, rs.getString("area"));//add
+            this.xls_valor( row, cell, (short)4, styTextoCentro, rs.getString("Fecha_Cese"));
+            this.xls_valor( row, cell, (short)5, styTexto, rs.getString("Movimiento"));
+            this.xls_valor( row, cell, (short)6, styTexto, rs.getString("Motivo"));
+            this.xls_valor( row, cell, (short)7, styTextoCentro, rs.getString("Empleado_Dni"));                    
+            this.xls_valor( row, cell, (short)8, styTexto, rs.getString("Observaciones"));  
+            this.xls_valor( row, cell, (short)9, styTexto, rs.getString("fecha_ingreso"));                    
+            this.xls_valor( row, cell, (short)10, styTexto, rs.getString("MODALIDAD"));                    
+            this.xls_valor( row, cell, (short)11, styTextoCentro, String.valueOf(venc[0]));
+            this.xls_valor( row, cell, (short)12, styTextoCentro, String.valueOf(venc[1]));
+            this.xls_valor( row, cell, (short)13, styTextoCentro, String.valueOf(pend[0]));
+            this.xls_valor( row, cell, (short)14, styTextoCentro, String.valueOf(pend[1]));
+            this.xls_valor( row, cell, (short)15, styTextoCentro, String.valueOf(trun[0]));
+            this.xls_valor( row, cell, (short)16, styTextoCentro, String.valueOf(trun[1]));
+            this.xls_valor( row, cell, (short)17, styTextoCentro, rs.getString("faltas"));                    
+            this.xls_valor( row, cell, (short)18, styTextoCentro, rs.getString("tardanzas"));                    
+        }            
+        
+        ssql="EXEC spRRHH_M4_INTERFASE_CESES_DETALLE " + String.valueOf(this.getEmpresa_codigo()) + ", '" + rsp.getTimestamp("FECHA_ANTERIOR") + "', '" + rsp.getTimestamp("FECHA_ACTUAL") + "'";
+        stmt=this.getMyconeccion().createStatement();
+        rsf=stmt.executeQuery(ssql);
+        while(rsf.next()){
+            sCarnet=rsf.getString("Empleado_Carnet");
+            if (rsf.getInt("incidencia_codigo")==38){
+                row2 = sheet2.createRow(rowNum2++);
+                this.xls_valor( row2, cell2, (short)0, styTextoCentro, this.Completar(sCarnet, 9, "0", "izq") );
+                this.xls_valor( row2, cell2, (short)1, styTexto, rsf.getString("empleado"));
+                this.xls_valor( row2, cell2, (short)2, styTexto, rsf.getString("Empleado_Dni"));
+                this.xls_valor( row2, cell2, (short)3, styTexto, rsf.getString("asistencia_fecha"));
+                this.xls_valor( row2, cell2, (short)4, styTextoCentro, rsf.getString("tiempo_minutos"));
+            }else{
+                row3 = sheet3.createRow(rowNum3++);
+                this.xls_valor( row3, cell3, (short)0, styTextoCentro, this.Completar(sCarnet, 9, "0", "izq") );
+                this.xls_valor( row3, cell3, (short)1, styTexto, rsf.getString("empleado"));
+                this.xls_valor( row3, cell3, (short)2, styTexto, rsf.getString("Empleado_Dni"));
+                this.xls_valor( row3, cell3, (short)3, styTexto, rsf.getString("asistencia_fecha"));
+                this.xls_valor( row3, cell3, (short)4, styTextoCentro, rsf.getString("tiempo_minutos"));
+            }
+        }            
+        
+        wb.write(fileOut);
+        fileOut.close();
+        if (Total_registros==0){
+            //-- Eliminar archivo excel
+            rpta= this.DeleteFile(this.getReporte_ruta_completa());
+            rpta="No hay registros en el periodo de fecha solicitado. No se generó archivo interfase.";
+            return rpta;
+        }
+        rpta=this.Registrar_reporte_basedatos();
+        if (rpta.compareTo("OK")!=0){
+            return rpta;
+        }
+        //-- Eliminar archivo excel
+        rpta= this.DeleteFile(this.getReporte_ruta_completa());
+        
+     }catch(Exception e){
+         rpta=e.getMessage();     
+     }    
+    }
+    return rpta;
+}
+
+public String Interfase_altas(){
+    String rpta="OK", id="";
+    String ssql="";
+    String sDel="", sAl="";
+    Statement stmt;
+    ResultSet rs, rsp;
+
+    rpta=this.ConectarmeBLOB();
+    if(rpta.compareTo("OK")==0){
+     try{
+        //generar nombre de archivo xls
+        id = "Interfase_Altas_" + this.Nombre_fecha() + ".xls";
+        this.setReporte_nombre(id);
+        this.setReporte_ruta_completa(this.getReporte_dir_destino() + this.getReporte_nombre());
+                
+        HSSFWorkbook wb=null;        
+        fileOut = new FileOutputStream(this.getReporte_ruta_completa());
+        wb = new HSSFWorkbook();
+        HSSFSheet sheet = wb.createSheet("Altas");
+        
+        HSSFCellStyle styTitulo = this.getStyTitulo(wb);
+        HSSFCellStyle stySubTitulo = this.getStySubTitulo(wb);
+        HSSFCellStyle styTexto = this.getStyTexto(wb);
+        HSSFCellStyle styTextoCentro = this.getStyTextoCentro(wb);
+        HSSFCellStyle styTexto_GreyBackGround = this.getStyTexto_GreyBackGround(wb);
+        HSSFCellStyle styTextoCentro_GreyBackGround = this.getStyTextoCentro_GreyBackGround(wb);
+        HSSFCellStyle styEntero_GreyBackGround = this.getStyEntero_GreyBackGround(wb);
+        
+        HSSFRow row;
+        HSSFCell cell;
+        short rowNum = 0;
+        short colNum = 0;
+
+        row = sheet.createRow(rowNum++);
+        sheet.setColumnWidth((short) (0), (short) ((25 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (1), (short) ((25 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (2), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (3), (short) ((25 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (4), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (5), (short) ((25 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (6), (short) ((25 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (7), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (8), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (9), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (10), (short) ((20 * 8) / ((double) 1 / 20)));
+        
+        sheet.addMergedRegion(new Region(rowNum-1,(short)2,rowNum-1,(short)5));
+            
+        cell = row.createCell((short)2);
+        cell.setCellValue("FORMATO DE ALTAS Y REINGRESOS PARA META4");
+        cell.setCellStyle(styTitulo);
+        
+        //-- CONSULTAR POR RANGO DE FECHA EXTRAER
+        ssql="EXEC spNOM_FECHA_PERIODO_PROCESO " + this.getAnio_codigo() + ", " + this.getMes_codigo() + ", " + String.valueOf(this.getProceso_codigo());
+        
+        stmt=this.getMyconeccion().createStatement();
+        rsp=stmt.executeQuery(ssql);
+        
+        if (!rsp.next()){
+            rpta="Error, Periodo de proceso incorrecto o no existe programación de Altas";
+            return rpta;
+        }
+        
+        row = sheet.createRow(rowNum++);
+        this.xls_valor( row, cell, (short)0, stySubTitulo,"Personal Activo Del ");
+        this.xls_valor( row, cell, (short)1, stySubTitulo,rsp.getString("FECHA_ANTERIOR"));
+	this.xls_valor( row, cell, (short)2, stySubTitulo," Al ");
+        this.xls_valor( row, cell, (short)3, stySubTitulo,rsp.getString("FECHA_ACTUAL"));
+        this.xls_valor( row, cell, (short)5, stySubTitulo, "Fecha Reporte: " + this.getFecha_Server());
+        
+        row = sheet.createRow(rowNum++);
+
+        this.xls_valor( row, cell, (short)0, this.getStyCabeceraTabla(wb), "ID Persona");
+        this.xls_valor( row, cell, (short)1, this.getStyCabeceraTabla(wb), "Fecha Alta");
+        this.xls_valor( row, cell, (short)2, this.getStyCabeceraTabla(wb), "Fe_Venc_Contr");
+        this.xls_valor( row, cell, (short)3, this.getStyCabeceraTabla(wb), "Apellido Paterno");
+        this.xls_valor( row, cell, (short)4, this.getStyCabeceraTabla(wb), "Apellido Materno");
+        this.xls_valor( row, cell, (short)5, this.getStyCabeceraTabla(wb), "Nombres");
+        this.xls_valor( row, cell, (short)6, this.getStyCabeceraTabla(wb), "ID Sexo");
+        this.xls_valor( row, cell, (short)7, this.getStyCabeceraTabla(wb), "Fe_Nacimiento");
+        this.xls_valor( row, cell, (short)8, this.getStyCabeceraTabla(wb), "Estado civil");
+        this.xls_valor( row, cell, (short)9, this.getStyCabeceraTabla(wb), "ID País Nac");
+        this.xls_valor( row, cell, (short)10, this.getStyCabeceraTabla(wb), "ID Depto Nac");
+        this.xls_valor( row, cell, (short)11, this.getStyCabeceraTabla(wb), "ID Prov. Nac");
+        this.xls_valor( row, cell, (short)12, this.getStyCabeceraTabla(wb), "Id Dist. Nac");
+        this.xls_valor( row, cell, (short)13, this.getStyCabeceraTabla(wb), "Dirección");
+        this.xls_valor( row, cell, (short)14, this.getStyCabeceraTabla(wb), "Número");
+        this.xls_valor( row, cell, (short)15, this.getStyCabeceraTabla(wb), "Urbanización");
+        this.xls_valor( row, cell, (short)16, this.getStyCabeceraTabla(wb), "ID País Dom");
+        this.xls_valor( row, cell, (short)17, this.getStyCabeceraTabla(wb), "ID Depto Dom");
+        this.xls_valor( row, cell, (short)18, this.getStyCabeceraTabla(wb), "ID Prov. Dom");
+        this.xls_valor( row, cell, (short)19, this.getStyCabeceraTabla(wb), "ID Dist. Dom");
+        this.xls_valor( row, cell, (short)20, this.getStyCabeceraTabla(wb), "Teléf. Dom");
+        this.xls_valor( row, cell, (short)21, this.getStyCabeceraTabla(wb), "L.Electoral/DNI");
+        this.xls_valor( row, cell, (short)22, this.getStyCabeceraTabla(wb), "Libreta Militar");
+        this.xls_valor( row, cell, (short)23, this.getStyCabeceraTabla(wb), "Carnet de Extranjería");
+        this.xls_valor( row, cell, (short)24, this.getStyCabeceraTabla(wb), "Código Unico de SPP");
+        this.xls_valor( row, cell, (short)25, this.getStyCabeceraTabla(wb), "Código ESSALUD");
+        this.xls_valor( row, cell, (short)26, this.getStyCabeceraTabla(wb), "Id. AFP");
+        this.xls_valor( row, cell, (short)27, this.getStyCabeceraTabla(wb), "Código Seguro Médico");
+        this.xls_valor( row, cell, (short)28, this.getStyCabeceraTabla(wb), "Ti_Empl");
+        this.xls_valor( row, cell, (short)29, this.getStyCabeceraTabla(wb), "Frec. Pago");
+        this.xls_valor( row, cell, (short)30, this.getStyCabeceraTabla(wb), "ID Empr");
+        this.xls_valor( row, cell, (short)31, this.getStyCabeceraTabla(wb), "Id Cooperativa");
+        this.xls_valor( row, cell, (short)32, this.getStyCabeceraTabla(wb), "Id Puesto");
+        this.xls_valor( row, cell, (short)33, this.getStyCabeceraTabla(wb), "ID Unidad org.");
+        this.xls_valor( row, cell, (short)34, this.getStyCabeceraTabla(wb), "ID Lugar trabajo");
+        this.xls_valor( row, cell, (short)35, this.getStyCabeceraTabla(wb), "Doc. Referencia Alta");
+        this.xls_valor( row, cell, (short)36, this.getStyCabeceraTabla(wb), "Id CeBe");
+        this.xls_valor( row, cell, (short)37, this.getStyCabeceraTabla(wb), "Id Ofic. Adm");
+        this.xls_valor( row, cell, (short)38, this.getStyCabeceraTabla(wb), "Id Turno");
+        this.xls_valor( row, cell, (short)39, this.getStyCabeceraTabla(wb), "Id Centro Costo");
+        this.xls_valor( row, cell, (short)40, this.getStyCabeceraTabla(wb), "ID Actividad");
+        this.xls_valor( row, cell, (short)41, this.getStyCabeceraTabla(wb), "Ti_Contrato");
+        this.xls_valor( row, cell, (short)42, this.getStyCabeceraTabla(wb), "Fe_Firma Contr");
+        this.xls_valor( row, cell, (short)43, this.getStyCabeceraTabla(wb), "Anexo_Contrato");
+        this.xls_valor( row, cell, (short)44, this.getStyCabeceraTabla(wb), "Cód.Categ");
+        this.xls_valor( row, cell, (short)45, this.getStyCabeceraTabla(wb), "Nivel Categ");
+        this.xls_valor( row, cell, (short)46, this.getStyCabeceraTabla(wb), "Código Calificación Lab.");
+        this.xls_valor( row, cell, (short)47, this.getStyCabeceraTabla(wb), "ID Plan");
+        this.xls_valor( row, cell, (short)48, this.getStyCabeceraTabla(wb), "Base Rem");
+        this.xls_valor( row, cell, (short)49, this.getStyCabeceraTabla(wb), "Sueldo");
+        this.xls_valor( row, cell, (short)50, this.getStyCabeceraTabla(wb), "Moneda Sueldo");
+        this.xls_valor( row, cell, (short)51, this.getStyCabeceraTabla(wb), "Horas Semana");
+        this.xls_valor( row, cell, (short)52, this.getStyCabeceraTabla(wb), "Tipo Deposito (EFE,CTA)");
+        this.xls_valor( row, cell, (short)53, this.getStyCabeceraTabla(wb), "Id Banco");
+        this.xls_valor( row, cell, (short)54, this.getStyCabeceraTabla(wb), "Núm. Cuenta Bancaria");
+        this.xls_valor( row, cell, (short)55, this.getStyCabeceraTabla(wb), "ID Moneda Pago");
+        this.xls_valor( row, cell, (short)56, this.getStyCabeceraTabla(wb), "ID Uso Cta Bancaria");
+        this.xls_valor( row, cell, (short)57, this.getStyCabeceraTabla(wb), "ID Tipo Cuenta Bancaria");
+        this.xls_valor( row, cell, (short)58, this.getStyCabeceraTabla(wb), "Id. Moneda Depósito");
+        this.xls_valor( row, cell, (short)59, this.getStyCabeceraTabla(wb), "Distrito Residencia");
+        this.xls_valor( row, cell, (short)60, this.getStyCabeceraTabla(wb), "Area Trabajo");
+        this.xls_valor( row, cell, (short)61, this.getStyCabeceraTabla(wb), "Modalidad");
+        this.xls_valor( row, cell, (short)62, this.getStyCabeceraTabla(wb), "Contrato");
+        this.xls_valor( row, cell, (short)63, this.getStyCabeceraTabla(wb), "contrato_m4");
+        
+        //-- CONSULTAR POR DATOS DEL PERIODO
+        this.setFecha_del(rsp.getString("FECHA_ANTERIOR"));
+        this.setFecha_al(rsp.getString("FECHA_ACTUAL"));
+        ssql="EXEC spNOM_GENERA_INTERFASE_ALTAS " + String.valueOf(this.getEmpresa_codigo()) + ", '" + rsp.getTimestamp("FECHA_ANTERIOR") + "', '" + rsp.getTimestamp("FECHA_ACTUAL") + "','" + this.getEmail() + "'";
+        System.out.println(ssql);
+        stmt=this.getMyconeccion().createStatement();
+        rs=stmt.executeQuery(ssql);
+        String nombre_area="";
+        int Total_titulares=0;
+        int Total_conyuges=0;
+        int Total_registros=0;
+        String sCarnet="", direccion="", numero="";
+        while(rs.next()){
+            row = sheet.createRow(rowNum++);
+            Total_registros+=1;               
+            this.xls_valor( row, cell, (short)0, styTextoCentro, this.Completar(sCarnet, 9, "0", "izq") );
+            this.xls_valor( row, cell, (short)0, styTextoCentro, this.Completar(sCarnet, 9, "0", "izq") );
+            
+            sCarnet=rs.getString("Empleado_Carnet");
+            if (sCarnet.compareTo("")==0) sCarnet="999999999";
+            this.xls_valor( row, cell, (short)0, styTextoCentro, this.Completar(sCarnet, 9, "0", "izq") );
+            this.xls_valor( row, cell, (short)1, styTextoCentro, rs.getString("Empleado_Fecha_Ingreso"));
+            this.xls_valor( row, cell, (short)2, styTextoCentro, rs.getString("FECHA_VENCE_CONTRATO"));
+            this.xls_valor( row, cell, (short)3, styTexto, rs.getString("Empleado_Apellido_Paterno"));
+            this.xls_valor( row, cell, (short)4, styTexto, rs.getString("Empleado_Apellido_Materno"));
+            this.xls_valor( row, cell, (short)5, styTexto, rs.getString("Empleado_Nombres"));
+            this.xls_valor( row, cell, (short)6, styTextoCentro, rs.getString("Empleado_sexo"));
+            this.xls_valor( row, cell, (short)7, styTextoCentro, rs.getString("Empleado_Fecha_Nacimiento"));
+            this.xls_valor( row, cell, (short)8, styTextoCentro, rs.getString("ESTADO_CIVIL"));
+            this.xls_valor( row, cell, (short)9, styTextoCentro, rs.getString("ID_PAIS_NACIMIENTO"));
+            this.xls_valor( row, cell, (short)10, styTextoCentro, rs.getString("Empleado_Dpto_Nacimiento"));
+            this.xls_valor( row, cell, (short)11, styTextoCentro, rs.getString("Empleado_Prov_Nacimiento"));
+            this.xls_valor( row, cell, (short)12, styTextoCentro, rs.getString("Empleado_Dist_Nacimiento"));
+            direccion=rs.getString("Empleado_Nombre_Via") + ""; 
+            numero=rs.getString("Empleado_Nro") + "";
+            this.xls_valor( row, cell, (short)13, styTexto, direccion.toUpperCase());
+            this.xls_valor( row, cell, (short)14, styTexto, numero.toUpperCase());
+            this.xls_valor( row, cell, (short)15, styTexto, rs.getString("URBANIZACION"));
+            this.xls_valor( row, cell, (short)16, styTextoCentro, rs.getString("ID_PAIS_RESIDENCIA"));
+            this.xls_valor( row, cell, (short)17, styTextoCentro, rs.getString("Empleado_Dpto_Residencia"));
+            this.xls_valor( row, cell, (short)18, styTextoCentro, rs.getString("Empleado_Prov_Residencia"));
+            this.xls_valor( row, cell, (short)19, styTextoCentro, rs.getString("Empleado_Dist_Residencia"));
+            this.xls_valor( row, cell, (short)20, styTexto, rs.getString("Empleado_Tlf"));
+            this.xls_valor( row, cell, (short)21, styTextoCentro, rs.getString("Empleado_DNI"));
+            this.xls_valor( row, cell, (short)22, styTexto, rs.getString("Empleado_Lib_Militar"));
+            this.xls_valor( row, cell, (short)23, styTexto, rs.getString("CARNET_EXTRANJERIA"));
+            this.xls_valor( row, cell, (short)24, styTexto, rs.getString("CODIGO_UNICO_SPP"));
+            this.xls_valor( row, cell, (short)25, styTexto, rs.getString("CODIGO_ESSALUD"));
+            this.xls_valor( row, cell, (short)26, styTexto, rs.getString("ID_AFP"));
+            this.xls_valor( row, cell, (short)27, styTexto, rs.getString("CODIGO_SEGURO_MEDICO"));
+            this.xls_valor( row, cell, (short)28, styTexto, rs.getString("TI_EMP"));
+            this.xls_valor( row, cell, (short)29, styTexto, rs.getString("FREC_PAGO"));
+            this.xls_valor( row, cell, (short)30, styTexto, rs.getString("ID_EMPRESA"));
+            this.xls_valor( row, cell, (short)31, styTexto, rs.getString("ID_COOPERATIVA"));
+            this.xls_valor( row, cell, (short)32, styTexto, rs.getString("ID_PUESTO"));
+            this.xls_valor( row, cell, (short)33, styTextoCentro, rs.getString("Ccr_Codigo"));
+            this.xls_valor( row, cell, (short)34, styTextoCentro, rs.getString("ID_LUGAR_TRABAJO"));
+            this.xls_valor( row, cell, (short)35, styTexto, rs.getString("DOC_REFERENCIA_ALTA"));
+            this.xls_valor( row, cell, (short)36, styTextoCentro, rs.getString("Ccb_Codigo"));
+            this.xls_valor( row, cell, (short)37, styTexto, rs.getString("ID_OFIC_ADM"));
+            this.xls_valor( row, cell, (short)38, styTexto, rs.getString("ID_TURNO"));
+            this.xls_valor( row, cell, (short)39, styTextoCentro, rs.getString("Ccto_Codigo"));
+            this.xls_valor( row, cell, (short)40, styTexto, rs.getString("ID_ACTIVIDAD"));
+            this.xls_valor( row, cell, (short)41, styTexto, rs.getString("TI_CONTRATO"));
+            this.xls_valor( row, cell, (short)42, styTexto, rs.getString("FE_FIRMA_CONTRATO"));
+            this.xls_valor( row, cell, (short)43, styTexto, rs.getString("ANEXO_CONTRATO"));
+            this.xls_valor( row, cell, (short)44, styTexto, rs.getString("COD_CATEGORIA"));
+            this.xls_valor( row, cell, (short)45, styTextoCentro, rs.getString("NIVEL_CATEGORIA"));
+            this.xls_valor( row, cell, (short)46, styTextoCentro, rs.getString("CODIGO_CALIFICACION_LABORAL"));
+            this.xls_valor( row, cell, (short)47, styTextoCentro, rs.getString("ID_PLAN"));
+            this.xls_valor( row, cell, (short)48, styTextoCentro, rs.getString("BASE_REM"));
+            this.xls_valor( row, cell, (short)49, styTexto, rs.getString("SUELDO"));
+            this.xls_valor( row, cell, (short)50, styTextoCentro, rs.getString("MONEDA_SUELDO"));
+            this.xls_valor( row, cell, (short)51, styTextoCentro, rs.getString("HORAS_SEMANA"));
+            this.xls_valor( row, cell, (short)52, styTexto, rs.getString("TIPO_DEPOSITO"));
+            this.xls_valor( row, cell, (short)53, styTexto, rs.getString("ID_BANCO"));
+            this.xls_valor( row, cell, (short)54, styTexto, rs.getString("NUM_CTA_BANCO"));
+            this.xls_valor( row, cell, (short)55, styTexto, rs.getString("ID_MONEDA_PAGO"));
+            this.xls_valor( row, cell, (short)56, styTexto, rs.getString("ID_USO_CTA_BANCO"));
+            this.xls_valor( row, cell, (short)57, styTexto, rs.getString("ID_TIPO_CTA_BANCO"));
+            this.xls_valor( row, cell, (short)58, styTexto, rs.getString("ID_MONEDA_DEPOSITO"));
+            this.xls_valor( row, cell, (short)59, styTexto, rs.getString("DISTRITO"));
+            this.xls_valor( row, cell, (short)60, styTexto, rs.getString("AREA"));
+            this.xls_valor( row, cell, (short)61, styTexto, rs.getString("MODAL"));
+            this.xls_valor( row, cell, (short)62, styTexto, rs.getString("TCONTRA"));
+            this.xls_valor( row, cell, (short)63, styTexto, rs.getString("contrato_m4"));
+        }            
+        /*agregado por banny solano*/
+        sheet = wb.createSheet("CTS");
+        /*agregado por banny solano*/
+        
+        wb.write(fileOut);
+        fileOut.close(); 
+        if (Total_registros==0){
+            //-- Eliminar archivo excel
+            rpta= this.DeleteFile(this.getReporte_ruta_completa());
+            rpta="No hay registros en el periodo de fecha solicitado. No se generó archivo interfase.";            
+            return rpta;
+        }
+        rpta=this.Registrar_reporte_basedatos();
+        if (rpta.compareTo("OK")!=0){
+            return rpta;
+        }
+        //-- Eliminar archivo excel
+        //rpta= this.DeleteFile(this.getReporte_ruta_completa());
+        
+     }catch(Exception e){
+         rpta=e.getMessage();     
+     }    
+    }
+    
+     return rpta;
+}
+
+public String Interfase_Ficha_Altas(){
+    String rpta="OK", id="";
+    String ssql="";
+    Statement stmt;
+    ResultSet rs, rsp;
+
+    rpta=this.ConectarmeBLOB();
+    if(rpta.compareTo("OK")==0){
+     try{
+        //-- CONSULTAR POR RANGO DE FECHA EXTRAER
+        ssql="EXEC spNOM_FECHA_PERIODO_PROCESO " + this.getAnio_codigo() + ", " + this.getMes_codigo() + ", " + String.valueOf(this.getProceso_codigo());
+        System.out.println(ssql);
+        stmt=this.getMyconeccion().createStatement();
+        rsp=stmt.executeQuery(ssql);
+        
+        if (!rsp.next()){
+            rpta="Error, Periodo de proceso incorrecto o no existe programación de Ficha de Altas";
+            return rpta;
+        }
+        
+        //-- CONSULTAR POR DATOS DEL PERIODO
+        this.setFecha_del(rsp.getString("FECHA_ANTERIOR"));
+        this.setFecha_al(rsp.getString("FECHA_ACTUAL"));
+        //ssql="EXEC SP_CARGA_FICHA_ALTAS_META4 " + String.valueOf(this.getEmpresa_codigo()) + ", '" + this.getFecha_del() + "', '" + this.getFecha_al() + "','" + this.getEmail() + "'";
+        ssql="EXEC SP_CARGA_FICHA_ALTAS_NOMINA '" + this.getFecha_del() + "', '" + this.getFecha_al() + "'," + String.valueOf(this.getEmpresa_codigo());
+        System.out.println(ssql);
+        stmt=this.getMyconeccion().createStatement();
+        rs=stmt.executeQuery(ssql);
+        
+        int Total_registros=0;
+        DateFormat df = null;
+        StringBuffer cadenaDatosPersonales = null;
+        StringBuffer cadenaDatosEmpresa = null;
+        StringBuffer cadenaDatosSueldos = null;
+        StringBuffer cadenaDatosCentroCostos = null;
+        StringBuffer cadenaDatosContratos = null;
+        
+        String saltoLinea = System.getProperty("line.separator");
+        String separadorCampos = "|";
+        
+        while(rs.next())
+        {
+            if(cadenaDatosPersonales == null) { cadenaDatosPersonales = new StringBuffer(); }
+            if(cadenaDatosEmpresa == null) { cadenaDatosEmpresa = new StringBuffer(); }
+            if(cadenaDatosSueldos == null) { cadenaDatosSueldos = new StringBuffer(); }
+            if(cadenaDatosCentroCostos == null) { cadenaDatosCentroCostos = new StringBuffer(); }
+            if(cadenaDatosContratos == null) { cadenaDatosContratos = new StringBuffer(); }
+            if(df == null) { df = new SimpleDateFormat("dd/MM/yyyy"); }
+            
+            // CARGAMOS DATOS PERSONALES
+            System.out.println("Cargando Data Personal");
+            //cadenaDatosPersonales.append(rs.getInt("COD_EMPLEADO")).append(separadorCampos);
+            cadenaDatosPersonales.append(rs.getString("CO_TRAB")).append(separadorCampos);
+            cadenaDatosPersonales.append(validarCampoVacio(rs.getString("CO_TRAB_CORP"))).append(separadorCampos);
+            cadenaDatosPersonales.append(validarCampoVacio(rs.getString("CO_POST"))).append(separadorCampos);
+            cadenaDatosPersonales.append(rs.getString("NO_APEL_PATE")).append(separadorCampos);
+            cadenaDatosPersonales.append(rs.getString("NO_APEL_MATE")).append(separadorCampos);
+            cadenaDatosPersonales.append(validarCampoVacio(rs.getString("NO_APEL_CASA"))).append(separadorCampos);
+            cadenaDatosPersonales.append(rs.getString("NO_TRAB")).append(separadorCampos);
+            cadenaDatosPersonales.append(rs.getString("ST_SEXO")).append(separadorCampos);
+            cadenaDatosPersonales.append(rs.getString("CO_ESTA_CIVI")).append(separadorCampos);
+            cadenaDatosPersonales.append(rs.getDate("FE_MATR") != null ? df.format(rs.getDate("FE_MATR")) : CAMPO_VACIO).append(separadorCampos);
+            cadenaDatosPersonales.append(df.format(rs.getDate("FE_NACI_TRAB"))).append(separadorCampos);
+            cadenaDatosPersonales.append(validarCampoVacio(rs.getString("NO_GRUP_SANG"))).append(separadorCampos);
+            cadenaDatosPersonales.append(rs.getString("CO_PAIS_NACI")).append(separadorCampos);
+            cadenaDatosPersonales.append(rs.getString("CO_LUGA_NACI")).append(separadorCampos);
+            cadenaDatosPersonales.append(rs.getString("CO_PAIS_NCIO")).append(separadorCampos);
+            cadenaDatosPersonales.append(rs.getString("CO_TIPO_CASA")).append(separadorCampos);
+            cadenaDatosPersonales.append(rs.getString("CO_TIPO_VIAS")).append(separadorCampos);
+            cadenaDatosPersonales.append(rs.getString("NO_DIRE_TRAB")).append(separadorCampos);
+            cadenaDatosPersonales.append(rs.getString("NU_CASA")).append(separadorCampos);
+            cadenaDatosPersonales.append(validarCampoVacio(rs.getString("NU_INTE"))).append(separadorCampos);
+            cadenaDatosPersonales.append(rs.getString("CO_TIPO_ZONA")).append(separadorCampos);
+            cadenaDatosPersonales.append(validarCampoVacio(rs.getString("NO_ZONA"))).append(separadorCampos);
+            cadenaDatosPersonales.append(rs.getString("CO_UBIC_GEOG")).append(separadorCampos);
+            cadenaDatosPersonales.append(validarCampoVacio(rs.getString("DE_REFE"))).append(separadorCampos);
+            cadenaDatosPersonales.append(rs.getString("CO_PAIS_RESI")).append(separadorCampos);
+            cadenaDatosPersonales.append(validarCampoVacio(rs.getString("NO_DPTO"))).append(separadorCampos);
+            cadenaDatosPersonales.append(validarCampoVacio(rs.getString("NO_MANZ"))).append(separadorCampos);
+            cadenaDatosPersonales.append(validarCampoVacio(rs.getString("NO_LOTE"))).append(separadorCampos);
+            cadenaDatosPersonales.append(validarCampoVacio(rs.getString("NO_KMLT"))).append(separadorCampos);
+            cadenaDatosPersonales.append(validarCampoVacio(rs.getString("NO_BLOC"))).append(separadorCampos);
+            cadenaDatosPersonales.append(validarCampoVacio(rs.getString("NO_ETAP"))).append(separadorCampos);
+            cadenaDatosPersonales.append(validarCampoVacio(rs.getString("NU_TLF1"))).append(separadorCampos);
+            cadenaDatosPersonales.append(validarCampoVacio(rs.getString("NU_TLF2"))).append(separadorCampos);
+            cadenaDatosPersonales.append(validarCampoVacio(rs.getString("NU_TLF3"))).append(separadorCampos);
+            cadenaDatosPersonales.append(validarCampoVacio(rs.getString("NO_DIRE_MAI1"))).append(separadorCampos);
+            cadenaDatosPersonales.append(validarCampoVacio(rs.getString("NO_DIRE_MAI2"))).append(separadorCampos);
+            cadenaDatosPersonales.append(validarCampoVacio(rs.getString("NO_RUTA_CURR"))).append(separadorCampos);
+            cadenaDatosPersonales.append(rs.getString("CO_TIPO_INST")).append(separadorCampos);
+            cadenaDatosPersonales.append(df.format(rs.getDate("FE_INGR_CORP"))).append(separadorCampos);
+            cadenaDatosPersonales.append(validarCampoVacio(rs.getString("CO_AFPS"))).append(separadorCampos);
+            cadenaDatosPersonales.append(validarCampoVacio(rs.getString("NU_DOCU_IDEN_AFP"))).append(separadorCampos);
+            cadenaDatosPersonales.append(rs.getDate("FE_AFIL_AFPS") != null ? df.format(rs.getDate("FE_AFIL_AFPS")) : CAMPO_VACIO).append(separadorCampos);
+            cadenaDatosPersonales.append(validarCampoVacio(rs.getString("CO_CATE_BREV"))).append(separadorCampos);
+            cadenaDatosPersonales.append(validarCampoVacio(rs.getString("NO_MARC_VEHI"))).append(separadorCampos);
+            cadenaDatosPersonales.append(validarCampoVacio(rs.getString("NO_MODE_VEHI"))).append(separadorCampos);
+            cadenaDatosPersonales.append(validarCampoVacio(rs.getString("DE_COLO_VEHI"))).append(separadorCampos);
+            cadenaDatosPersonales.append(validarCampoVacio(String.valueOf(rs.getInt("NU_ANNO_VEHI")))).append(separadorCampos);
+            cadenaDatosPersonales.append(validarCampoVacio(rs.getString("NU_PLAC"))).append(separadorCampos);
+            cadenaDatosPersonales.append(validarCampoVacio(rs.getString("DE_OBSE"))).append(separadorCampos);
+            cadenaDatosPersonales.append(rs.getString("TI_DOCU_IDEN")).append(separadorCampos);
+            cadenaDatosPersonales.append(rs.getString("NU_DOCU_IDEN")).append(separadorCampos);
+            cadenaDatosPersonales.append(rs.getString("TI_SITU")).append(saltoLinea);
+            
+            // CARGAMOS DATOS DE EMPRESAS
+            System.out.println("Cargando Data Empresas");
+            cadenaDatosEmpresa.append(rs.getString("CO_TRAB")).append(separadorCampos);
+            cadenaDatosEmpresa.append(rs.getString("CO_EMPR")).append(separadorCampos);
+            cadenaDatosEmpresa.append(validarCampoVacio(rs.getString("CO_UNID"))).append(separadorCampos);
+            cadenaDatosEmpresa.append(validarCampoVacio(rs.getString("CO_PLAN"))).append(separadorCampos);
+            cadenaDatosEmpresa.append(validarCampoVacio(rs.getString("CO_SEDE"))).append(separadorCampos);
+            cadenaDatosEmpresa.append(validarCampoVacio(rs.getString("CO_AREA"))).append(separadorCampos);
+            cadenaDatosEmpresa.append(validarCampoVacio(rs.getString("CO_SECC"))).append(separadorCampos);
+            cadenaDatosEmpresa.append(rs.getString("CO_GRUP_OCUP")).append(separadorCampos);
+            cadenaDatosEmpresa.append(validarCampoVacio(rs.getString("CO_CATE_TRAB"))).append(separadorCampos);
+            cadenaDatosEmpresa.append(validarCampoVacio(rs.getString("CO_TIPO_CONT"))).append(separadorCampos);
+            cadenaDatosEmpresa.append(validarCampoVacio(rs.getString("CO_PUES_TRAB"))).append(separadorCampos);
+            cadenaDatosEmpresa.append(validarCampoVacio(rs.getString("NU_TELE_EMPR"))).append(separadorCampos);
+            cadenaDatosEmpresa.append(validarCampoVacio(rs.getString("NU_ANEX_EMPR"))).append(separadorCampos);
+            cadenaDatosEmpresa.append(validarCampoVacio(rs.getString("CO_CALI_TRAB"))).append(separadorCampos);
+            cadenaDatosEmpresa.append(validarCampoVacio(rs.getString("CO_TURN_TRAB"))).append(separadorCampos);
+            cadenaDatosEmpresa.append(validarCampoVacio(rs.getString("CO_FORM_INGR"))).append(separadorCampos);
+            cadenaDatosEmpresa.append(rs.getDate("FE_INGR_EMPR") != null ? df.format(rs.getDate("FE_INGR_EMPR")) : CAMPO_VACIO).append(separadorCampos);
+            cadenaDatosEmpresa.append(rs.getDate("FE_INGR_PLAN") != null ? df.format(rs.getDate("FE_INGR_PLAN")) : CAMPO_VACIO).append(separadorCampos);
+            cadenaDatosEmpresa.append(rs.getDate("FE_ADIC") != null ? df.format(rs.getDate("FE_ADIC")) : CAMPO_VACIO).append(separadorCampos);
+            cadenaDatosEmpresa.append(validarCampoVacio(rs.getString("CO_COOP"))).append(separadorCampos);
+            cadenaDatosEmpresa.append(rs.getDate("FE_INGR_COOP") != null ? df.format(rs.getDate("FE_INGR_COOP")) : CAMPO_VACIO).append(separadorCampos);
+            cadenaDatosEmpresa.append(validarCampoVacio(rs.getString("CO_SERV"))).append(separadorCampos);
+            cadenaDatosEmpresa.append(rs.getInt("NU_DERE_GVAC")).append(separadorCampos);
+            cadenaDatosEmpresa.append(rs.getInt("NU_DIAS_VAFI")).append(separadorCampos);
+            cadenaDatosEmpresa.append(rs.getInt("NU_DIAS_VCTR")).append(separadorCampos);
+            cadenaDatosEmpresa.append(validarCampoVacio(rs.getString("CO_MONE_SUEL"))).append(separadorCampos);
+            cadenaDatosEmpresa.append(validarCampoVacio(rs.getString("CO_BANC_SUEL"))).append(separadorCampos);
+            cadenaDatosEmpresa.append(validarCampoVacio(rs.getString("CO_CNTA_SUEL"))).append(separadorCampos);
+            cadenaDatosEmpresa.append(validarCampoVacio(rs.getString("NU_CNTA_SUEL"))).append(separadorCampos);
+            cadenaDatosEmpresa.append(validarCampoVacio(rs.getString("NU_SUEL"))).append(separadorCampos);
+            cadenaDatosEmpresa.append(validarCampoVacio(rs.getString("CO_MONE_CTSS"))).append(separadorCampos);
+            cadenaDatosEmpresa.append(validarCampoVacio(rs.getString("CO_BANC_CTSS"))).append(separadorCampos);
+            cadenaDatosEmpresa.append(validarCampoVacio(rs.getString("NU_CNTA_CTSS"))).append(separadorCampos);
+            cadenaDatosEmpresa.append(validarCampoVacio(rs.getString("CO_MOTI_SEPA"))).append(separadorCampos);
+            cadenaDatosEmpresa.append(rs.getDate("FE_CESE_TRAB") != null ? df.format(rs.getDate("FE_CESE_TRAB")) : CAMPO_VACIO).append(separadorCampos);
+            cadenaDatosEmpresa.append(validarCampoVacio(rs.getString("DE_OBSE_CESE"))).append(separadorCampos);
+            cadenaDatosEmpresa.append(rs.getString("TI_SITU")).append(saltoLinea);
+            
+            // CARGAMOS DATOS DE SUELDOS
+            System.out.println("Cargando Data Sueldos");
+            cadenaDatosSueldos.append(rs.getString("CO_EMPR")).append(separadorCampos);
+            cadenaDatosSueldos.append(rs.getString("CO_TRAB")).append(separadorCampos);
+            cadenaDatosSueldos.append(rs.getString("TI_SUEL")).append(separadorCampos);
+            cadenaDatosSueldos.append(df.format(rs.getDate("FE_APRO_SUEL"))).append(separadorCampos);
+            cadenaDatosSueldos.append(validarCampoVacio(String.valueOf(rs.getBigDecimal("IM_SUEL")))).append(separadorCampos);            
+            cadenaDatosSueldos.append(validarCampoVacio(rs.getString("DE_OBSE_SUELDO"))).append(saltoLinea);
+            
+            // CARGAMOS DATOS DE CENTRO DE COSTOS
+            System.out.println("Cargando Data Costos");
+            cadenaDatosCentroCostos.append(rs.getString("CO_EMPR")).append(separadorCampos);
+            cadenaDatosCentroCostos.append(rs.getString("CO_TRAB")).append(separadorCampos);
+            cadenaDatosCentroCostos.append(rs.getString("CO_CENT_COST")).append(separadorCampos);
+            cadenaDatosCentroCostos.append(rs.getBigDecimal("PC_DIST")).append(saltoLinea);
+            
+            // CARGAMOS DATOS DE CONTRATOS
+            System.out.println("Cargando Data Contratos");
+            cadenaDatosContratos.append(rs.getString("CO_EMPR")).append(separadorCampos);
+            cadenaDatosContratos.append(rs.getString("CO_TRAB")).append(separadorCampos);
+            cadenaDatosContratos.append(validarCampoVacio(rs.getString("CO_TIPO_MODA"))).append(separadorCampos);
+            cadenaDatosContratos.append(rs.getDate("FE_ELAB_CONT") != null ? df.format(rs.getDate("FE_ELAB_CONT")) : CAMPO_VACIO).append(separadorCampos);
+            cadenaDatosContratos.append(rs.getDate("FE_INIC_CONT") != null ? df.format(rs.getDate("FE_INIC_CONT")) : CAMPO_VACIO).append(separadorCampos);
+            cadenaDatosContratos.append(rs.getInt("NU_MESE")).append(separadorCampos);
+            cadenaDatosContratos.append(rs.getDate("FE_FINA_CONT") != null ? df.format(rs.getDate("FE_FINA_CONT")) : CAMPO_VACIO).append(separadorCampos);
+            cadenaDatosContratos.append(validarCampoVacio(rs.getString("ST_REMU_FIJA"))).append(separadorCampos);
+            cadenaDatosContratos.append(validarCampoVacio(rs.getString("ST_REMU_VARI"))).append(separadorCampos);
+            cadenaDatosContratos.append(validarCampoVacio(rs.getString("CO_CENT_ESTU"))).append(separadorCampos);
+            cadenaDatosContratos.append(validarCampoVacio(String.valueOf(rs.getBigDecimal("IM_SUEL_CONTRATO")))).append(separadorCampos);
+            cadenaDatosContratos.append(validarCampoVacio(rs.getString("DE_ADI1"))).append(separadorCampos);
+            cadenaDatosContratos.append(validarCampoVacio(rs.getString("DE_ADI2"))).append(separadorCampos);
+            cadenaDatosContratos.append(validarCampoVacio(rs.getString("DE_ADI3"))).append(separadorCampos);
+            cadenaDatosContratos.append(validarCampoVacio(rs.getString("DE_CARR"))).append(separadorCampos);
+            cadenaDatosContratos.append(validarCampoVacio(rs.getString("NO_SUPE"))).append(separadorCampos);
+            cadenaDatosContratos.append(validarCampoVacio(rs.getString("DE_OBSE_CONTRATO"))).append(saltoLinea);
+            System.out.println("Empleado "  + rs.getString("CO_TRAB") + " Concluido...");
+            
+            Total_registros++;
+        }            
+        
+        if (Total_registros==0)
+        {            
+            rpta="No hay registros en el periodo de fecha solicitado. No se generó archivo interfase.";            
+            return rpta;
+        }
+        else if(Total_registros > 0)
+        {
+            //generar nombre de archivo TXT
+            //Creamos el archivo de datos personales
+            String idPersona = "Interfase_Ficha_Altas_ALTAPERSONA" + this.Nombre_fecha() + ".txt";
+            creaArchivoTextoFicha(idPersona, cadenaDatosPersonales.toString());
+            
+            //Creamos el archivo de datos de empresa
+            String idEmpresa = "Interfase_Ficha_Altas_ALTAEMPRESA" + this.Nombre_fecha() + ".txt";
+            creaArchivoTextoFicha(idEmpresa, cadenaDatosEmpresa.toString());
+            
+            //Creamos el archivo de datos de sueldo
+            String idSueldo = "Interfase_Ficha_Altas_ALTASUELDOS" + this.Nombre_fecha() + ".txt";
+            creaArchivoTextoFicha(idSueldo, cadenaDatosSueldos.toString());
+            
+            //Creamos el archivo de datos de centro de costo
+            String idCtoCosto = "Interfase_Ficha_Altas_ALTACENTROCOSTO" + this.Nombre_fecha() + ".txt";
+            creaArchivoTextoFicha(idCtoCosto, cadenaDatosCentroCostos.toString());
+            
+            //Creamos el archivo de datos de contrato
+            String idContrato = "Interfase_Ficha_Altas_ALTACONTRATO" + this.Nombre_fecha() + ".txt";
+            creaArchivoTextoFicha(idContrato, cadenaDatosContratos.toString());
+            
+            // Armamos el archivo comprimido
+            id = "Interfase_Ficha_Altas_" + this.Nombre_fecha() + ".zip";
+
+            // ******************** codigo para crear zip ***********************
+            String[] aarchivos = new String[]{
+                this.getReporte_dir_destino() + idPersona, 
+                this.getReporte_dir_destino() + idEmpresa, 
+                this.getReporte_dir_destino() + idSueldo, 
+                this.getReporte_dir_destino() + idCtoCosto, 
+                this.getReporte_dir_destino() + idContrato};
+                
+            Reporte_Detalle reporte = new Reporte_Detalle();            
+            Reportes_RRHH.zip objzip = new zip();
+            objzip.setFileList(aarchivos);
+            
+            this.setReporte_nombre(id);
+            this.setReporte_ruta_completa(this.getReporte_dir_destino() + this.getReporte_nombre());
+            objzip.setZipfile(this.getReporte_ruta_completa());
+            rpta = objzip.zipear();
+            
+            // registramos el zip en la base de datos
+            //rpta=this.Registrar_reporte_basedatos();
+
+            if (rpta.compareTo("OK")==0)
+            {
+                //-- Eliminar archivo zip
+                //rpta= this.DeleteFile(this.getReporte_ruta_completa());                
+                return rpta;
+            }
+        }
+     }
+     catch(Exception e)
+     {
+         rpta=e.getMessage();     
+     }    
+    }
+    return rpta;
+}
+
+public String Interfase_Ficha_Parientes(){
+    
+    //this.setProceso_codigo(7);
+    
+    String rpta="OK", id="";
+    String ssql="";
+    Statement stmt;
+    ResultSet rs, rsp;
+
+    rpta=this.ConectarmeBLOB();
+    if(rpta.compareTo("OK")==0){
+     try{
+        //-- CONSULTAR POR RANGO DE FECHA EXTRAER
+        ssql="EXEC spNOM_FECHA_PERIODO_PROCESO " + this.getAnio_codigo() + ", " + this.getMes_codigo() + ", " + String.valueOf(this.getProceso_codigo());
+        System.out.println(ssql);
+        stmt=this.getMyconeccion().createStatement();
+        rsp=stmt.executeQuery(ssql);
+        
+        if (!rsp.next()){
+            rpta="Error, Periodo de proceso incorrecto o no existe programación de Ficha de Parientes";
+            return rpta;
+        }
+        
+        //-- CONSULTAR POR DATOS DEL PERIODO
+        this.setFecha_del(rsp.getString("FECHA_ANTERIOR"));
+        this.setFecha_al(rsp.getString("FECHA_ACTUAL"));
+        
+        ssql="EXEC spNOM_GENERA_INTERFASE_DERECHOHABIENTES_REG_NUEVOS " + String.valueOf(this.getEmpresa_codigo()) + ", '" + this.getFecha_del() + "', '" + this.getFecha_al() + "'";
+        System.out.println(ssql);
+        stmt=this.getMyconeccion().createStatement();
+        rs=stmt.executeQuery(ssql);
+        
+        int Total_registros=0;
+        DateFormat df = null;
+        StringBuffer cadenaDatosParientes = null;
+        
+        String saltoLinea = System.getProperty("line.separator");
+        String separadorCampos = "|";
+        
+        while(rs.next())
+        {   
+            if(cadenaDatosParientes == null) { cadenaDatosParientes = new StringBuffer(); }
+            if(df == null) { df = new SimpleDateFormat("dd/MM/yyyy"); }
+            
+            cadenaDatosParientes.append(rs.getString("CO_TRAB")).append(separadorCampos);
+            cadenaDatosParientes.append(rs.getString("TI_PARI")).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("CO_TRAB_PARI"))).append(separadorCampos);
+            cadenaDatosParientes.append(rs.getString("NO_APEL_PATE")).append(separadorCampos);
+            cadenaDatosParientes.append(rs.getString("NO_APEL_MATE")).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("NO_APEL_CASA"))).append(separadorCampos);
+            cadenaDatosParientes.append(rs.getString("NO_PARI")).append(separadorCampos);
+            cadenaDatosParientes.append(rs.getString("FE_NACI_PARI")).append(separadorCampos);
+            cadenaDatosParientes.append(rs.getString("ST_SEXO_PARI")).append(separadorCampos);
+            cadenaDatosParientes.append(rs.getString("CO_ESTA_CIVI")).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("DE_OCUP_PARI"))).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("NO_CENT_TRAB"))).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("NO_CENT_ESTU"))).append(separadorCampos);
+            cadenaDatosParientes.append(rs.getString("ST_ESTU_SUPE")).append(separadorCampos);
+            cadenaDatosParientes.append(rs.getString("ST_PARI_DEPE")).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("NU_ESSA"))).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("NU_EPSS"))).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("NU_CART_ATME"))).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("NU_DOCU_INCA"))).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("TI_DOCU_VINC"))).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("NU_DOCU_VINC"))).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("NU_MESE_CONC"))).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("NU_ANNO_CONC"))).append(separadorCampos);            
+            cadenaDatosParientes.append(rs.getString("ST_DOMI_PROP")).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("CO_TIPO_VIAS"))).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("NO_DIRE_PARI"))).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("NU_CASA"))).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("NO_DPTO"))).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("NU_INTE"))).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("NO_MANZ"))).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("NO_LOTE"))).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("NO_KMLT"))).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("NO_BLOC"))).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("NO_ETAP"))).append(separadorCampos);
+            cadenaDatosParientes.append(rs.getString("CO_TIPO_ZONA")).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("NO_ZONA"))).append(separadorCampos);
+            cadenaDatosParientes.append(rs.getString("CO_UBIC_GEOG")).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("DE_REFE"))).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("TI_DOCU_IDEN"))).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("NU_DOCU_IDEN"))).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("CO_PAIS_EMIS"))).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("CO_LUGA_NACI"))).append(separadorCampos);
+            cadenaDatosParientes.append(rs.getString("CO_PAIS_NCIO")).append(separadorCampos);
+            cadenaDatosParientes.append(df.format(rs.getDate("FE_INGR_PARI"))).append(separadorCampos);
+            cadenaDatosParientes.append(df.format(rs.getDate("FE_REGI_PARI"))).append(separadorCampos);
+            cadenaDatosParientes.append(rs.getDate("FE_CESE_PARI") != null ? df.format(rs.getDate("FE_CESE_PARI")) : CAMPO_VACIO).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("CO_MOBA_PARI"))).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("DE_OCUP_PARI"))).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("CO_TIPO_INST"))).append(separadorCampos);
+            cadenaDatosParientes.append(validarCampoVacio(rs.getString("TI_SITU"))).append(saltoLinea);
+
+            Total_registros++;
+        }            
+        
+        if (Total_registros==0)
+        {            
+            rpta="No hay registros en el periodo de fecha solicitado. No se generó archivo interfase.";            
+            return rpta;
+        }        
+        else if(Total_registros > 0)
+        {
+            //generar nombre de archivo TXT
+            //Creamos el archivo de datos derechohabientes
+            String idPersona = "Interfase_Ficha_Parientes" + this.Nombre_fecha() + ".txt";
+            creaArchivoTextoFicha(idPersona, cadenaDatosParientes.toString());      
+            
+            // registramos el zip en la base de datos
+            rpta=this.Registrar_reporte_basedatos();
+
+            if (rpta.compareTo("OK")==0)
+            {
+                //-- Eliminar archivo zip
+                rpta= this.DeleteFile(this.getReporte_ruta_completa());                
+                return rpta;
+            }
+        }
+     }
+     catch(Exception e)
+     {
+         rpta=e.getMessage();     
+     }    
+    }
+    return rpta;
+}
+
+public String Interfase_Ficha_Licencias(){
+    
+    //this.setProceso_codigo(1);
+    
+    String rpta="OK", id="";
+    String ssql="";
+    Statement stmt;
+    ResultSet rs, rsp;
+       
+    rpta=this.ConectarmeBLOB();
+    if(rpta.compareTo("OK")==0){
+     try{
+        //-- CONSULTAR POR RANGO DE FECHA EXTRAER
+         
+        ssql="EXEC spNOM_FECHA_PERIODO_PROCESO " + this.getAnio_codigo() + ", " + this.getMes_codigo() + ", " + String.valueOf(this.getProceso_codigo());
+        System.out.println(ssql);
+        stmt=this.getMyconeccion().createStatement();
+        rsp=stmt.executeQuery(ssql);
+        
+        if (!rsp.next()){
+            rpta="Error, Periodo de proceso incorrecto o no existe programación de Ficha de Licencias";
+            return rpta;
+        }
+        
+        //-- CONSULTAR POR DATOS DEL PERIODO
+        this.setFecha_del(rsp.getString("FECHA_ANTERIOR"));
+        this.setFecha_al(rsp.getString("FECHA_ACTUAL"));
+        
+        ssql="EXEC spNOM_GENERA_INTERFASE_LICENCIAS_NOMINA " + String.valueOf(this.getEmpresa_codigo()) + ", '" + this.getFecha_del() + "', '" + this.getFecha_al() + "'";
+        //ssql = "exec spNOM_GENERA_INTERFASE_LICENCIAS_NOMINA 1, '2012-02-28 23:00:00.0', '2012-03-28 23:00:00.0'";
+        
+        System.out.println(ssql);
+        stmt=this.getMyconeccion().createStatement();
+        rs=stmt.executeQuery(ssql);
+        
+        int Total_registros=0;
+        DateFormat df = null;
+        StringBuffer cadenaDatosLicencias = null;
+        
+        String saltoLinea = System.getProperty("line.separator");
+        String separadorCampos = "|";
+        
+        while(rs.next())
+        {
+            if(cadenaDatosLicencias == null) { cadenaDatosLicencias = new StringBuffer(); }
+            if(df == null) { df = new SimpleDateFormat("dd/MM/yyyy"); }
+            
+            cadenaDatosLicencias.append(rs.getString("empleado_dni")).append(separadorCampos);
+            cadenaDatosLicencias.append(rs.getString("EMPRESA")).append(separadorCampos);
+            cadenaDatosLicencias.append(rs.getString("Licencia")).append(separadorCampos);
+            cadenaDatosLicencias.append(rs.getString("inicio")).append(separadorCampos);
+            cadenaDatosLicencias.append(rs.getString("fin")).append(separadorCampos);
+            cadenaDatosLicencias.append(rs.getInt("NUM_ANIO")).append(separadorCampos);
+            cadenaDatosLicencias.append(rs.getInt("NUM_MES")).append(separadorCampos);
+            cadenaDatosLicencias.append(rs.getInt("NUM_CORR_PERI")).append(separadorCampos);
+            cadenaDatosLicencias.append(validarCampoVacio(rs.getString("NO_DOCT"))).append(separadorCampos);
+            cadenaDatosLicencias.append(validarCampoVacio(rs.getString("DE_OBSE"))).append(separadorCampos);
+            cadenaDatosLicencias.append(validarCampoVacio(rs.getString("DOC_OFICIAL"))).append(separadorCampos);
+            cadenaDatosLicencias.append(validarCampoVacio(rs.getString("CO_PART_LESI"))).append(separadorCampos);
+            cadenaDatosLicencias.append(validarCampoVacio(rs.getString("CO_NLES"))).append(saltoLinea);
+
+            Total_registros++;
+        }            
+        
+        if (Total_registros==0)
+        {            
+            rpta="No hay registros en el periodo de fecha solicitado. No se generó archivo interfase.";            
+            return rpta;
+        }
+        
+        else if(Total_registros > 0)
+        {
+            //generar nombre de archivo TXT
+            //Creamos el archivo de datos Licencias
+            String idPersona = "Interfase_Ficha_Licencias" + this.Nombre_fecha() + ".txt";
+            creaArchivoTextoFicha(idPersona, cadenaDatosLicencias.toString());      
+            
+            // registramos el zip en la base de datos
+            rpta=this.Registrar_reporte_basedatos();
+
+            if (rpta.compareTo("OK")==0)
+            {
+                //-- Eliminar archivo zip
+                rpta= this.DeleteFile(this.getReporte_ruta_completa());                
+                return rpta;
+            }
+        }
+     }
+     catch(Exception e)
+     {
+         rpta=e.getMessage();     
+     }    
+    }
+    return rpta;
+}
+
+public String Interfase_Ficha_Vacaciones(){
+    
+    //this.setProceso_codigo(6);
+    
+    String rpta="OK", id="";
+    String ssql="";
+    Statement stmt;
+    ResultSet rs, rsp;
+
+    rpta=this.ConectarmeBLOB();
+    if(rpta.compareTo("OK")==0){
+     try{
+        //-- CONSULTAR POR RANGO DE FECHA EXTRAER
+        ssql="EXEC spNOM_FECHA_PERIODO_PROCESO " + this.getAnio_codigo() + ", " + this.getMes_codigo() + ", " + String.valueOf(this.getProceso_codigo());
+        System.out.println(ssql);
+        stmt=this.getMyconeccion().createStatement();
+        rsp=stmt.executeQuery(ssql);
+        
+        if (!rsp.next()){
+            rpta="Error, Periodo de proceso incorrecto o no existe programación de Ficha de Vacaciones";
+            return rpta;
+        }
+        
+        //-- CONSULTAR POR DATOS DEL PERIODO
+        this.setFecha_del(rsp.getString("FECHA_ANTERIOR"));
+        this.setFecha_al(rsp.getString("FECHA_ACTUAL"));
+        
+        ssql="EXEC spNOM_GENERA_INTERFASE_VACACIONES_NOMINA " + String.valueOf(this.getEmpresa_codigo()) + ", " + this.getAnio_codigo() + ", " + this.getMes_codigo();
+        System.out.println(ssql);
+        stmt=this.getMyconeccion().createStatement();
+        rs=stmt.executeQuery(ssql);
+        
+        int Total_registros=0;
+        DateFormat df = null;
+        StringBuffer cadenaDatosVacaciones = null;
+        
+        String saltoLinea = System.getProperty("line.separator");
+        String separadorCampos = "|";
+        
+        while(rs.next())
+        {
+            if(cadenaDatosVacaciones == null) { cadenaDatosVacaciones = new StringBuffer(); }
+            if(df == null) { df = new SimpleDateFormat("dd/MM/yyyy"); }
+            
+            cadenaDatosVacaciones.append(rs.getString("CO_EMPR")).append(separadorCampos);
+            cadenaDatosVacaciones.append(rs.getString("CO_TRAB")).append(separadorCampos);
+            cadenaDatosVacaciones.append(rs.getString("TI_VACA")).append(separadorCampos);
+            cadenaDatosVacaciones.append(rs.getString("PE_VACA")).append(separadorCampos);
+           // cadenaDatosVacaciones.append(df.format(rs.getDate("FE_INIC_VACA"))).append(separadorCampos);
+            cadenaDatosVacaciones.append(rs.getString("FE_INIC_VACA")).append(separadorCampos);
+            cadenaDatosVacaciones.append(rs.getInt("NU_DIAS")).append(separadorCampos);
+            cadenaDatosVacaciones.append(rs.getInt("NU_ANNO")).append(separadorCampos);
+            cadenaDatosVacaciones.append(rs.getInt("NU_PERI")).append(separadorCampos);
+            cadenaDatosVacaciones.append(rs.getInt("NU_CORR_PERI")).append(separadorCampos);
+            cadenaDatosVacaciones.append(rs.getString("CO_TRAB_APRO")).append(separadorCampos);
+            cadenaDatosVacaciones.append(df.format(rs.getDate("FE_APRO_VACA"))).append(saltoLinea);
+
+            Total_registros++;
+        }            
+        
+        if (Total_registros==0)
+        {            
+            rpta="No hay registros en el periodo de fecha solicitado. No se generó archivo interfase.";            
+            return rpta;
+        }
+        
+        else if(Total_registros > 0)
+        {
+            //generar nombre de archivo TXT
+            //Creamos el archivo de datos vacacionales
+            String idPersona = "Interfase_Ficha_Vacaciones" + this.Nombre_fecha() + ".txt";
+            creaArchivoTextoFicha(idPersona, cadenaDatosVacaciones.toString());      
+            
+            // registramos el zip en la base de datos
+            rpta=this.Registrar_reporte_basedatos();
+
+            if (rpta.compareTo("OK")==0)
+            {
+                //-- Eliminar archivo zip
+                rpta= this.DeleteFile(this.getReporte_ruta_completa());                
+                return rpta;
+            }
+        }
+     }
+     catch(Exception e)
+     {
+         e.printStackTrace();
+         System.out.println(e.getLocalizedMessage());
+         rpta=e.getMessage();     
+     }    
+    }
+    return rpta;
+}
+
+private void creaArchivoTextoFicha(String nombreArchivo, String texto)
+{
+    this.setReporte_nombre(nombreArchivo);
+    this.setReporte_ruta_completa(this.getReporte_dir_destino() + this.getReporte_nombre());
+
+    this.setPathFile(this.getReporte_ruta_completa());
+    String rpta=this.OpenFile();
+    if (rpta.compareTo("OK")==0)
+    {
+        rpta=this.EscribeFile(texto);
+    }
+}
+
+private String validarCampoVacio(String valorCampo)
+{
+    if(valorCampo == null || valorCampo.trim() == CAMPO_VACIO || valorCampo.trim().toLowerCase() == "null")
+    {
+        return CAMPO_VACIO;
+    }
+    return valorCampo;
+}
+
+public String Interfase_derechohabientes(){
+    String rpta="OK", id="";
+    String ssql="";
+    Statement stmt;
+    ResultSet rs, rsp;
+
+    rpta=this.ConectarmeBLOB();
+    if(rpta.compareTo("OK")==0){
+     try{
+        //generar nombre de archivo xls
+        id = "Interfase_Derechohabientes_" + this.Nombre_fecha() + ".txt";
+        this.setReporte_nombre(id);
+        this.setReporte_ruta_completa(this.getReporte_dir_destino() + this.getReporte_nombre());
+                
+        
+        //-- CONSULTAR POR RANGO DE FECHA EXTRAER
+        ssql="EXEC spNOM_FECHA_PERIODO_PROCESO " + this.getAnio_codigo() + ", " + this.getMes_codigo() + ", " + String.valueOf(this.getProceso_codigo());
+        
+        stmt=this.getMyconeccion().createStatement();
+        rsp=stmt.executeQuery(ssql);
+        
+        if (!rsp.next()){
+            rpta="Error, Periodo de proceso incorrecto o no existe programación de Derechohabientes";
+            return rpta;
+        }
+        
+        
+        this.setFecha_del(rsp.getString("FECHA_ANTERIOR"));
+        this.setFecha_al(rsp.getString("FECHA_ACTUAL"));
+        
+        ssql="EXEC spNOM_GENERA_INTERFASE_DERECHOHABIENTES " + String.valueOf(this.getEmpresa_codigo()) + ", '" + rsp.getTimestamp("FECHA_ANTERIOR") + "', '" + rsp.getTimestamp("FECHA_ACTUAL") + "'";
+        //System.out.println(ssql);
+        stmt=this.getMyconeccion().createStatement();
+        rs=stmt.executeQuery(ssql);
+        String nombre_area="";
+        int Total_titulares=0;
+        int Total_conyuges=0;
+        int Total_registros=0;
+        String sTexto="", sCadena="";
+        
+        this.setPathFile(this.getReporte_ruta_completa());
+        rpta=this.OpenFile();
+        if (rpta.compareTo("OK")==0){
+            while(rs.next()){
+
+                Total_registros+=1;
+                sTexto=rs.getString("Carnet");
+                sCadena= this.Completar(sTexto, 9, "0", "izq");
+                sTexto=rs.getString("Fecha_Inicio");
+                sCadena+="|" + this.Completar(sTexto, 10, " ", "der");
+                sTexto=rs.getString("Tipo_Dep");
+                sCadena+="|" + this.Completar(sTexto, 3, " ", "der");
+                sTexto=rs.getString("Familiar_Nombre");
+                if (sTexto.length()>=50) sTexto=sTexto.substring(0,50);
+                sCadena+="|" + this.Completar(sTexto, 50, " ", "der");
+                sTexto=rs.getString("Familiar_Apellido_Paterno");
+                if (sTexto.length()>=50) sTexto=sTexto.substring(0,50);
+                sCadena+="|" + this.Completar(sTexto, 50, " ", "der");
+                sTexto=rs.getString("Familiar_Apellido_Materno");
+                if (sTexto.length()>=50) sTexto=sTexto.substring(0,50);
+                sCadena+="|" + this.Completar(sTexto, 50, " ", "der");
+                sTexto=rs.getString("Familiar_Sexo");
+                sCadena+="|" + this.Completar(sTexto, 1, " ", "der");
+                sTexto=rs.getString("Fecha_Nacimiento");
+                sCadena+="|" + this.Completar(sTexto, 10, " ", "der");
+                sTexto=rs.getString("id_pais");
+                sCadena+="|" + this.Completar(sTexto, 4, " ", "der");
+                sTexto=rs.getString("TDI_Abreviado_Meta4");
+                sCadena+="|" + this.Completar(sTexto, 4, " ", "der");
+                sTexto=rs.getString("Documento_Numero");
+                sCadena+="|" + this.Completar(sTexto, 62, " ", "der");
+                sTexto=rs.getString("NUM_ESSALUD");
+                sCadena+="|" + this.Completar(sTexto, 62, " ", "der");
+                sTexto=rs.getString("ECIVIL");
+                sCadena+="|" + this.Completar(sTexto, 2, " ", "der");
+                sTexto=rs.getString("ID_SEGMED");
+                sCadena+="|" + this.Completar(sTexto, 3, " ", "der");
+                sTexto=rs.getString("TIPO_PLAN");
+                sCadena+="|" + this.Completar(sTexto, 3, " ", "der");
+                sCadena+="|\n";
+                rpta=this.EscribeFile(sCadena);
+            }            
+
+            if (Total_registros==0){
+                //-- Eliminar archivo excel
+                rpta= this.DeleteFile(this.getReporte_ruta_completa());
+                rpta="No hay registros en el periodo de fecha solicitado. No se generó archivo interfase.";
+                return rpta;
+            }
+            rpta=this.Registrar_reporte_basedatos();
+            if (rpta.compareTo("OK")!=0){
+                return rpta;
+            }
+        }
+        //-- Eliminar archivo 
+        rpta= this.DeleteFile(this.getReporte_ruta_completa());
+        
+     }catch(Exception e){
+         rpta=e.getMessage();     
+     }    
+    }
+    return rpta;
+}
+
+public String Obtener_empresa_rut(){
+    String rpta="OK";
+    String ssql="";
+    Statement stmt;
+    ResultSet rs;
+    
+    
+    rpta=this.ConectarmeBLOB();
+    if(rpta.compareTo("OK")==0){
+         try{
+            ssql="SELECT Empresa_Ruc FROM EMPRESA WHERE Empresa_Codigo= " + this.getEmpresa_codigo() + " ";
+            stmt=this.getMyconeccion().createStatement();
+            rs=stmt.executeQuery(ssql);
+            if(rs.next()){
+                this.setEmpresa_ruc(rs.getString("Empresa_Ruc"));
+                return rpta;
+             }else{
+                    this.setEmpresa_ruc("");
+                    return "Error, Codigo de Ruc no existe";
+             }
+         }catch(Exception e){
+             rpta=e.getMessage();     
+         } 
+    
+    }
+    return rpta;
+}
+
+public String Interfase_derechohabientes_altas(){
+    String rpta="OK", id="", rptaActualiza = "OK";
+    String ssql="";
+    Statement stmt;
+    ResultSet rs, rsp;
+    java.util.Calendar c= java.util.Calendar.getInstance();
+    java.text.DateFormat df=new java.text.SimpleDateFormat("ddMMyyyy");
+    int familiar_codigo=0;	
+    rpta=this.ConectarmeBLOB();
+    if(rpta.compareTo("OK")==0){
+     try{
+        //generar nombre de archivo xls
+         String strObtenerRuc= this.Obtener_empresa_rut();
+         String strRuc=this.getEmpresa_ruc();
+         if (strObtenerRuc.compareTo("OK")!=0) strRuc="XXXXXXXXXXX";
+        id = "RD_" + strRuc + "_" + df.format(c.getTime()) + "_ALTA.txt";
+        this.setReporte_nombre(id);
+        this.setReporte_ruta_completa(this.getReporte_dir_destino() + this.getReporte_nombre());
+           
+        
+        
+        //-- CONSULTAR POR RANGO DE FECHA EXTRAER
+        
+        ssql="EXEC spNOM_FECHA_PERIODO_PROCESO " + this.getAnio_codigo() + ", " + this.getMes_codigo() + ", " + String.valueOf(this.getProceso_codigo());
+        
+        stmt=this.getMyconeccion().createStatement();
+        rsp=stmt.executeQuery(ssql);
+        
+        if (!rsp.next()){
+            rpta="Error, Periodo de proceso incorrecto o no existe programación de Derechohabientes";
+            return rpta;
+        }
+        
+        
+        this.setFecha_del(rsp.getString("FECHA_ANTERIOR"));
+        this.setFecha_al(rsp.getString("FECHA_ACTUAL"));
+        //this.setFecha_al("31/01/2007");
+        
+       
+       // ssql="EXEC spNOM_GENERA_INTERFASE_DERECHOHABIENTES " + String.valueOf(this.getEmpresa_codigo()) + ", '" + rsp.getTimestamp("FECHA_ANTERIOR") + "', '" + rsp.getTimestamp("FECHA_ACTUAL") + "'";
+       
+        ssql="EXEC spNOM_GENERA_INTERFASE_DERECHOHABIENTES_ALTA " + "'" + rsp.getTimestamp("FECHA_ANTERIOR") + "', '" + rsp.getTimestamp("FECHA_ACTUAL") + "'";
+        //System.out.println(ssql);
+        
+        stmt=this.getMyconeccion().createStatement();        
+        
+        rs=stmt.executeQuery(ssql);
+        String nombre_area="";
+        int Total_registros=0;
+        String sTexto="", sCadena="";
+        
+        this.setPathFile(this.getReporte_ruta_completa());
+        rpta=this.OpenFile();
+        
+        this.getMyconeccion().setAutoCommit(false);
+        if (rpta.compareTo("OK")==0){
+              sCadena="";  
+              while(rs.next()){
+                if (Total_registros>0) sCadena="\n";
+                Total_registros+=1;
+                sTexto=rs.getString("tipo_documento_empleado");
+                sCadena= this.Completar(sTexto, 2, " ", "izq");
+                sTexto=rs.getString("numero_documento_empleado");
+                sCadena+= "|" + this.Completar(sTexto, 15, " ", "der");
+                sTexto=rs.getString("tipo_documento_habiente");
+                sCadena+= "|" + this.Completar(sTexto, 2, " ", "izq");
+                sTexto=rs.getString("numero_documento_habiente");
+                sCadena+= "|" + this.Completar(sTexto, 15, " ", "der");
+                sTexto=rs.getString("pais_emisor");
+                sCadena+= "|" + this.Completar(sTexto, 3, " ", "izq");
+                sTexto=rs.getString("fecha_nacimiento_habiente");
+                sCadena+= "|" + this.Completar(sTexto, 10, " ", "der");
+                sTexto=rs.getString("apellido_paterno_habiente");
+                sCadena+= "|" + this.Completar(sTexto, 40, " ", "der");
+                sTexto=rs.getString("apellido_materno_habiente");
+                sCadena+= "|" + this.Completar(sTexto, 40, " ", "der");
+                sTexto=rs.getString("nombres_habientes");
+                sCadena+= "|" + this.Completar(sTexto, 40, " ", "der");
+                sTexto=rs.getString("sexo_habiente");
+                sCadena+= "|" + this.Completar(sTexto, 1, " ", "der");
+                sTexto=rs.getString("vinculo_habiente");
+                sCadena+= "|" + this.Completar(sTexto, 2, " ", "izq");
+                sTexto=rs.getString("documento_vinculo_habiente");
+                sCadena+= "|" + this.Completar(sTexto, 2, " ", "izq");
+                sTexto=rs.getString("documento_numero_habiente");
+                sCadena+= "|" + this.Completar(sTexto, 20, " ", "der");
+                sTexto=rs.getString("mes_concepcion_habiente");
+                sCadena+= "|" + this.Completar(sTexto, 6, " ", "izq");
+                sTexto=rs.getString("tipo_via_habiente");
+                sCadena+= "|" + this.Completar(sTexto, 2, "", "izq");
+                sTexto=rs.getString("nombre_via_habiente");
+                if(sTexto.length()>=20) sTexto=sTexto.substring(0,20);
+                sCadena+= "|" + this.Completar(sTexto, 20, " ", "der");
+                sTexto=rs.getString("numero_via_habiente");
+                if(sTexto.length()>=4) sTexto=sTexto.substring(0,4);
+                sCadena+= "|" + this.Completar(sTexto, 4, " ", "der");
+                sTexto=rs.getString("departamento");
+                sCadena+="|" + this.Completar(sTexto, 4, " ", "der");
+                sTexto=rs.getString("interior");
+                if(sTexto.length()>=15) sTexto=sTexto.substring(0,15);
+                sCadena+="|" + this.Completar(sTexto, 4, " ", "der");
+                sTexto=rs.getString("manzana");
+                sCadena+="|" + this.Completar(sTexto, 4, " ", "der");
+                sTexto=rs.getString("lote");
+                sCadena+="|" + this.Completar(sTexto, 4, " ", "der");
+                sTexto=rs.getString("kilometro");
+                sCadena+="|" + this.Completar(sTexto, 4, " ", "der");
+                sTexto=rs.getString("bloque");
+                sCadena+="|" + this.Completar(sTexto, 4, " ", "der");
+                sTexto=rs.getString("etapa");
+                sCadena+="|" + this.Completar(sTexto, 4, " ", "der");
+                sTexto=rs.getString("codigo_zona");
+                sCadena+="|" + this.Completar(sTexto, 2, " ", "der");
+                sTexto=rs.getString("nombre_zona");
+                if(sTexto.length()>=20) sTexto=sTexto.substring(0,20);
+                sCadena+="|" + this.Completar(sTexto, 20, " ", "der");
+                sTexto=rs.getString("referencia");
+                if(sTexto.length()>=40) sTexto=sTexto.substring(0,40);
+                sCadena+="|" + this.Completar(sTexto, 40, " ", "der");
+                sTexto=rs.getString("ubigeo");
+                sCadena+="|" + this.Completar(sTexto, 6, " ", "der");
+                
+                
+                
+                sTexto="";
+                sCadena+= "|" + this.Completar(sTexto, 2, " ", "izq");
+                sTexto="";
+                if(sTexto.length()>=20) sTexto=sTexto.substring(0,20);
+                sCadena+= "|" + this.Completar(sTexto, 20, " ", "der");
+                sTexto="";
+                if(sTexto.length()>=4) sTexto=sTexto.substring(0,4);
+                sCadena+= "|" + this.Completar(sTexto, 4, " ", "der");
+                sTexto="";
+                sCadena+="|" + this.Completar(sTexto, 4, " ", "der");
+                sTexto="";
+                if(sTexto.length()>=15) sTexto=sTexto.substring(0,15);
+                sCadena+="|" + this.Completar(sTexto, 4, " ", "der");
+                sTexto="";
+                sCadena+="|" + this.Completar(sTexto, 4, " ", "der");
+                sTexto="";
+                sCadena+="|" + this.Completar(sTexto, 4, " ", "der");
+                sTexto="";
+                sCadena+="|" + this.Completar(sTexto, 4, " ", "der");
+                sTexto="";
+                sCadena+="|" + this.Completar(sTexto, 4, " ", "der");
+                sTexto="";
+                sCadena+="|" + this.Completar(sTexto, 4, " ", "der");
+                sTexto="";
+                sCadena+="|" + this.Completar(sTexto, 2, " ", "der");
+                sTexto="";
+                if(sTexto.length()>=20) sTexto=sTexto.substring(0,20);
+                sCadena+="|" + this.Completar(sTexto, 20, " ", "der");
+                sTexto="";
+                if(sTexto.length()>=40) sTexto=sTexto.substring(0,40);
+                sCadena+="|" + this.Completar(sTexto, 40, " ", "der");
+                sTexto="";
+                sCadena+="|" + this.Completar(sTexto, 6, " ", "der");
+                
+                
+                
+                sTexto=rs.getString("indicador_essalud");
+                sCadena+="|" + this.Completar(sTexto, 1, " ", "der");
+                sTexto=rs.getString("Empleado_Telefono_Codigo");
+                sCadena+="|" + this.Completar(sTexto, 2, " ", "der");
+                sTexto=rs.getString("Empleado_Tlf");
+                if(sTexto.length()>=10) sTexto=sTexto.substring(0,10);
+                sCadena+= "|" + this.Completar(sTexto, 10, " ", "der");
+                sTexto=rs.getString("Empleado_Email");
+                if(sTexto.length()>=50) sTexto=sTexto.substring(0,50);
+                sCadena+= "|" + this.Completar(sTexto, 50, " ", "der");
+                
+                
+                rpta=this.EscribeFile(sCadena);
+		familiar_codigo = rs.getInt("familiar_codigo");	
+                rptaActualiza = this.Actualiza_fecha_alta_habiente(familiar_codigo);
+            }            
+
+            if (Total_registros==0){
+                //-- Eliminar archivo excel
+                rpta= this.DeleteFile(this.getReporte_ruta_completa());
+                rpta="No hay registros en el periodo de fecha solicitado. No se generó archivo interfase.";
+                return rpta;
+            }
+            rpta=this.Registrar_reporte_basedatos();
+            if (rpta.compareTo("OK")!=0){
+                return rpta;
+            }
+        }
+        //-- Eliminar archivo 
+        
+        rpta= this.DeleteFile(this.getReporte_ruta_completa());
+        this.getMyconeccion().commit();
+        this.getMyconeccion().setAutoCommit(true);
+     }catch(Exception e){
+         try{
+             this.getMyconeccion().rollback();
+             this.getMyconeccion().setAutoCommit(true);
+         } 
+         catch(Exception ex){
+             
+         }
+         rpta=e.getMessage();     
+     }    
+    }
+    return rpta;
+}
+
+public String Actualiza_fecha_alta_habiente(int Familiar_codigo){
+    String rpta="OK";
+    String ssql="";
+    Statement stmt;
+    ResultSet rs, rsp;
+    rpta=this.ConectarmeBLOB();
+    if(rpta.compareTo("OK")==0){
+     try{
+        ssql="UPDATE familiares SET alta_t_registro = getdate() WHERE Familiar_codigo = " + Familiar_codigo + "";
+        stmt=this.getMyconeccion().createStatement();
+        int b=stmt.executeUpdate(ssql);
+        if(b==0)
+            rpta = "No Actualizo registro";
+     }catch(Exception e){
+         rpta=e.getMessage();     
+     }
+    } 
+    return rpta;
+}
+
+public String Actualiza_fecha_baja_habiente(int Familiar_codigo){
+    String rpta="OK";
+    String ssql="";
+    Statement stmt;
+    ResultSet rs, rsp;
+    rpta=this.ConectarmeBLOB();
+    if(rpta.compareTo("OK")==0){
+     try{
+        ssql="UPDATE familiares SET baja_t_registro = getdate() WHERE Familiar_codigo = " + Familiar_codigo + "";
+        stmt=this.getMyconeccion().createStatement();
+        int b=stmt.executeUpdate(ssql);
+        if(b==0)
+            rpta = "No Actualizo registro";
+     }catch(Exception e){
+         rpta=e.getMessage();     
+     }
+    } 
+    return rpta;
+}
+
+
+public String Interfase_derechohabientes_bajas(){
+    String rpta="OK", id="", rptaActualiza = "OK";
+    String ssql="";
+    Statement stmt;
+    ResultSet rs, rsp, rsTotal;
+    java.util.Calendar c= java.util.Calendar.getInstance();
+    java.text.DateFormat df=new java.text.SimpleDateFormat("ddMMyyyy");
+    int familiar_codigo=0, totalGenera=0;
+    rpta=this.ConectarmeBLOB();
+    if(rpta.compareTo("OK")==0){
+     try{
+        //generar nombre de archivo xls
+         String strObtenerRuc= this.Obtener_empresa_rut();
+         String strRuc=this.getEmpresa_ruc();
+         if (strObtenerRuc.compareTo("OK")!=0) strRuc="XXXXXXXXXXX";
+        id = "RD_" + strRuc + "_" + df.format(c.getTime()) + "_BAJA.txt";
+        this.setReporte_nombre(id);
+        this.setReporte_ruta_completa(this.getReporte_dir_destino() + this.getReporte_nombre());
+           
+        ssql="EXEC spNOM_GENERA_INTERFASE_DERECHOHABIENTES_BAJA";
+        //System.out.println(ssql);
+        stmt=this.getMyconeccion().createStatement();
+        rs=stmt.executeQuery(ssql);
+            
+
+        String nombre_area="";
+        int Total_registros=0;
+        String sTexto="", sCadena="";
+        
+        this.setPathFile(this.getReporte_ruta_completa());
+        rpta=this.OpenFile();
+        
+        if (rpta.compareTo("OK")==0){
+            sCadena="";
+            while(rs.next()){
+                if (Total_registros>0) sCadena="\n";
+                Total_registros+=1;
+                sTexto=rs.getString("tipo_documento_empleado");
+                sCadena+= this.Completar(sTexto, 2, " ", "izq");
+                sTexto=rs.getString("numero_documento_empleado");
+                sCadena+= "|" + this.Completar(sTexto, 15, " ", "der");
+                sTexto=rs.getString("tipo_documento_habiente");
+                sCadena+= "|" + this.Completar(sTexto, 2, " ", "izq");
+                sTexto=rs.getString("numero_documento_habiente");
+                sCadena+= "|" + this.Completar(sTexto, 15, " ", "der");
+                sTexto=rs.getString("pais_emisor");
+                sCadena+= "|" + this.Completar(sTexto, 3, " ", "izq");
+                sTexto=rs.getString("fecha_nacimiento_habiente");
+                sCadena+= "|" + this.Completar(sTexto, 10, " ", "der");
+                sTexto=rs.getString("apellido_paterno_habiente");
+                sCadena+= "|" + this.Completar(sTexto, 40, " ", "der");
+                sTexto=rs.getString("apellido_materno_habiente");
+                sCadena+= "|" + this.Completar(sTexto, 40, " ", "der");
+                sTexto=rs.getString("nombres_habientes");
+                sCadena+= "|" + this.Completar(sTexto, 40, " ", "der");
+                sTexto=rs.getString("vinculo_habiente");
+                sCadena+= "|" + this.Completar(sTexto, 2, " ", "izq");
+                sTexto=rs.getString("fecha_baja");
+                sCadena+= "|" + this.Completar(sTexto, 10, " ", "der");
+                sTexto=rs.getString("motivo_baja");
+                sCadena+= "|" + this.Completar(sTexto, 2, " ", "der");                
+                sCadena+="|";
+                rpta=this.EscribeFile(sCadena);
+                familiar_codigo = rs.getInt("familiar_codigo");	
+                rptaActualiza = this.Actualiza_fecha_baja_habiente(familiar_codigo);
+            }            
+            if (Total_registros==0){
+                //-- Eliminar archivo excel
+                rpta= this.DeleteFile(this.getReporte_ruta_completa());
+                rpta="No hay registros en el periodo de fecha solicitado. No se generó archivo interfase.";
+                return rpta;
+            }
+            rpta=this.Registrar_reporte_basedatos();
+            if (rpta.compareTo("OK")!=0){
+                return rpta;
+            }
+        }
+        //-- Eliminar archivo 
+        
+        rpta= this.DeleteFile(this.getReporte_ruta_completa());
+        
+     }catch(Exception e){
+         rpta=e.getMessage();     
+     }    
+    }
+    return rpta;
+}
+
+
+public String Interfase_actualizaciones(){
+    String rpta="OK", id="";
+    String ssql="";
+    Statement stmt;
+    ResultSet rs, rsp;
+
+    rpta=this.ConectarmeBLOB();
+    if(rpta.compareTo("OK")==0){
+     try{
+        //generar nombre de archivo xls
+        id = "Interfase_Actualizaciones_" + this.Nombre_fecha() + ".txt";
+        this.setReporte_nombre(id);
+        this.setReporte_ruta_completa(this.getReporte_dir_destino() + this.getReporte_nombre());
+        
+        
+        //-- CONSULTAR POR RANGO DE FECHA EXTRAER
+        ssql="EXEC spNOM_FECHA_PERIODO_PROCESO " + this.getAnio_codigo() + ", " + this.getMes_codigo() + ", " + String.valueOf(this.getProceso_codigo());
+        
+        stmt=this.getMyconeccion().createStatement();
+        rsp=stmt.executeQuery(ssql);
+        
+        if (!rsp.next()){
+            rpta="Error, Periodo de proceso incorrecto o no existe programación de Derechohabientes";
+            return rpta;
+        }
+        
+        String nombre_area="";
+        int Total_titulares=0;
+        int Total_conyuges=0;
+        int Total_registros=0;
+        String sTexto="", sCadena="", sCarnet="", sSufijo="", sPrefijo="";
+        
+        this.setPathFile(this.getReporte_ruta_completa());
+        rpta=this.OpenFile();
+        if (rpta.compareTo("OK")==0){
+            this.setFecha_del(rsp.getString("FECHA_ANTERIOR"));
+            this.setFecha_al(rsp.getString("FECHA_ACTUAL"));
+
+            //**inicia proceso en archivo texto**
+            
+            //-- Registros de Banco Pago salario
+            ssql="EXEC spNOM_GENERA_INTERFASE_BANCOPAGO " + String.valueOf(this.getEmpresa_codigo()) + ", '" + rsp.getTimestamp("FECHA_ANTERIOR") + "', '" + rsp.getTimestamp("FECHA_ACTUAL") + "'";
+            //System.out.println(ssql);
+            stmt=this.getMyconeccion().createStatement();
+            rs=stmt.executeQuery(ssql);
+            
+            while(rs.next()){
+
+                Total_registros+=1;
+                sTexto=rs.getString("Empleado_Carnet");
+                sCadena= this.Completar(sTexto, 9, "0", "izq");
+                sCadena+="|" + this.Completar("BPAGO", 6, " ", "der");
+                sTexto=rs.getString("Cuenta_Banco_Numero");
+                sCadena+="|" + this.Completar(sTexto, 20, " ", "der");
+                sTexto=rs.getString("banco_codigo");
+                sCadena+="|" + this.Completar(sTexto, 3, " ", "der");
+                sTexto=rs.getString("Empleado_Dni");
+                sCadena+="|" + this.Completar(sTexto, 8, " ", "der");
+                sTexto=rs.getString("Empleado");
+                if (sTexto.length()>=50) sTexto=sTexto.substring(0,50);
+                sCadena+="|" + this.Completar(sTexto, 50, " ", "der");
+                sCadena+="|\n";
+                rpta=this.EscribeFile(sCadena);
+            }            
+            
+            //-- Registros de afp
+            ssql="EXEC spNOM_GENERA_INTERFASE_ATRIBUTOS " + String.valueOf(this.getEmpresa_codigo()) + ", '" + rsp.getTimestamp("FECHA_ANTERIOR") + "', '" + rsp.getTimestamp("FECHA_ACTUAL") + "', 6 ";
+            //System.out.println(ssql);
+            stmt=this.getMyconeccion().createStatement();
+            rs=stmt.executeQuery(ssql);
+            
+            while(rs.next()){
+                
+                Total_registros+=1;
+                sTexto=rs.getString("Empleado_Carnet");
+                sCadena= this.Completar(sTexto, 9, "0", "izq");
+                sCadena+="|" + this.Completar("AFP", 6, " ", "der");
+                sTexto=rs.getString("Item_Default");
+                sCadena+="|" + this.Completar(sTexto, 3, " ", "der");
+                sTexto=rs.getString("ATRIBUTO_VALOR");                
+                sCadena+="|" + this.Completar(sTexto, 12, " ", "der");
+                sTexto=rs.getString("Empleado_Dni");
+                sCadena+="|" + this.Completar(sTexto, 8, " ", "der");
+                sTexto=rs.getString("Empleado");
+                if (sTexto.length()>=50) sTexto=sTexto.substring(0,50);
+                sCadena+="|" + this.Completar(sTexto, 50, " ", "der");
+                sCadena+="|\n";
+                rpta=this.EscribeFile(sCadena);
+            }       
+                        
+            //-- Registros de EMPLEADOS
+            ssql="EXEC spNOM_GENERA_INTERFASE_EMPLEADO " + String.valueOf(this.getEmpresa_codigo()) + ", '" + rsp.getTimestamp("FECHA_ANTERIOR") + "', '" + rsp.getTimestamp("FECHA_ACTUAL") + "'";
+            //System.out.println(ssql);
+            stmt=this.getMyconeccion().createStatement();
+            rs=stmt.executeQuery(ssql);
+            
+            while(rs.next()){
+                //System.out.println(rs.getString("Empleado_dni"));
+                Total_registros+=1;
+                sCarnet=rs.getString("Empleado_Carnet");                
+                sPrefijo= this.Completar(sCarnet, 9, "0", "izq");
+                
+                sTexto=rs.getString("Empleado_Dni");
+                sSufijo="|" + this.Completar(sTexto, 8, " ", "der");
+                sTexto=rs.getString("Empleado");
+                if (sTexto.length()>=50) sTexto=sTexto.substring(0,50);
+                sSufijo+="|" + this.Completar(sTexto, 50, " ", "der");
+                sSufijo+="|\n";
+                //-- Fecha de Nacimiento
+                sCadena="|" + this.Completar("FNAC", 6, " ", "der");
+                sTexto=rs.getString("Empleado_Fecha_Nacimiento");                
+                sCadena+="|" + this.Completar(sTexto, 10, " ", "der");                
+                rpta=this.EscribeFile(sPrefijo + sCadena + sSufijo);
+                //-- Ap. paterno
+                sCadena="|" + this.Completar("APAT", 6, " ", "der");
+                sTexto=rs.getString("Empleado_Apellido_Paterno");  
+                if (sTexto.length()>=50) sTexto=sTexto.substring(0,50);
+                sCadena+="|" + this.Completar(sTexto, 50, " ", "der");                
+                rpta=this.EscribeFile(sPrefijo + sCadena + sSufijo);
+                //-- Ap. materno
+                sCadena="|" + this.Completar("AMAT", 6, " ", "der");
+                sTexto=rs.getString("Empleado_Apellido_Materno");  
+                if (sTexto.length()>=50) sTexto=sTexto.substring(0,50);
+                sCadena+="|" + this.Completar(sTexto, 50, " ", "der");                
+                rpta=this.EscribeFile(sPrefijo + sCadena + sSufijo);
+                //-- nombre de empleado
+                sCadena="|" + this.Completar("ENOM", 6, " ", "der");
+                sTexto=rs.getString("Empleado_Nombres");  
+                if (sTexto.length()>=50) sTexto=sTexto.substring(0,50);
+                sCadena+="|" + this.Completar(sTexto, 50, " ", "der");                
+                rpta=this.EscribeFile(sPrefijo + sCadena + sSufijo);
+                //-- sexo
+                sCadena="|" + this.Completar("IDSEXO", 6, " ", "der");
+                sTexto=rs.getString("Empleado_Sexo");  
+                sCadena+="|" + this.Completar(sTexto, 1, " ", "der");                
+                rpta=this.EscribeFile(sPrefijo + sCadena + sSufijo);
+                //-- centro de responsabilidad
+                sCadena="|" + this.Completar("CCRE", 6, " ", "der");
+                sTexto=rs.getString("Ccr_Codigo");  
+                sCadena+="|" + this.Completar(sTexto, 8, " ", "der");                
+                rpta=this.EscribeFile(sPrefijo + sCadena + sSufijo);
+                //-- centro de beneficio
+                sCadena="|" + this.Completar("CCBE", 6, " ", "der");
+                sTexto=rs.getString("Ccb_Codigo");  
+                sCadena+="|" + this.Completar(sTexto, 4, " ", "der");                
+                rpta=this.EscribeFile(sPrefijo + sCadena + sSufijo);
+                
+                //**Datos de domicilio
+                sCadena="|" + this.Completar("DOMRES", 6, " ", "der");
+                sCadena+="|" + this.Completar("1", 4, " ", "der");
+                sTexto=rs.getString("Empleado_Nombre_Via");  
+                if (sTexto.length()>=50) sTexto=sTexto.substring(0,50);
+                sCadena+="|" + this.Completar(sTexto, 50, " ", "der");                
+                sTexto=rs.getString("Empleado_Nro");  
+                if (sTexto.length()>=15) sTexto=sTexto.substring(0,15);
+                sCadena+="|" + this.Completar(sTexto, 15, " ", "der"); 
+                sTexto="";  
+                sCadena+="|" + this.Completar(sTexto, 1, " ", "der");
+                sTexto="PER";  
+                sCadena+="|" + this.Completar(sTexto, 4, " ", "der");
+                sTexto=rs.getString("Empleado_Dpto_Residencia");  
+                sCadena+="|" + this.Completar(sTexto, 2, " ", "der");
+                sTexto=rs.getString("Empleado_Prov_Residencia");  
+                sCadena+="|" + this.Completar(sTexto, 2, " ", "der");
+                sTexto=rs.getString("Empleado_Dist_Residencia");  
+                sCadena+="|" + this.Completar(sTexto, 2, " ", "der");
+                
+                rpta=this.EscribeFile(sPrefijo + sCadena + sSufijo);
+                
+                //**Datos de Lugar de Nacimiento
+                sCadena="|" + this.Completar("DOMNAC", 6, " ", "der");
+                sCadena+="|" + this.Completar("2", 4, " ", "der");
+                sTexto="";  
+                if (sTexto.length()>=50) sTexto=sTexto.substring(0,50);
+                sCadena+="|" + this.Completar(sTexto, 50, " ", "der");                
+                sTexto="";  
+                if (sTexto.length()>=15) sTexto=sTexto.substring(0,15);
+                sCadena+="|" + this.Completar(sTexto, 15, " ", "der"); 
+                sTexto="";  
+                sCadena+="|" + this.Completar(sTexto, 1, " ", "der");
+                sTexto="PER";  
+                sCadena+="|" + this.Completar(sTexto, 4, " ", "der");
+                sTexto=rs.getString("Empleado_Dpto_Nacimiento");  
+                sCadena+="|" + this.Completar(sTexto, 2, " ", "der");
+                sTexto=rs.getString("Empleado_Prov_Nacimiento");  
+                sCadena+="|" + this.Completar(sTexto, 2, " ", "der");
+                sTexto=rs.getString("Empleado_Dist_Nacimiento");  
+                sCadena+="|" + this.Completar(sTexto, 2, " ", "der");
+                
+                rpta=this.EscribeFile(sPrefijo + sCadena + sSufijo);
+                
+                //-- Telefono fijo
+                sCadena="|" + this.Completar("TELF", 6, " ", "der");
+                sCadena+="|" + this.Completar("1", 4, " ", "der");                
+                sCadena+="|" + this.Completar("DOM", 3, " ", "der");
+                //if (rs.getString("empleado_dni").compareTo("41629471")==0){
+                //    System.out.print("aca");
+                //}
+                sTexto="" + rs.getString("Empleado_Tlf");  
+                if (sTexto.length()>=40) sTexto=sTexto.substring(0,40);
+                sCadena+="|" + this.Completar(sTexto, 40, " ", "der");                
+                rpta=this.EscribeFile(sPrefijo + sCadena + sSufijo);
+                
+                //-- Telefono Celular
+                sCadena="|" + this.Completar("MOVIL", 6, " ", "der");
+                sCadena+="|" + this.Completar("2", 4, " ", "der");
+                sCadena+="|" + this.Completar("MOV", 3, " ", "der");                
+                sTexto="" + rs.getString("Empleado_Celular");  
+                if (sTexto.length()>=20) sTexto=sTexto.substring(0,20);
+                sCadena+="|" + this.Completar(sTexto, 20, " ", "der");                
+                
+                rpta=this.EscribeFile(sPrefijo + sCadena + sSufijo);
+                
+                //-- DNI
+                sCadena="|" + this.Completar("DNI", 6, " ", "der");
+                sTexto=rs.getString("Empleado_DNI");  
+                sCadena+="|" + this.Completar(sTexto, 8, " ", "der");                
+                rpta=this.EscribeFile(sPrefijo + sCadena + sSufijo);
+                
+            }  
+            
+            if (Total_registros==0){
+                //-- Eliminar archivo texto
+                rpta= this.DeleteFile(this.getReporte_ruta_completa());
+                rpta="No hay registros en el periodo de fecha solicitado. No se generó archivo interfase.";
+                return rpta;
+            }
+            rpta=this.Registrar_reporte_basedatos();
+            if (rpta.compareTo("OK")!=0){
+                return rpta;
+            }
+        }
+        //-- Eliminar archivo 
+        rpta= this.DeleteFile(this.getReporte_ruta_completa());
+        
+     }catch(Exception e){
+         rpta=e.getMessage();     
+     }    
+    }
+    return rpta;
+}
+
+
+public String Interfase_faltas(){
+    String rpta="OK", id="", fecha="";
+    String ssql="";
+    Statement stmt;
+    ResultSet rs, rsp;
+            
+    rpta=this.ConectarmeBLOB();
+    if(rpta.compareTo("OK")==0){
+     try{
+                
+        //-- CONSULTAR POR RANGO DE FECHA EXTRAER
+        ssql="EXEC spNOM_FECHA_PERIODO_PROCESO " + this.getAnio_codigo() + ", " + this.getMes_codigo() + ", " + String.valueOf(this.getProceso_codigo());
+        
+        stmt=this.getMyconeccion().createStatement();
+        rsp=stmt.executeQuery(ssql);
+        
+        if (!rsp.next()){
+            rpta="Error, Periodo de proceso incorrecto o no existe programación de Ceses";
+            return rpta;
+        }
+                    
+        fecha=this.FechaNormal(String.valueOf(rsp.getDate("FECHA_ANTERIOR"))); 
+        if (fecha.compareTo("")==0) return "Error en Formato de fecha Anterior : " + String.valueOf(rsp.getDate("FECHA_ANTERIOR"));
+        //System.out.println(fecha);        
+        this.setFecha_del(fecha);
+        
+        fecha=this.FechaNormal(String.valueOf(rsp.getDate("FECHA_ACTUAL"))); 
+        if (fecha.compareTo("")==0) return "Error en Formato de fecha Actual : " + String.valueOf(rsp.getDate("FECHA_ACTUAL"));
+        //System.out.println(fecha);        
+        this.setFecha_al(fecha);
+        
+        Reporte_Detalle r=new Reporte_Detalle();
+        r.setMydriver(this.getMydriver());
+        r.setMyurl(this.getMyurl());
+        r.setMyuser(this.getMyuser());
+        r.setMypwd(this.getMypwd()); 
+        
+        r.setFecha_inicio(this.getFecha_del());
+        r.setFecha_fin(this.getFecha_al());
+        r.setRutaXls(this.getReporte_dir_destino());
+        
+        rpta=r.Listado_mensual_faltas();
+        this.setReporte_ruta_completa(r.getReport_name());
+        this.setReporte_nombre(r.getArchivoXls() + ".zip");
+        
+        this.setFecha_del(rsp.getString("FECHA_ANTERIOR"));
+        this.setFecha_al(rsp.getString("FECHA_ACTUAL"));
+        
+        rpta=this.Registrar_reporte_basedatos();
+        if (rpta.compareTo("OK")!=0){
+            return rpta;
+        }
+        //-- Eliminar archivo excel
+        rpta= this.DeleteFile(this.getReporte_ruta_completa());
+        
+     }catch(Exception e){
+         rpta=e.getMessage();     
+     }    
+    }
+    return rpta;
+}
+
+public String Interfase_tardanzas(){
+    String rpta="OK", id="", fecha="";
+    String ssql="";
+    Statement stmt;
+    ResultSet rs, rsp;
+            
+    rpta=this.ConectarmeBLOB();
+    if(rpta.compareTo("OK")==0){
+     try{
+                
+        //-- CONSULTAR POR RANGO DE FECHA EXTRAER
+        ssql="EXEC spNOM_FECHA_PERIODO_PROCESO " + this.getAnio_codigo() + ", " + this.getMes_codigo() + ", " + String.valueOf(this.getProceso_codigo());
+        
+        stmt=this.getMyconeccion().createStatement();
+        rsp=stmt.executeQuery(ssql);
+        
+        if (!rsp.next()){
+            rpta="Error, Periodo de proceso incorrecto o no existe programación de Ceses";
+            return rpta;
+        }
+        
+        fecha=this.FechaNormal(String.valueOf(rsp.getDate("FECHA_ANTERIOR"))); 
+        if (fecha.compareTo("")==0) return "Error en Formato de fecha Anterior : " + String.valueOf(rsp.getDate("FECHA_ANTERIOR"));
+        //System.out.println(fecha);        
+        this.setFecha_del(fecha);
+        
+        fecha=this.FechaNormal(String.valueOf(rsp.getDate("FECHA_ACTUAL"))); 
+        if (fecha.compareTo("")==0) return "Error en Formato de fecha Actual : " + String.valueOf(rsp.getDate("FECHA_ACTUAL"));
+        //System.out.println(fecha);        
+        this.setFecha_al(fecha);
+        
+        Reporte_Detalle r=new Reporte_Detalle();
+        r.setMydriver(this.getMydriver());
+        r.setMyurl(this.getMyurl());
+        r.setMyuser(this.getMyuser());
+        r.setMypwd(this.getMypwd()); 
+        
+        r.setFecha_inicio(this.getFecha_del());
+        r.setFecha_fin(this.getFecha_al());
+        r.setRutaXls(this.getReporte_dir_destino());
+        
+        rpta=r.Listado_mensual_tardanzas();
+        this.setReporte_ruta_completa(r.getReport_name());
+        this.setReporte_nombre(r.getArchivoXls());
+        
+        this.setFecha_del(rsp.getString("FECHA_ANTERIOR"));
+        this.setFecha_al(rsp.getString("FECHA_ACTUAL"));
+        
+        rpta=this.Registrar_reporte_basedatos();
+        if (rpta.compareTo("OK")!=0){
+            return rpta;
+        }
+        //-- Eliminar archivo excel
+        rpta= this.DeleteFile(this.getReporte_ruta_completa());
+        
+     }catch(Exception e){
+         rpta=e.getMessage();     
+     }    
+    }
+    return rpta;
+}
+
+
+public String Interfase_vacaciones(){
+    String rpta="OK", id="";
+    String ssql="";
+    Statement stmt;
+    ResultSet rs, rsp;
+
+    rpta=this.ConectarmeBLOB();
+    if(rpta.compareTo("OK")==0){
+     try{
+        //generar nombre de archivo xls
+        id = "Interfase_Vacaciones_" + this.Nombre_fecha() + ".xls";
+        this.setReporte_nombre(id);
+        this.setReporte_ruta_completa(this.getReporte_dir_destino() + this.getReporte_nombre());
+                
+        HSSFWorkbook wb=null;        
+        fileOut = new FileOutputStream(this.getReporte_ruta_completa());
+        wb = new HSSFWorkbook();
+        HSSFSheet sheet = wb.createSheet("Adelanto periodo actual");
+        HSSFSheet sheet2 = wb.createSheet("Rem x adelanto periodo anterior");
+        HSSFSheet sheet3 = wb.createSheet("Sin adelanto periodo actual");
+        //HSSFSheet sheet4 = wb.createSheet("Vac compradas");
+        
+        HSSFCellStyle styTitulo = this.getStyTitulo(wb);
+        HSSFCellStyle stySubTitulo = this.getStySubTitulo(wb);
+        HSSFCellStyle styTexto = this.getStyTexto(wb);
+        HSSFCellStyle styTextoCentro = this.getStyTextoCentro(wb);
+        HSSFCellStyle styTexto_GreyBackGround = this.getStyTexto_GreyBackGround(wb);
+        HSSFCellStyle styTextoCentro_GreyBackGround = this.getStyTextoCentro_GreyBackGround(wb);
+        HSSFCellStyle styEntero_GreyBackGround = this.getStyEntero_GreyBackGround(wb);
+        
+        HSSFRow row;
+        HSSFCell cell;
+        HSSFRow row2;
+        HSSFCell cell2;
+        HSSFRow row3;
+        HSSFCell cell3;
+        HSSFRow row4;
+        HSSFCell cell4;
+        short rowNum = 0;
+        short colNum = 0;
+        short rowNum2 = 0;
+        short colNum2 = 0;
+        short rowNum3 = 0;
+        short colNum3 = 0;
+        short rowNum4 = 0;
+        short colNum4 = 0;
+
+        row = sheet.createRow(rowNum++);
+        sheet.setColumnWidth((short) (0), (short) ((10 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (1), (short) ((15 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (2), (short) ((50 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (3), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (4), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (5), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (6), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (7), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (8), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (9), (short) ((50 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (10), (short) ((50 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (11), (short) ((30 * 8) / ((double) 1 / 20)));
+
+        row2 = sheet2.createRow(rowNum2++);
+        sheet2.setColumnWidth((short) (0), (short) ((10 * 8) / ((double) 1 / 20)));
+        sheet2.setColumnWidth((short) (1), (short) ((15 * 8) / ((double) 1 / 20)));
+        sheet2.setColumnWidth((short) (2), (short) ((50 * 8) / ((double) 1 / 20)));
+        sheet2.setColumnWidth((short) (3), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet2.setColumnWidth((short) (4), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet2.setColumnWidth((short) (5), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet2.setColumnWidth((short) (6), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet2.setColumnWidth((short) (7), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet2.setColumnWidth((short) (8), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet2.setColumnWidth((short) (9), (short) ((50 * 8) / ((double) 1 / 20)));
+        sheet2.setColumnWidth((short) (10), (short) ((50 * 8) / ((double) 1 / 20)));
+        sheet2.setColumnWidth((short) (11), (short) ((30 * 8) / ((double) 1 / 20)));
+        
+        row3 = sheet3.createRow(rowNum3++);
+        sheet3.setColumnWidth((short) (0), (short) ((10 * 8) / ((double) 1 / 20)));
+        sheet3.setColumnWidth((short) (1), (short) ((15 * 8) / ((double) 1 / 20)));
+        sheet3.setColumnWidth((short) (2), (short) ((50 * 8) / ((double) 1 / 20)));
+        sheet3.setColumnWidth((short) (3), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet3.setColumnWidth((short) (4), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet3.setColumnWidth((short) (5), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet3.setColumnWidth((short) (6), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet3.setColumnWidth((short) (7), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet3.setColumnWidth((short) (8), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet3.setColumnWidth((short) (9), (short) ((50 * 8) / ((double) 1 / 20)));
+        sheet3.setColumnWidth((short) (10), (short) ((50 * 8) / ((double) 1 / 20)));
+        sheet3.setColumnWidth((short) (11), (short) ((30 * 8) / ((double) 1 / 20)));
+        
+        /*row4 = sheet4.createRow(rowNum4++);
+        sheet4.setColumnWidth((short) (0), (short) ((10 * 8) / ((double) 1 / 20)));
+        sheet4.setColumnWidth((short) (1), (short) ((15 * 8) / ((double) 1 / 20)));
+        sheet4.setColumnWidth((short) (2), (short) ((50 * 8) / ((double) 1 / 20)));
+        sheet4.setColumnWidth((short) (3), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet4.setColumnWidth((short) (4), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet4.setColumnWidth((short) (5), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet4.setColumnWidth((short) (6), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet4.setColumnWidth((short) (7), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet4.setColumnWidth((short) (8), (short) ((20 * 8) / ((double) 1 / 20)));
+        */
+        sheet.addMergedRegion(new Region(rowNum-1,(short)2,rowNum-1,(short)5));
+        cell = row.createCell((short)0);    
+        row = sheet.createRow(rowNum++);
+        this.xls_valor( row, cell, (short)0, stySubTitulo,"TELEATENTO DEL PERU SAC");
+        row = sheet.createRow(rowNum++);
+        row = sheet.createRow(rowNum++);
+        String speriodo="";
+        speriodo=this.Obtener_mes_siguiente();
+        this.xls_valor( row, cell, (short)2, styTitulo,"ADELANTO VACACIONAL " + speriodo.toUpperCase());
+        row = sheet.createRow(rowNum++);
+        this.xls_valor( row, cell, (short)2, styTitulo,"SOLO PAGO EN NOMINA POR ADELANTO DE VACACIONES");
+        row = sheet.createRow(rowNum++);
+        row = sheet.createRow(rowNum++);
+//        this.xls_valor( row, cell, (short)1, stySubTitulo,"EMPRESA: ");
+//        this.xls_valor( row, cell, (short)2, stySubTitulo,"TMD");
+
+        sheet2.addMergedRegion(new Region(rowNum2-1,(short)2,rowNum2-1,(short)5));
+        cell2 = row2.createCell((short)0);    
+        row2 = sheet2.createRow(rowNum2++);
+        this.xls_valor(row2, cell2, (short)0, stySubTitulo,"TELEATENTO DEL PERU SAC");
+        row2 = sheet2.createRow(rowNum2++);
+        row2 = sheet2.createRow(rowNum2++);
+        //this.xls_valor( row2, cell2, (short)2, styTitulo,"REMUNERACION VACACIONAL " + speriodo.toUpperCase());
+        this.xls_valor( row2, cell2, (short)3, styTitulo,"REMUNERACION VACACIONAL POR DESCUENTO DEL ADELANTO DEL PERIODO ANTERIOR");
+        row2 = sheet2.createRow(rowNum2++);
+        //this.xls_valor( row2, cell2, (short)2, styTitulo,"DESCANSO FISICO " + this.getAnio_codigo() + "-" + this.getMes_codigo());
+        row2 = sheet2.createRow(rowNum2++);
+        row2 = sheet2.createRow(rowNum2++);
+        
+        sheet3.addMergedRegion(new Region(rowNum3-1,(short)2,rowNum3-1,(short)5));
+        cell3 = row3.createCell((short)0);    
+        row3 = sheet3.createRow(rowNum3++);
+        this.xls_valor(row3, cell3, (short)0, stySubTitulo,"TELEATENTO DEL PERU SAC");
+        row3 = sheet3.createRow(rowNum3++);
+        row3 = sheet3.createRow(rowNum3++);
+        this.xls_valor( row3, cell3, (short)2, styTitulo,"REMUNERACION VACACIONAL SIN ADELANTO " + speriodo.toUpperCase());
+        row3 = sheet3.createRow(rowNum3++);
+        this.xls_valor( row3, cell3, (short)2, styTitulo,"DESCANSO FISICO " + this.getAnio_codigo() + "-" + this.getMes_codigo());
+        row3 = sheet3.createRow(rowNum3++);
+        row3 = sheet3.createRow(rowNum3++);
+        
+        /*sheet4.addMergedRegion(new Region(rowNum4-1,(short)2,rowNum4-1,(short)5));
+        cell4 = row4.createCell((short)0);    
+        row4 = sheet4.createRow(rowNum4++);
+        this.xls_valor(row4, cell4, (short)0, stySubTitulo,"TELEATENTO DEL PERU SAC");
+        row4 = sheet4.createRow(rowNum4++);
+        row4 = sheet4.createRow(rowNum4++);
+        this.xls_valor( row4, cell4, (short)2, styTitulo,"VACACIONAL COMPRADAS " + speriodo.toUpperCase());
+        row4 = sheet4.createRow(rowNum4++);
+        this.xls_valor( row4, cell4, (short)2, styTitulo,"COMPRA DESCANSO FISICO" );
+        row4 = sheet4.createRow(rowNum4++);
+        row4 = sheet4.createRow(rowNum4++);
+        */
+        //-- CONSULTAR POR RANGO DE FECHA EXTRAER
+        ssql="EXEC spNOM_FECHA_PERIODO_PROCESO " + this.getAnio_codigo() + ", " + this.getMes_codigo() + ", " + String.valueOf(this.getProceso_codigo());
+        
+        stmt=this.getMyconeccion().createStatement();
+        rsp=stmt.executeQuery(ssql);
+        
+        if (!rsp.next()){
+            rpta="Error, Periodo de proceso incorrecto o no existe programación de Vacaciones";
+            return rpta;
+        }
+        
+        row = sheet.createRow(rowNum++);
+        this.xls_valor( row, cell, (short)0, stySubTitulo, "Fecha Reporte: " + this.getFecha_Server());
+        row = sheet.createRow(rowNum++);
+        this.xls_valor( row, cell, (short)0, this.getStyCabeceraTabla(wb), "ITEM");
+        this.xls_valor( row, cell, (short)1, this.getStyCabeceraTabla(wb), "CIP");
+        this.xls_valor( row, cell, (short)2, this.getStyCabeceraTabla(wb), "NOMBRES");
+        this.xls_valor( row, cell, (short)3, this.getStyCabeceraTabla(wb), "DNI");
+        this.xls_valor( row, cell, (short)4, this.getStyCabeceraTabla(wb), "FECHA INGRESO");
+        this.xls_valor( row, cell, (short)5, this.getStyCabeceraTabla(wb), "PERIODO");
+        this.xls_valor( row, cell, (short)6, this.getStyCabeceraTabla(wb), "FECHA INICIO");
+        this.xls_valor( row, cell, (short)7, this.getStyCabeceraTabla(wb), "FECHA TERMINO");
+        this.xls_valor( row, cell, (short)8, this.getStyCabeceraTabla(wb), "DIAS PAGO");
+        this.xls_valor( row, cell, (short)9, this.getStyCabeceraTabla(wb), "OBSERVACIONES");
+        this.xls_valor( row, cell, (short)10, this.getStyCabeceraTabla(wb), "USUARIO REGISTRO");
+        this.xls_valor( row, cell, (short)11, this.getStyCabeceraTabla(wb), "FECHA REGISTRO");
+        
+        this.setFecha_del(rsp.getString("FECHA_ANTERIOR"));
+        this.setFecha_al(rsp.getString("FECHA_ACTUAL"));
+
+        row2 = sheet2.createRow(rowNum2++);
+        this.xls_valor( row2, cell2, (short)0, stySubTitulo, "Fecha Reporte: " + this.getFecha_Server());
+        row2 = sheet2.createRow(rowNum2++);
+        this.xls_valor( row2, cell2, (short)0, this.getStyCabeceraTabla(wb), "ITEM");
+        this.xls_valor( row2, cell2, (short)1, this.getStyCabeceraTabla(wb), "CIP");
+        this.xls_valor( row2, cell2, (short)2, this.getStyCabeceraTabla(wb), "NOMBRES");
+        this.xls_valor( row2, cell2, (short)3, this.getStyCabeceraTabla(wb), "DNI");
+        this.xls_valor( row2, cell2, (short)4, this.getStyCabeceraTabla(wb), "FECHA INGRESO");
+        this.xls_valor( row2, cell2, (short)5, this.getStyCabeceraTabla(wb), "PERIODO");
+        this.xls_valor( row2, cell2, (short)6, this.getStyCabeceraTabla(wb), "FECHA INICIO");
+        this.xls_valor( row2, cell2, (short)7, this.getStyCabeceraTabla(wb), "FECHA TERMINO");
+        this.xls_valor( row2, cell2, (short)8, this.getStyCabeceraTabla(wb), "DIAS USO");
+        this.xls_valor( row2, cell2, (short)9, this.getStyCabeceraTabla(wb), "OBSERVACIONES");
+        this.xls_valor( row2, cell2, (short)10, this.getStyCabeceraTabla(wb), "USUARIO REGISTRO");
+        this.xls_valor( row2, cell2, (short)11, this.getStyCabeceraTabla(wb), "FECHA REGISTRO");
+        
+        row3 = sheet3.createRow(rowNum3++);
+        this.xls_valor( row3, cell3, (short)0, stySubTitulo, "Fecha Reporte: " + this.getFecha_Server());
+        row3 = sheet3.createRow(rowNum3++);
+        this.xls_valor( row3, cell3, (short)0, this.getStyCabeceraTabla(wb), "ITEM");
+        this.xls_valor( row3, cell3, (short)1, this.getStyCabeceraTabla(wb), "CIP");
+        this.xls_valor( row3, cell3, (short)2, this.getStyCabeceraTabla(wb), "NOMBRES");
+        this.xls_valor( row3, cell3, (short)3, this.getStyCabeceraTabla(wb), "DNI");
+        this.xls_valor( row3, cell3, (short)4, this.getStyCabeceraTabla(wb), "FECHA INGRESO");
+        this.xls_valor( row3, cell3, (short)5, this.getStyCabeceraTabla(wb), "PERIODO");
+        this.xls_valor( row3, cell3, (short)6, this.getStyCabeceraTabla(wb), "FECHA INICIO");
+        this.xls_valor( row3, cell3, (short)7, this.getStyCabeceraTabla(wb), "FECHA TERMINO");
+        this.xls_valor( row3, cell3, (short)8, this.getStyCabeceraTabla(wb), "DIAS USO");
+        this.xls_valor( row3, cell3, (short)9, this.getStyCabeceraTabla(wb), "OBSERVACIONES");
+        this.xls_valor( row3, cell3, (short)10, this.getStyCabeceraTabla(wb), "USUARIO REGISTRO");
+        this.xls_valor( row3, cell3, (short)11, this.getStyCabeceraTabla(wb), "FECHA REGISTRO");
+        /*
+        row4 = sheet4.createRow(rowNum4++);
+        this.xls_valor( row4, cell4, (short)0, stySubTitulo, "Fecha Reporte: " + this.getFecha_Server());
+        row4 = sheet4.createRow(rowNum4++);
+        this.xls_valor( row4, cell4, (short)0, this.getStyCabeceraTabla(wb), "ITEM");
+        this.xls_valor( row4, cell4, (short)1, this.getStyCabeceraTabla(wb), "CIP");
+        this.xls_valor( row4, cell4, (short)2, this.getStyCabeceraTabla(wb), "NOMBRES");
+        this.xls_valor( row4, cell4, (short)3, this.getStyCabeceraTabla(wb), "DNI");
+        this.xls_valor( row4, cell4, (short)4, this.getStyCabeceraTabla(wb), "FECHA INGRESO");
+        this.xls_valor( row4, cell4, (short)5, this.getStyCabeceraTabla(wb), "PERIODO");
+        this.xls_valor( row4, cell4, (short)6, this.getStyCabeceraTabla(wb), "DIAS USO");
+        */
+        ssql="EXEC spNOM_GENERA_INTERFASE_VACACIONES " + String.valueOf(this.getEmpresa_codigo()) + ", " + this.getAnio_codigo() + ", " + this.getMes_codigo();
+        //System.out.println(ssql);
+        stmt=this.getMyconeccion().createStatement();
+        rs=stmt.executeQuery(ssql);
+        String nombre_area="";
+        int Total_titulares=0;
+        int Total_conyuges=0;
+        int Total_registros=0;
+        int Total_registros2=0;
+        int Total_registros3=0;
+        int Total_registros4=0;
+        String sCarnet="";
+        while(rs.next()){
+            sCarnet=rs.getString("EMPLEADO_CARNET");
+            if (rs.getInt("TIPO")==1){
+                row = sheet.createRow(rowNum++);
+                Total_registros+=1;
+                this.xls_valor( row, cell, (short)0, styTextoCentro, String.valueOf(Total_registros));
+                this.xls_valor( row, cell, (short)1, styTextoCentro, this.Completar(sCarnet, 9, "0", "izq") );
+                this.xls_valor( row, cell, (short)2, styTexto, rs.getString("EMPLEADO"));
+                this.xls_valor( row, cell, (short)3, styTextoCentro, rs.getString("EMPLEADO_DNI"));
+                this.xls_valor( row, cell, (short)4, styTextoCentro, rs.getString("FECHA_INGRESO"));
+                this.xls_valor( row, cell, (short)5, styTextoCentro, rs.getString("ANIO_CODIGO"));
+                this.xls_valor( row, cell, (short)6, styTextoCentro, rs.getString("INICIO"));                    
+                this.xls_valor( row, cell, (short)7, styTextoCentro, rs.getString("FIN"));                    
+                this.xls_valor( row, cell, (short)8, styTextoCentro, rs.getString("DIAS_PAGO"));    
+                this.xls_valor( row, cell, (short)9, styTexto, rs.getString("OBSERVACIONES"));
+                this.xls_valor( row, cell, (short)10, styTexto, rs.getString("USUARIO_REGISTRO"));
+                this.xls_valor( row, cell, (short)11, styTexto, rs.getString("FECHA_REGISTRO"));
+            }else{
+                if (rs.getInt("TIPO")==2){
+                    row2 = sheet2.createRow(rowNum2++);
+                    Total_registros2+=1;
+                    this.xls_valor( row2, cell2, (short)0, styTextoCentro, String.valueOf(Total_registros2));
+                    this.xls_valor( row2, cell2, (short)1, styTextoCentro, this.Completar(sCarnet, 9, "0", "izq") );
+                    this.xls_valor( row2, cell2, (short)2, styTexto, rs.getString("EMPLEADO"));
+                    this.xls_valor( row2, cell2, (short)3, styTextoCentro, rs.getString("EMPLEADO_DNI"));
+                    this.xls_valor( row2, cell2, (short)4, styTextoCentro, rs.getString("FECHA_INGRESO"));
+                    this.xls_valor( row2, cell2, (short)5, styTextoCentro, rs.getString("ANIO_CODIGO"));
+                    this.xls_valor( row2, cell2, (short)6, styTextoCentro, rs.getString("INICIO"));                    
+                    this.xls_valor( row2, cell2, (short)7, styTextoCentro, rs.getString("FIN"));                    
+                    this.xls_valor( row2, cell2, (short)8, styTextoCentro, rs.getString("DIAS_PAGO"));    
+                    this.xls_valor( row2, cell2, (short)9, styTexto, rs.getString("OBSERVACIONES"));
+                    this.xls_valor( row2, cell2, (short)10, styTexto, rs.getString("USUARIO_REGISTRO"));
+                    this.xls_valor( row2, cell2, (short)11, styTexto, rs.getString("FECHA_REGISTRO"));
+                }else{
+                    if (rs.getInt("TIPO")==3){
+                        row3 = sheet3.createRow(rowNum3++);
+                        Total_registros3+=1;
+                        this.xls_valor( row3, cell3, (short)0, styTextoCentro, String.valueOf(Total_registros3));
+                        this.xls_valor( row3, cell3, (short)1, styTextoCentro, this.Completar(sCarnet, 9, "0", "izq") );
+                        this.xls_valor( row3, cell3, (short)2, styTexto, rs.getString("EMPLEADO"));
+                        this.xls_valor( row3, cell3, (short)3, styTextoCentro, rs.getString("EMPLEADO_DNI"));
+                        this.xls_valor( row3, cell3, (short)4, styTextoCentro, rs.getString("FECHA_INGRESO"));
+                        this.xls_valor( row3, cell3, (short)5, styTextoCentro, rs.getString("ANIO_CODIGO"));
+                        this.xls_valor( row3, cell3, (short)6, styTextoCentro, rs.getString("INICIO"));                    
+                        this.xls_valor( row3, cell3, (short)7, styTextoCentro, rs.getString("FIN"));                    
+                        this.xls_valor( row3, cell3, (short)8, styTextoCentro, rs.getString("DIAS_PAGO"));    
+                        this.xls_valor( row3, cell3, (short)9, styTexto, rs.getString("OBSERVACIONES"));
+                        this.xls_valor( row3, cell3, (short)10, styTexto, rs.getString("USUARIO_REGISTRO"));
+                        this.xls_valor( row3, cell3, (short)11, styTexto, rs.getString("FECHA_REGISTRO"));
+                    }else{
+                        /*row4 = sheet4.createRow(rowNum4++);
+                        Total_registros4+=1;
+                        this.xls_valor( row4, cell4, (short)0, styTextoCentro, String.valueOf(Total_registros4));
+                        this.xls_valor( row4, cell4, (short)1, styTextoCentro, this.Completar(sCarnet, 9, "0", "izq") );
+                        this.xls_valor( row4, cell4, (short)2, styTexto, rs.getString("EMPLEADO"));
+                        this.xls_valor( row4, cell4, (short)3, styTextoCentro, rs.getString("EMPLEADO_DNI"));
+                        this.xls_valor( row4, cell4, (short)4, styTextoCentro, rs.getString("FECHA_INGRESO"));
+                        this.xls_valor( row4, cell4, (short)5, styTextoCentro, rs.getString("ANIO_CODIGO"));
+                        this.xls_valor( row4, cell4, (short)6, styTextoCentro, rs.getString("DIAS_PAGO"));    
+                        */
+                    }
+                }
+            }
+        }            
+        
+        wb.write(fileOut);
+        fileOut.close(); 
+        if (Total_registros==0 && Total_registros2==0 && Total_registros3==0 && Total_registros4==0){
+            //-- Eliminar archivo excel
+            rpta= this.DeleteFile(this.getReporte_ruta_completa());
+            rpta="No hay registros en el periodo de fecha solicitado. No se generó archivo interfase.";
+            return rpta;
+        }
+        rpta=this.Registrar_reporte_basedatos();
+        if (rpta.compareTo("OK")!=0){
+            return rpta;
+        }
+        //-- Eliminar archivo excel
+//        rpta= this.DeleteFile(this.getReporte_ruta_completa());
+        
+     }catch(Exception e){
+         rpta=e.getMessage();     
+     }    
+    }
+    return rpta;
+}
+
+public String Interfase_vacaciones_old(){
+    String rpta="OK", id="";
+    String ssql="";
+    Statement stmt;
+    ResultSet rs, rsp;
+
+    rpta=this.ConectarmeBLOB();
+    if(rpta.compareTo("OK")==0){
+     try{
+        //generar nombre de archivo xls
+        id = "Interfase_Vacaciones_" + this.Nombre_fecha() + ".xls";
+        this.setReporte_nombre(id);
+        this.setReporte_ruta_completa(this.getReporte_dir_destino() + this.getReporte_nombre());
+                
+        HSSFWorkbook wb=null;        
+        fileOut = new FileOutputStream(this.getReporte_ruta_completa());
+        wb = new HSSFWorkbook();
+        HSSFSheet sheet = wb.createSheet("Vacaciones");
+        
+        HSSFCellStyle styTitulo = this.getStyTitulo(wb);
+        HSSFCellStyle stySubTitulo = this.getStySubTitulo(wb);
+        HSSFCellStyle styTexto = this.getStyTexto(wb);
+        HSSFCellStyle styTextoCentro = this.getStyTextoCentro(wb);
+        HSSFCellStyle styTexto_GreyBackGround = this.getStyTexto_GreyBackGround(wb);
+        HSSFCellStyle styTextoCentro_GreyBackGround = this.getStyTextoCentro_GreyBackGround(wb);
+        HSSFCellStyle styEntero_GreyBackGround = this.getStyEntero_GreyBackGround(wb);
+        
+        HSSFRow row;
+        HSSFCell cell;
+        short rowNum = 0;
+        short colNum = 0;
+
+        row = sheet.createRow(rowNum++);
+        sheet.setColumnWidth((short) (0), (short) ((15 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (1), (short) ((50 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (2), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (3), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (4), (short) ((30 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (5), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (6), (short) ((20 * 8) / ((double) 1 / 20)));
+        sheet.setColumnWidth((short) (7), (short) ((20 * 8) / ((double) 1 / 20)));
+        
+        sheet.addMergedRegion(new Region(rowNum-1,(short)2,rowNum-1,(short)5));
+        cell = row.createCell((short)0);    
+        this.xls_valor( row, cell, (short)0, styTitulo,"TELEATENTO DEL PERU SAC");
+        row = sheet.createRow(rowNum++);
+        row = sheet.createRow(rowNum++);
+        row = sheet.createRow(rowNum++);
+        String speriodo="";
+        speriodo=this.Obtener_mes_siguiente();
+        this.xls_valor( row, cell, (short)1, styTitulo,"VACACIONES PERSONAL EN EL MES DE " + speriodo.toUpperCase());
+        row = sheet.createRow(rowNum++);
+        this.xls_valor( row, cell, (short)1, stySubTitulo,"PAGO MONETARIO " + this.getAnio_codigo() + "-" + this.getMes_codigo());
+        row = sheet.createRow(rowNum++);
+        row = sheet.createRow(rowNum++);
+        this.xls_valor( row, cell, (short)1, stySubTitulo,"EMPRESA: ");
+        this.xls_valor( row, cell, (short)2, stySubTitulo,"TMD");
+        
+        //-- CONSULTAR POR RANGO DE FECHA EXTRAER
+        ssql="EXEC spNOM_FECHA_PERIODO_PROCESO " + this.getAnio_codigo() + ", " + this.getMes_codigo() + ", " + String.valueOf(this.getProceso_codigo());
+        
+        stmt=this.getMyconeccion().createStatement();
+        rsp=stmt.executeQuery(ssql);
+        
+        if (!rsp.next()){
+            rpta="Error, Periodo de proceso incorrecto o no existe programación de Ceses";
+            return rpta;
+        }
+        
+        row = sheet.createRow(rowNum++);
+        this.xls_valor( row, cell, (short)0, stySubTitulo, "Fecha Reporte: " + this.getFecha_Server());
+       
+        row = sheet.createRow(rowNum++);
+        this.xls_valor( row, cell, (short)0, this.getStyCabeceraTabla(wb), "CIP");
+        this.xls_valor( row, cell, (short)1, this.getStyCabeceraTabla(wb), "NOMBRES");
+        this.xls_valor( row, cell, (short)2, this.getStyCabeceraTabla(wb), "FECHA INGRESO");
+        this.xls_valor( row, cell, (short)3, this.getStyCabeceraTabla(wb), "CCR");
+        this.xls_valor( row, cell, (short)4, this.getStyCabeceraTabla(wb), "CCR NOMBRE");
+        this.xls_valor( row, cell, (short)5, this.getStyCabeceraTabla(wb), "CCTO");
+        this.xls_valor( row, cell, (short)6, this.getStyCabeceraTabla(wb), "CCBE");
+        this.xls_valor( row, cell, (short)7, this.getStyCabeceraTabla(wb), "DNI");
+        
+        this.setFecha_del(rsp.getString("FECHA_ANTERIOR"));
+        this.setFecha_al(rsp.getString("FECHA_ACTUAL"));
+        
+        ssql="EXEC spNOM_GENERA_INTERFASE_VACACIONES " + String.valueOf(this.getEmpresa_codigo()) + ", " + this.getAnio_codigo() + ", " + this.getMes_codigo();
+        //System.out.println(ssql);
+        stmt=this.getMyconeccion().createStatement();
+        rs=stmt.executeQuery(ssql);
+        String nombre_area="";
+        int Total_titulares=0;
+        int Total_conyuges=0;
+        int Total_registros=0;
+        String sCarnet="";
+        while(rs.next()){
+            row = sheet.createRow(rowNum++);
+            Total_registros+=1;
+            sCarnet=rs.getString("EMPLEADO_CARNET");
+            this.xls_valor( row, cell, (short)0, styTextoCentro, this.Completar(sCarnet, 9, "0", "izq") );
+            this.xls_valor( row, cell, (short)1, styTexto, rs.getString("EMPLEADO_NOMBRE"));
+            this.xls_valor( row, cell, (short)2, styTextoCentro, rs.getString("FECHA_INGRESO"));
+            this.xls_valor( row, cell, (short)3, styTexto, rs.getString("CCR_CODIGO"));
+            this.xls_valor( row, cell, (short)4, styTexto, rs.getString("CCR_DESCRIPCION"));
+            this.xls_valor( row, cell, (short)5, styTextoCentro, rs.getString("CCTO_CODIGO"));                    
+            this.xls_valor( row, cell, (short)6, styTexto, rs.getString("CCB_CODIGO"));                    
+            this.xls_valor( row, cell, (short)7, styTexto, rs.getString("DNI"));    
+        }            
+        
+        wb.write(fileOut);
+        fileOut.close(); 
+        if (Total_registros==0){
+            //-- Eliminar archivo excel
+            rpta= this.DeleteFile(this.getReporte_ruta_completa());
+            rpta="No hay registros en el periodo de fecha solicitado. No se generó archivo interfase.";
+            return rpta;
+        }
+        rpta=this.Registrar_reporte_basedatos();
+        if (rpta.compareTo("OK")!=0){
+            return rpta;
+        }
+        //-- Eliminar archivo excel
+        rpta= this.DeleteFile(this.getReporte_ruta_completa());
+        
+     }catch(Exception e){
+         rpta=e.getMessage();     
+     }    
+    }
+    return rpta;
+}
+
+public String Interfase_cambio_condicion(){
+    String rpta="OK", id="";
+    String ssql="";
+    Statement stmt;
+    ResultSet rs, rsp;
+
+    rpta=this.ConectarmeBLOB();
+    if(rpta.compareTo("OK")==0){
+     try{
+        //generar nombre de archivo xls
+        id = "Interfase_Cambio_Condicion_" + this.Nombre_fecha() + ".xls";
+        this.setReporte_nombre(id);
+        this.setReporte_ruta_completa(this.getReporte_dir_destino() + this.getReporte_nombre());
+                
+        HSSFWorkbook wb=null;        
+        fileOut = new FileOutputStream(this.getReporte_ruta_completa());
+        wb = new HSSFWorkbook();
+        HSSFSheet sheet = wb.createSheet("CCondicion");
+        
+        HSSFCellStyle styTitulo = this.getStyTitulo(wb);
+        HSSFCellStyle stySubTitulo = this.getStySubTitulo(wb);
+        HSSFCellStyle styTexto = this.getStyTexto(wb);
+        HSSFCellStyle styTextoCentro = this.getStyTextoCentro(wb);
+        HSSFCellStyle styTexto_GreyBackGround = this.getStyTexto_GreyBackGround(wb);
+        HSSFCellStyle styTextoCentro_GreyBackGround = this.getStyTextoCentro_GreyBackGround(wb);
+        HSSFCellStyle styEntero_GreyBackGround = this.getStyEntero_GreyBackGround(wb);
+        
+        HSSFRow row;
+        HSSFCell cell;
+        short rowNum = 0;
+        short colNum = 0;
+
+        row = sheet.createRow(rowNum++);
+        sheet.setColumnWidth((short) (0), (short) ((15 * 8) / ((double) 1 / 20))); //Emp_Mov_codigo
+        sheet.setColumnWidth((short) (1), (short) ((50 * 8) / ((double) 1 / 20))); //MOV_DESCRIPCION
+        sheet.setColumnWidth((short) (2), (short) ((20 * 8) / ((double) 1 / 20))); //CARNET
+        sheet.setColumnWidth((short) (3), (short) ((20 * 8) / ((double) 1 / 20))); //PATERNO
+        sheet.setColumnWidth((short) (4), (short) ((30 * 8) / ((double) 1 / 20))); //MATERNO
+        sheet.setColumnWidth((short) (5), (short) ((20 * 8) / ((double) 1 / 20))); //NOMBRES
+        sheet.setColumnWidth((short) (6), (short) ((20 * 8) / ((double) 1 / 20))); //FECHA INGRESO
+        sheet.setColumnWidth((short) (7), (short) ((20 * 8) / ((double) 1 / 20))); //DNI
+        sheet.setColumnWidth((short) (8), (short) ((20 * 8) / ((double) 1 / 20))); //AREA
+        sheet.setColumnWidth((short) (9), (short) ((20 * 8) / ((double) 1 / 20))); //FECHA INICIO
+        sheet.setColumnWidth((short) (10), (short) ((20 * 8) / ((double) 1 / 20))); //FECHA REG
+        sheet.setColumnWidth((short) (11), (short) ((20 * 8) / ((double) 1 / 20))); //SALARIO
+        sheet.setColumnWidth((short) (12), (short) ((20 * 8) / ((double) 1 / 20))); //SALARIO ANTERIOR
+        sheet.setColumnWidth((short) (13), (short) ((20 * 8) / ((double) 1 / 20))); //MODALIDAD SOLICITADA
+        sheet.setColumnWidth((short) (14), (short) ((20 * 8) / ((double) 1 / 20))); //MODALIDAD ANTERIOR
+        sheet.setColumnWidth((short) (15), (short) ((20 * 8) / ((double) 1 / 20))); //HORARIO SOLICITADO
+        sheet.setColumnWidth((short) (16), (short) ((20 * 8) / ((double) 1 / 20))); //CARGO SOLICITADO
+        sheet.setColumnWidth((short) (17), (short) ((20 * 8) / ((double) 1 / 20))); //CCTO
+        sheet.setColumnWidth((short) (18), (short) ((20 * 8) / ((double) 1 / 20))); //CCBE
+        sheet.setColumnWidth((short) (19), (short) ((20 * 8) / ((double) 1 / 20))); //CCRE
+        
+        //-- CONSULTAR POR RANGO DE FECHA EXTRAER
+        ssql="EXEC spNOM_FECHA_PERIODO_PROCESO " + this.getAnio_codigo() + ", " + this.getMes_codigo() + ", " + String.valueOf(this.getProceso_codigo());
+        
+        stmt=this.getMyconeccion().createStatement();
+        rsp=stmt.executeQuery(ssql);
+        
+        if (!rsp.next()){
+            rpta="Error, Periodo de proceso incorrecto o no existe programación de Ceses";
+            return rpta;
+        }
+        
+        String speriodo="";
+        speriodo=this.Obtener_mes_siguiente();
+        cell = row.createCell((short)0); 
+        this.xls_valor( row, cell, (short)0, stySubTitulo,"CAMBIO CONDICION DE PERSONAL, MES DE " + speriodo.toUpperCase());
+        this.xls_valor( row, cell, (short)5, stySubTitulo, "Fecha Reporte: " + this.getFecha_Server());
+        
+        row = sheet.createRow(rowNum++);
+        
+        this.xls_valor( row, cell, (short)0, stySubTitulo,"COD_MOV");
+        this.xls_valor( row, cell, (short)1, stySubTitulo,"MOVIMIENTO");
+        this.xls_valor( row, cell, (short)2, stySubTitulo,"CARNET");
+        this.xls_valor( row, cell, (short)3, stySubTitulo,"PATERNO");
+        this.xls_valor( row, cell, (short)4, stySubTitulo,"MATERNO");
+        this.xls_valor( row, cell, (short)5, stySubTitulo,"NOMBRES");
+        this.xls_valor( row, cell, (short)6, stySubTitulo,"FECHA INGRESO");
+        this.xls_valor( row, cell, (short)7, stySubTitulo,"DNI");
+        this.xls_valor( row, cell, (short)8, stySubTitulo,"AREA");
+        this.xls_valor( row, cell, (short)9, stySubTitulo,"FECHA INICIO");
+        this.xls_valor( row, cell, (short)10, stySubTitulo,"FECHA REG");
+        this.xls_valor( row, cell, (short)11, stySubTitulo,"SALARIO");
+        this.xls_valor( row, cell, (short)12, stySubTitulo,"SALARIO ANTERIOR");
+        this.xls_valor( row, cell, (short)13, stySubTitulo,"MODALIDAD SOLICITADA");
+        this.xls_valor( row, cell, (short)14, stySubTitulo,"MODALIDAD ANTERIOR");
+        this.xls_valor( row, cell, (short)15, stySubTitulo,"HORARIO SOLICITADO");
+        this.xls_valor( row, cell, (short)16, stySubTitulo,"CARGO SOLICITADO");
+        this.xls_valor( row, cell, (short)17, stySubTitulo,"CCTO");
+        this.xls_valor( row, cell, (short)18, stySubTitulo,"CCBE");
+        this.xls_valor( row, cell, (short)19, stySubTitulo,"CCRE");
+        
+        this.setFecha_del(rsp.getString("FECHA_ANTERIOR"));
+        this.setFecha_al(rsp.getString("FECHA_ACTUAL"));
+        
+        String nombre_area="";
+        int Total_titulares=0;
+        int Total_conyuges=0;
+        int Total_registros=0;
+        String sCarnet="";
+        
+        ssql="EXEC spNOM_GENERA_INTERFASE_CAMBIO_CONDICION " + String.valueOf(this.getEmpresa_codigo()) + ", '" + this.getFecha_del() + "', '" + this.getFecha_al() + "'";
+        //System.out.println(ssql);
+        stmt=null;
+        stmt=this.getMyconeccion().createStatement();
+        rs=stmt.executeQuery(ssql);        
+        while(rs.next()){
+            row = sheet.createRow(rowNum++);
+            Total_registros+=1;
+            sCarnet=rs.getString("EMPLEADO_CARNET");
+            this.xls_valor( row, cell, (short)0, styTexto, rs.getString("movimiento_codigo"));
+            this.xls_valor( row, cell, (short)1, styTexto, rs.getString("movimiento_descripcion"));
+            this.xls_valor( row, cell, (short)2, styTexto, this.Completar(sCarnet, 9, "0", "izq") );
+            this.xls_valor( row, cell, (short)3, styTexto, rs.getString("Empleado_Apellido_Paterno"));
+            this.xls_valor( row, cell, (short)4, styTexto, rs.getString("Empleado_Apellido_Materno"));
+            this.xls_valor( row, cell, (short)5, styTexto, rs.getString("Empleado_Nombres"));
+            this.xls_valor( row, cell, (short)6, styTexto, rs.getString("Empleado_Fecha_Ingreso"));
+            this.xls_valor( row, cell, (short)7, styTexto, rs.getString("Empleado_Dni"));
+            this.xls_valor( row, cell, (short)8, styTexto, rs.getString("Area_Descripcion"));
+            this.xls_valor( row, cell, (short)9, styTexto, rs.getString("Emp_Mov_Fecha_Inicio"));                    
+            this.xls_valor( row, cell, (short)10, styTexto, rs.getString("Emp_Mov_Fecha_Reg"));                    
+            this.xls_valor( row, cell, (short)11, styTexto, rs.getString("cc_salario"));            
+            this.xls_valor( row, cell, (short)12, styTexto, rs.getString("Salario_Anterior")); 
+            this.xls_valor( row, cell, (short)13, styTexto, rs.getString("Modalidad")); 
+            this.xls_valor( row, cell, (short)14, styTexto, rs.getString("Modalidad_anterior")); 
+            this.xls_valor( row, cell, (short)15, styTexto, rs.getString("Horario")); 
+            this.xls_valor( row, cell, (short)16, styTexto, rs.getString("Cargo")); 
+            this.xls_valor( row, cell, (short)17, styTexto, rs.getString("Centro_Costo_codigo")); 
+            this.xls_valor( row, cell, (short)18, styTexto, rs.getString("Centro_beneficio_codigo")); 
+            this.xls_valor( row, cell, (short)19, styTexto, rs.getString("Centro_responsabilidad_codigo")); 
+        }            
+        
+        wb.write(fileOut);
+        fileOut.close(); 
+        if (Total_registros==0){
+            //-- Eliminar archivo excel
+            rpta= this.DeleteFile(this.getReporte_ruta_completa());
+            rpta="No hay registros en el periodo de fecha solicitado. No se generó archivo interfase.";
+            return rpta;
+        }
+        rpta=this.Registrar_reporte_basedatos();
+        if (rpta.compareTo("OK")!=0){
+            return rpta;
+        }
+        //-- Eliminar archivo excel
+        rpta= this.DeleteFile(this.getReporte_ruta_completa());
+        
+     }catch(Exception e){
+         rpta=e.getMessage();     
+     }    
+    }
+    return rpta;
+}
+
+
+public String Interfase_traslados(){
+    String rpta="OK", id="";
+    String ssql="";
+    Statement stmt;
+    ResultSet rs, rsp;
+
+    rpta=this.ConectarmeBLOB();
+    if(rpta.compareTo("OK")==0){
+     try{
+        //generar nombre de archivo xls
+        id = "Interfase_Traslados_" + this.Nombre_fecha() + ".xls";
+        this.setReporte_nombre(id);
+        this.setReporte_ruta_completa(this.getReporte_dir_destino() + this.getReporte_nombre());
+                
+        HSSFWorkbook wb=null;        
+        fileOut = new FileOutputStream(this.getReporte_ruta_completa());
+        wb = new HSSFWorkbook();
+        HSSFSheet sheet = wb.createSheet("Traslados");
+        
+        HSSFCellStyle styTitulo = this.getStyTitulo(wb);
+        HSSFCellStyle stySubTitulo = this.getStySubTitulo(wb);
+        HSSFCellStyle styTexto = this.getStyTexto(wb);
+        HSSFCellStyle styTextoCentro = this.getStyTextoCentro(wb);
+        HSSFCellStyle styTexto_GreyBackGround = this.getStyTexto_GreyBackGround(wb);
+        HSSFCellStyle styTextoCentro_GreyBackGround = this.getStyTextoCentro_GreyBackGround(wb);
+        HSSFCellStyle styEntero_GreyBackGround = this.getStyEntero_GreyBackGround(wb);
+        
+        HSSFRow row;
+        HSSFCell cell;
+        short rowNum = 0;
+        short colNum = 0;
+
+        row = sheet.createRow(rowNum++);
+        sheet.setColumnWidth((short) (0), (short) ((15 * 8) / ((double) 1 / 20))); //Emp_Mov_codigo
+        sheet.setColumnWidth((short) (1), (short) ((20 * 8) / ((double) 1 / 20))); //MOV_DESCRIPCION
+        sheet.setColumnWidth((short) (2), (short) ((20 * 8) / ((double) 1 / 20))); //CARNET
+        sheet.setColumnWidth((short) (3), (short) ((20 * 8) / ((double) 1 / 20))); //PATERNO
+        sheet.setColumnWidth((short) (4), (short) ((20 * 8) / ((double) 1 / 20))); //MATERNO
+        sheet.setColumnWidth((short) (5), (short) ((20 * 8) / ((double) 1 / 20))); //NOMBRES        
+        sheet.setColumnWidth((short) (6), (short) ((20 * 8) / ((double) 1 / 20))); //DNI
+        sheet.setColumnWidth((short) (7), (short) ((20 * 8) / ((double) 1 / 20))); //FECHA INGRESO
+        sheet.setColumnWidth((short) (8), (short) ((20 * 8) / ((double) 1 / 20))); //AREA ORIGEN
+        sheet.setColumnWidth((short) (9), (short) ((20 * 8) / ((double) 1 / 20))); //AREA DESTINO        
+        sheet.setColumnWidth((short) (10), (short) ((10 * 8) / ((double) 1 / 20))); //CCTO
+        sheet.setColumnWidth((short) (11), (short) ((10 * 8) / ((double) 1 / 20))); //CCBE
+        sheet.setColumnWidth((short) (12), (short) ((10 * 8) / ((double) 1 / 20))); //CCRE        
+        sheet.setColumnWidth((short) (13), (short) ((20 * 8) / ((double) 1 / 20))); //FECHA INICIO
+        sheet.setColumnWidth((short) (14), (short) ((20 * 8) / ((double) 1 / 20))); //FECHA REG       
+        
+        //-- CONSULTAR POR RANGO DE FECHA EXTRAER
+        ssql="EXEC spNOM_FECHA_PERIODO_PROCESO " + this.getAnio_codigo() + ", " + this.getMes_codigo() + ", " + String.valueOf(this.getProceso_codigo());
+        
+        stmt=this.getMyconeccion().createStatement();
+        rsp=stmt.executeQuery(ssql);        
+        if (!rsp.next()){
+            rpta="Error, Periodo de proceso incorrecto o no existe programación de Ceses";
+            return rpta;
+        }        
+        String speriodo="";
+        speriodo=this.Obtener_mes_siguiente();
+        cell = row.createCell((short)0); 
+        this.xls_valor( row, cell, (short)0, stySubTitulo,"TRASLADOS DE PERSONAL, MES DE " + speriodo.toUpperCase());
+        this.xls_valor( row, cell, (short)5, stySubTitulo, "Fecha Reporte: " + this.getFecha_Server());
+        
+        row = sheet.createRow(rowNum++);        
+        this.xls_valor( row, cell, (short)0, stySubTitulo,"COD_MOV");
+        this.xls_valor( row, cell, (short)1, stySubTitulo,"MOVIMIENTO");
+        this.xls_valor( row, cell, (short)2, stySubTitulo,"CARNET");
+        this.xls_valor( row, cell, (short)3, stySubTitulo,"PATERNO");
+        this.xls_valor( row, cell, (short)4, stySubTitulo,"MATERNO");
+        this.xls_valor( row, cell, (short)5, stySubTitulo,"NOMBRES");
+        this.xls_valor( row, cell, (short)6, stySubTitulo,"DNI");
+        this.xls_valor( row, cell, (short)7, stySubTitulo,"FECHA INGRESO");        
+        this.xls_valor( row, cell, (short)8, stySubTitulo,"AREA ORIGEN");
+        this.xls_valor( row, cell, (short)9, stySubTitulo,"AREA DESTINO");
+        this.xls_valor( row, cell, (short)10, stySubTitulo,"CCTO");
+        this.xls_valor( row, cell, (short)11, stySubTitulo,"CCBE");
+        this.xls_valor( row, cell, (short)12, stySubTitulo,"CCRE");
+        this.xls_valor( row, cell, (short)13, stySubTitulo,"EMP MOV FECHA INICIO");
+        this.xls_valor( row, cell, (short)14, stySubTitulo,"EMP MOV FECHA REG");
+        
+        this.setFecha_del(rsp.getString("FECHA_ANTERIOR"));
+        this.setFecha_al(rsp.getString("FECHA_ACTUAL"));
+        
+        String nombre_area="";
+        int Total_titulares=0;
+        int Total_conyuges=0;
+        int Total_registros=0;
+        String sCarnet="";
+        
+        ssql="EXEC spNOM_GENERA_INTERFASE_TRASLADO " + String.valueOf(this.getEmpresa_codigo()) + ", '" + this.getFecha_del() + "', '" + this.getFecha_al() + "'";
+        //System.out.println(ssql);
+        stmt=null;
+        stmt=this.getMyconeccion().createStatement();
+        rs=stmt.executeQuery(ssql);        
+        while(rs.next()){
+            row = sheet.createRow(rowNum++);
+            Total_registros+=1;
+            sCarnet=rs.getString("EMPLEADO_CARNET");
+            this.xls_valor( row, cell, (short)0, styTexto, rs.getString("emp_mov_codigo"));
+            this.xls_valor( row, cell, (short)1, styTexto, rs.getString("movimiento_descripcion"));
+            this.xls_valor( row, cell, (short)2, styTexto, this.Completar(sCarnet, 9, "0", "izq") );
+            this.xls_valor( row, cell, (short)3, styTexto, rs.getString("Empleado_Apellido_Paterno"));
+            this.xls_valor( row, cell, (short)4, styTexto, rs.getString("Empleado_Apellido_Materno"));
+            this.xls_valor( row, cell, (short)5, styTexto, rs.getString("Empleado_Nombres"));            
+            this.xls_valor( row, cell, (short)6, styTexto, rs.getString("Empleado_Dni"));
+            this.xls_valor( row, cell, (short)7, styTexto, rs.getString("Empleado_Fecha_Ingreso"));
+            this.xls_valor( row, cell, (short)8, styTexto, rs.getString("Area_Origen"));
+            this.xls_valor( row, cell, (short)9, styTexto, rs.getString("Area_Destino"));            
+            this.xls_valor( row, cell, (short)10, styTexto, rs.getString("Ccto_codigo")); 
+            this.xls_valor( row, cell, (short)11, styTexto, rs.getString("Ccb_codigo")); 
+            this.xls_valor( row, cell, (short)12, styTexto, rs.getString("Centro_responsabilidad_codigo")); 
+            this.xls_valor( row, cell, (short)13, styTexto, rs.getString("Emp_Mov_Fecha_Inicio"));                    
+            this.xls_valor( row, cell, (short)14, styTexto, rs.getString("Emp_Mov_Fecha_Reg"));                    
+        }            
+        
+        wb.write(fileOut);
+        fileOut.close(); 
+        if (Total_registros==0){
+            //-- Eliminar archivo excel
+            rpta= this.DeleteFile(this.getReporte_ruta_completa());
+            rpta="No hay registros en el periodo de fecha solicitado. No se generó archivo interfase.";
+            return rpta;
+        }
+        rpta=this.Registrar_reporte_basedatos();
+        if (rpta.compareTo("OK")!=0){
+            return rpta;
+        }
+        //-- Eliminar archivo excel
+        rpta= this.DeleteFile(this.getReporte_ruta_completa());
+        
+     }catch(Exception e){
+         rpta=e.getMessage();     
+     }    
+    }
+    return rpta;
+}
+
+public String Obtener_mes_siguiente(){
+    String rpta="OK", smes="", sanio="";
+    String ssql="";
+    Statement stmt;
+    ResultSet rs, rsp;
+
+    rpta=this.ConectarmeBLOB();
+    if(rpta.compareTo("OK")==0){
+     try{
+        smes="";
+         if (this.getMes_codigo()==12){
+             smes="1";
+             sanio=String.valueOf(this.getAnio_codigo()+1);
+         }else{
+             smes=String.valueOf(this.getMes_codigo());
+             sanio=String.valueOf(this.getAnio_codigo());
+         }
+         ssql="select * from meses where mes_codigo=" +smes;
+         stmt=this.getMyconeccion().createStatement();
+         rs=stmt.executeQuery(ssql);
+         if(rs.next()){
+             rpta=rs.getString("mes_descripcion") + " de " + sanio;
+         }else{
+             rpta="";
+         }
+     }catch(Exception e){
+         rpta=e.getMessage();     
+     }    
+    }
+    return rpta;
+}
+public String Registrar_reporte_basedatos(){
+    
+    String sql, rpta="OK";
+    Connection conn;
+    Statement stmt;
+    ResultSet rs;
+    PreparedStatement ps;
+    
+    librerias.mantenimiento  objman = new librerias.mantenimiento();
+    objman.setMydriver(this.getMydriver());
+    objman.setMyurl(this.getMyurl());
+    objman.setMyuser(this.getMyuser());
+    objman.setMypwd(this.getMypwd());
+    rpta = objman.ConectarmeBLOB();
+    conn = objman.getMyconeccion();
+    
+    TryBlob tb =new TryBlob(); 
+    tb.setMyDriver(this.getMydriver());
+    tb.setMyUrl(this.getMyurl());
+    tb.setMyUser(this.getMyuser());
+    tb.setMyPwd(this.getMypwd());
+    tb.setTablaImagen("nom_interfases_generadas ");
+    tb.setCampoImagen("rep_binario");
+    tb.setCampoClave("codigo");
+
+    if (conn != null) 
+    {
+     try{
+         
+        sql="select isnull(max(" + tb.getCampoClave() + "),0)+1 id from " + tb.getTablaImagen() + "";
+        stmt=conn.createStatement();
+        rs=stmt.executeQuery(sql);
+        rs.next();
+        tb.setCampoClaveValor(rs.getString("id"));
+
+        sql ="INSERT INTO " + tb.getTablaImagen();
+        sql +=" (codigo,anio_codigo,mes_codigo, proceso_codigo, empleado_genera, fecha_genera_anterior, fecha_genera_actual, Rep_Nombre, Fecha_reg)";
+        sql +=" VALUES(?,?,?,?,?, convert(datetime,?,120),convert(datetime,?,120),?, getdate())";
+
+        ps = conn.prepareStatement(sql);
+        /*
+        System.out.println(sql);
+        System.out.println(this.getAnio_codigo());
+        System.out.println(this.getMes_codigo());
+        System.out.println(this.getProceso_codigo());
+        System.out.println(this.getEmpleado_codigo());
+        System.out.println(this.getFecha_del());
+        System.out.println(this.getFecha_al());
+        System.out.println(this.getReporte_nombre());
+        */
+        ps.setLong(1,Long.parseLong(tb.getCampoClaveValor())); 
+        ps.setInt(2,this.getAnio_codigo());
+        ps.setInt(3,this.getMes_codigo());
+        ps.setInt(4,this.getProceso_codigo());
+	ps.setInt(5, this.getEmpleado_codigo());
+        ps.setString(6, this.getFecha_del());
+        ps.setString(7, this.getFecha_al());
+        
+        ps.setString(8,this.getReporte_nombre());
+        ps.executeUpdate();
+
+        tb.setNombreArchivo(this.getReporte_ruta_completa());
+        rpta = tb.Grabar();
+        if(rpta.equals("OK")){
+          System.out.println("Encriptacion de " + this.getReporte_ruta_completa() + ":" + rpta);
+          //Escribe_log("Graba_DB:" + strRpta,aleatorio); 
+        }
+        else{
+          System.out.println("Error en la Encriptacion de " + this.getReporte_ruta_completa() + ":" + rpta);
+          //Escribe_log("Error en Graba_DB:" + strRpta,aleatorio);   
+        }
+              
+        tb=null;
+        conn.close();
+         
+     }catch(Exception e){
+        rpta = "ERROR Registrar_reporte_basedatos: " + e.getMessage();         
+     }
+  }
+  return rpta;
+}
+
+
+public static void main(String[] args) {
+        // TODO code application logic here
+    String rpta="OK";
+    Reportes_Interfases_Meta4 o=new Reportes_Interfases_Meta4();
+    
+    String DriverConeccion= "net.sourceforge.jtds.jdbc.Driver";
+    String UrlConeccion = "jdbc:jtds:sqlserver://172.30.194.37:1433/db_personal01;instance=ATENTO"; //10.252.156.32
+    String UserConeccion = "userdesarrollo";
+    String PwdConeccion = "Atento2013";
+    //String UrlConeccion = "jdbc:jtds:sqlserver://10.252.196.98/db_personal01"; //10.252.156.32
+    //String UrlConeccion = "jdbc:jtds:sqlserver://10.252.194.154/db_personal01"; //10.252.156.32
+    //String UserConeccion = "sa";
+    //String PwdConeccion = "camori2008";
+  
+    o.setMydriver(DriverConeccion);
+    o.setMyurl(UrlConeccion);
+    o.setMyuser(UserConeccion);
+    o.setMypwd(PwdConeccion);
+    
+    o.setEmpleado_codigo(3300);
+    //o.setFecha_del("01/01/2007");    
+    //o.setFecha_al("31/01/2007");
+    o.setEmpresa_codigo(1);    
+    o.setAnio_codigo(2014);
+    o.setMes_codigo(6);
+    
+    o.setProceso_codigo(3);
+    
+    //o.setEmail("rrodriguezm@atentoperu.com.pe");
+    //o.setEmail("jrocah@atentoperu.com.pe");
+    o.setEmail("mcortezc@atentoperu.com.pe");
+    o.setReporte_dir_destino("D:/Reportes_Generados/");
+    
+    switch(o.getProceso_codigo()){
+        case 1:
+            rpta="Licencias : " + o.Interfase_licencias(); 
+            break;
+        case 2:
+            rpta="Ceses : " + o.Interfase_ceses(); 
+            break;
+        case 3:
+            rpta="Altas : " + o.Interfase_altas(); 
+            break;
+        case 4:
+            rpta="Faltas GAP : " + o.Interfase_faltas(); 
+            break;
+        case 5:
+            rpta="Actualizaciones : " + o.Interfase_actualizaciones(); 
+            break;
+        case 6:
+            rpta="Vacaciones : " + o.Interfase_vacaciones(); 
+            break;
+        case 7:
+            rpta="Altas : " + o.Interfase_derechohabientes_altas(); 
+            break;
+        case 8:
+            rpta="Tardanzas GAP : " + o.Interfase_tardanzas(); 
+            break;
+        case 9:
+            rpta="Cambio de Condicion : " + o.Interfase_cambio_condicion(); 
+            break;
+        case 10:
+            rpta="Traslado : " + o.Interfase_traslados(); 
+            break;
+        case 11:
+            rpta="Bajas : " + o.Interfase_derechohabientes_bajas();
+            break;
+            //--- procesos para piloto
+        case 12:
+            rpta="Ficha Alta Personal : " + o.Interfase_Ficha_Altas();
+            break;
+        case 13:
+            rpta="Ficha Parientes : " + o.Interfase_Ficha_Parientes();
+            break;
+        case 14:
+            rpta="Ficha Licencias : " + o.Interfase_Ficha_Licencias();
+            break;
+        case 15:
+            rpta="Ficha Vacaciones : " + o.Interfase_Ficha_Vacaciones();
+            break;
+        default:
+            rpta="Seleccione proceso";
+    }
+    
+    System.out.println(rpta);
+}
+    
+    public String getFecha_del() {
+        return this.fecha_del;
+    }    
+    public void setFecha_del(String fecha_del) {
+        this.fecha_del = fecha_del;
+    }    
+    public String getFecha_al() {
+        return this.fecha_al;
+    }
+    public void setFecha_al(String fecha_al) {
+        this.fecha_al = fecha_al;
+    }
+    public int getEmpleado_codigo() {
+        return this.empleado_codigo;
+    }
+    public void setEmpleado_codigo(int empleado_codigo) {
+        this.empleado_codigo = empleado_codigo;
+    }
+    
+    /**
+     * Getter for property empresa_codigo.
+     * @return Value of property empresa_codigo.
+     */
+    public int getEmpresa_codigo() {
+        return this.empresa_codigo;
+    }
+    
+    /**
+     * Setter for property empresa_codigo.
+     * @param empresa_codigo New value of property empresa_codigo.
+     */
+    public void setEmpresa_codigo(int empresa_codigo) {
+        this.empresa_codigo = empresa_codigo;
+    }
+    
+    /**
+     * Getter for property anio_codigo.
+     * @return Value of property anio_codigo.
+     */
+    public int getAnio_codigo() {
+        return this.anio_codigo;
+    }
+    
+    /**
+     * Setter for property anio_codigo.
+     * @param anio_codigo New value of property anio_codigo.
+     */
+    public void setAnio_codigo(int anio_codigo) {
+        this.anio_codigo = anio_codigo;
+    }
+    
+    /**
+     * Getter for property mes_codigo.
+     * @return Value of property mes_codigo.
+     */
+    public int getMes_codigo() {
+        return this.mes_codigo;
+    }
+    
+    /**
+     * Setter for property mes_codigo.
+     * @param mes_codigo New value of property mes_codigo.
+     */
+    public void setMes_codigo(int mes_codigo) {
+        this.mes_codigo = mes_codigo;
+    }
+    
+    /**
+     * Getter for property email.
+     * @return Value of property email.
+     */
+    public String getEmail() {
+        return this.email;
+    }
+    
+    /**
+     * Setter for property email.
+     * @param email New value of property email.
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    /**
+     * Getter for property proceso_codigo.
+     * @return Value of property proceso_codigo.
+     */
+    public int getProceso_codigo() {
+        return this.proceso_codigo;
+    }
+    
+    /**
+     * Setter for property proceso_codigo.
+     * @param proceso_codigo New value of property proceso_codigo.
+     */
+    public void setProceso_codigo(int proceso_codigo) {
+        this.proceso_codigo = proceso_codigo;
+    }
+    
+    /**
+     * Getter for property empresa_ruc.
+     * @return Value of property empresa_ruc.
+     */
+    public String getEmpresa_ruc() {
+        return this.empresa_ruc;
+    }
+    
+    /**
+     * Setter for property empresa_ruc.
+     * @param empresa_ruc New value of property empresa_ruc.
+     */
+    public void setEmpresa_ruc(String empresa_ruc) {
+        this.empresa_ruc = empresa_ruc;
+    }
+    
+}

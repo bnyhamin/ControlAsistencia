@@ -1,0 +1,11 @@
+/* tabPane tweaks no edges, no borders tab panes, below a 4px baseline */
+.demoTabSet {
+	margin-top:2px;
+}
+.demoTabPane {
+	margin-top:4px;
+}
+
+.demoHoverStyle {
+	background-color:#FFFF99;
+}

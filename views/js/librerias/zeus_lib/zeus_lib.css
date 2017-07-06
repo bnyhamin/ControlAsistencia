@@ -1,0 +1,21 @@
+.icon-ejecutar{
+	background:url('ejecutar3.png') no-repeat center center;
+}
+.icon-xls{
+	background:url('xls.png') no-repeat center center;
+}
+/*
+.textbox .textbox-text{
+    font-size: 12px;
+   
+}
+*/
+.fuente {
+    font-size: 12px;
+   
+}
+
+*{
+    font-size:10px;
+    font-family: Arial, Helvetica, sans-serif,verdana;
+}

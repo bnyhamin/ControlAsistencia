@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>SmartClient&trade; Reference 6.5.1 (2008-06-30)</title>
+</head>
+<body BGCOLOR='#606060' CLASS=normal STYLE="overflow:hidden">
+
+<script>
+window.isomorphicDir='../../';
+</script>
+
+<LINK REL="stylesheet" TYPE="text/css" HREF="skin/shell_styles.css">
+<LINK REL="stylesheet" TYPE="text/css" HREF="docViewerStyles.css">
+<LINK REL="stylesheet" TYPE="text/css" HREF="sourceColorizer.css">
+
+<!-- load ISC -->
+<SCRIPT SRC=../development/ISC_History.js?isc_version=6.5.1.js></SCRIPT>
+<SCRIPT SRC=../development/ISC_FileLoader.js?isc_version=6.5.1.js></SCRIPT>
+<SCRIPT SRC=../development/ISC_Core.js?isc_version=6.5.1.js></SCRIPT>
+<!--  -->
+<SCRIPT SRC=../development/ISC_Foundation.js?isc_version=6.5.1.js></SCRIPT>
+<SCRIPT SRC=../development/ISC_Containers.js?isc_version=6.5.1.js></SCRIPT>
+<SCRIPT SRC=../development/ISC_Grids.js?isc_version=6.5.1.js></SCRIPT>
+<SCRIPT SRC=../development/ISC_Forms.js?isc_version=6.5.1.js></SCRIPT>
+<SCRIPT SRC=../development/ISC_RichTextEditor.js?isc_version=6.5.1.js></SCRIPT>
+<SCRIPT SRC=../development/ISC_DataBinding.js?isc_version=6.5.1.js></SCRIPT>
+<!--  -->
+<!--  -->
+<SCRIPT SRC=../development/ISC_DocViewer.js?isc_version=6.5.1.js></SCRIPT>
+<SCRIPT SRC=../development/ISC_SyntaxHiliter.js?isc_version=6.5.1.js></SCRIPT>
+<SCRIPT SRC=../development/ISC_ExampleViewer.js?isc_version=6.5.1.js></SCRIPT>
+<SCRIPT src=../../skins/SmartClient/load_skin.js?isc_version=6.5.1.js></SCRIPT>
+
+<script src=docTree.js></script>
+<script src=exampleTree.js></script>
+<script>
+isc.Page.leaveScrollbarGap = false;
+
+if (isc.Browser.isSafari) {
+    isc.FileLoader.loadFile("referenceDocs.js", "isc.jsdoc.init(docItems)");
+} else {
+    isc.xml.loadXML("referenceDocs.xml", "isc.jsdoc.init(xmlDoc)");
+}
+
+isc.DocViewer.create({
+    trackHistory: true,
+    width: "100%",
+    height: "100%",
+    layoutMargin:8,
+    docRoot: "../../../docs/"
+});
+
+</script>
+
+</body>
+</html>

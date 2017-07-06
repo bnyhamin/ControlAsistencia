@@ -1,0 +1,22 @@
+<table class='FormTable' id='listado' width='200%' align='center' border='0' cellPadding='0' cellSpacing='0' style='width:200%'>
+			<tr>
+			    	<td colspan='13' align=center><b>Programacion Semana &nbsp;20 </td>
+			</tr>
+			<tr>
+			    	<td colspan='13' align=center><b>Del 09/05/2016 Al 15/05/2016</td>
+			</tr>
+			<tr align='center' style='background-color:#D8DAB4'>
+	    	<td class='ColumnTD' style='width:80px'><b>Nro.</td>
+	    	<td class='ColumnTD'><b>Area</td>
+	    	<td class='ColumnTD'><b>DNI</td>
+    		<td class='ColumnTD'><b>Nombres</td>
+    		<td class='ColumnTD'><b>Cod.comb</td>
+				<td class='ColumnTD'><b>Lunes</td>
+				<td class='ColumnTD'><b>Martes</td>
+				<td class='ColumnTD'><b>Miercoles</td>
+				<td class='ColumnTD'><b>Jueves</td>
+				<td class='ColumnTD'><b>Viernes</td>
+				<td class='ColumnTD'><b>Sabado</td>
+				<td class='ColumnTD'><b>Domingo</td>
+				<td class='ColumnTD'><b>H.Efectivas</td>
+			</tr><tr class='ca_DataTD' onMouseout=this.style.backgroundColor='' onMouseover=this.style.backgroundColor='#F4F4F4'><td align=center>1&nbsp;</td><td align=left>JEFATURA DE NEGOCIOS MULTICANAL&nbsp;</td><td align=left>42983005&nbsp;</td><td align=left>POMA CHOQUEHUANCA WENDY JANETH&nbsp;</td><td align=left>NATURA201104&nbsp;</td><td align=left>De 09:00 a 19:00&nbsp;</td><td align=left>De 09:00 a 19:00&nbsp;</td><td align=left>De 09:00 a 19:30&nbsp;</td><td align=left>De 09:00 a 19:30&nbsp;</td><td align=left>De 09:00 a 21:00&nbsp;</td><td align=left>Descanso&nbsp;</td><td align=left>Descanso&nbsp;</td><td align=left>48.0&nbsp;</td></tr><tr class='ca_DataTD' onMouseout=this.style.backgroundColor='' onMouseover=this.style.backgroundColor='#F4F4F4'><td align=center>2&nbsp;</td><td align=left>JEFATURA DE NEGOCIOS MULTICANAL&nbsp;</td><td align=left>47070470&nbsp;</td><td align=left>MERA BURGOS SANDRA JULISSA&nbsp;</td><td align=left>NATURA201104&nbsp;</td><td align=left>De 09:00 a 19:00&nbsp;</td><td align=left>De 09:00 a 19:00&nbsp;</td><td align=left>De 09:00 a 19:30&nbsp;</td><td align=left>De 09:00 a 19:30&nbsp;</td><td align=left>De 09:00 a 21:00&nbsp;</td><td align=left>Descanso&nbsp;</td><td align=left>Descanso&nbsp;</td><td align=left>48.0&nbsp;</td></tr><tr class='ca_DataTD' onMouseout=this.style.backgroundColor='' onMouseover=this.style.backgroundColor='#F4F4F4'><td align=center>3&nbsp;</td><td align=left>JEFATURA DE NEGOCIOS MULTICANAL&nbsp;</td><td align=left>72178238&nbsp;</td><td align=left>LUMBRE MAURICIO JEFFERSON JESUS&nbsp;</td><td align=left>NATURA201104&nbsp;</td><td align=left>De 09:00 a 19:00&nbsp;</td><td align=left>De 09:00 a 19:00&nbsp;</td><td align=left>De 09:00 a 19:30&nbsp;</td><td align=left>De 09:00 a 19:30&nbsp;</td><td align=left>De 09:00 a 21:00&nbsp;</td><td align=left>Descanso&nbsp;</td><td align=left>Descanso&nbsp;</td><td align=left>48.0&nbsp;</td></tr><tr class='ca_DataTD' onMouseout=this.style.backgroundColor='' onMouseover=this.style.backgroundColor='#F4F4F4'><td align=center>4&nbsp;</td><td align=left>JEFATURA NORTE I&nbsp;</td><td align=left>41444200&nbsp;</td><td align=left>D'ANGELO NIETO POLO RUBEN GRAZIO&nbsp;</td><td align=left>NATURA201104&nbsp;</td><td align=left>De 09:00 a 19:00&nbsp;</td><td align=left>De 09:00 a 19:00&nbsp;</td><td align=left>De 09:00 a 19:30&nbsp;</td><td align=left>De 09:00 a 19:30&nbsp;</td><td align=left>De 09:00 a 21:00&nbsp;</td><td align=left>Descanso&nbsp;</td><td align=left>Descanso&nbsp;</td><td align=left>48.0&nbsp;</td></tr></table>

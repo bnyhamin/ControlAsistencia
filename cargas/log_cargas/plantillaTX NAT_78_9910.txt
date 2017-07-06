@@ -1,0 +1,52 @@
+--- ****************** Inicio ************************* ---
+Carga de Tiempos de Conexion con Fecha: 07/08/2008 09:09:10 a.m.
+ Usuario: 3300
+ Archivo: plantillaTX NAT_78_9910
+ Código Proceso: 5765
+---** Se modificó TX del DNI: 25763699 **--- 07/08/2008 09:09:10 a.m. --- 5765
+---** Se modificó TX del DNI: 41856173 **--- 07/08/2008 09:09:10 a.m. --- 5765
+---** Se modificó TX del DNI: 40869149 **--- 07/08/2008 09:09:10 a.m. --- 5765
+---** Se modificó TX del DNI: 10804326 **--- 07/08/2008 09:09:11 a.m. --- 5765
+---** Se modificó TX del DNI: 40943981 **--- 07/08/2008 09:09:11 a.m. --- 5765
+---** Se modificó TX del DNI: 25763699 **--- 07/08/2008 09:09:11 a.m. --- 5765
+---** Se modificó TX del DNI: 40943981 **--- 07/08/2008 09:09:11 a.m. --- 5765
+---** Se modificó TX del DNI: 40869149 **--- 07/08/2008 09:09:11 a.m. --- 5765
+---** Se modificó TX del DNI: 10804326 **--- 07/08/2008 09:09:11 a.m. --- 5765
+---** Se modificó TX del DNI: 41856173 **--- 07/08/2008 09:09:11 a.m. --- 5765
+---** Se modificó TX del DNI: 44653131 **--- 07/08/2008 09:09:11 a.m. --- 5765
+---** Se modificó TX del DNI: 40587114 **--- 07/08/2008 09:09:11 a.m. --- 5765
+---** Se modificó TX del DNI: 25856218 **--- 07/08/2008 09:09:11 a.m. --- 5765
+---** Se modificó TX del DNI: 43382191 **--- 07/08/2008 09:09:11 a.m. --- 5765
+---** Se modificó TX del DNI: 40615078 **--- 07/08/2008 09:09:11 a.m. --- 5765
+---** Se modificó TX del DNI: 08877832 **--- 07/08/2008 09:09:11 a.m. --- 5765
+---** Se modificó TX del DNI: 40671549 **--- 07/08/2008 09:09:11 a.m. --- 5765
+---** Se modificó TX del DNI: 43778383 **--- 07/08/2008 09:09:11 a.m. --- 5765
+---** Se modificó TX del DNI: 08877832 **--- 07/08/2008 09:09:11 a.m. --- 5765
+---** Se modificó TX del DNI: 42723079 **--- 07/08/2008 09:09:12 a.m. --- 5765
+---** Se modificó TX del DNI: 43778383 **--- 07/08/2008 09:09:12 a.m. --- 5765
+---** Se modificó TX del DNI: 44653131 **--- 07/08/2008 09:09:12 a.m. --- 5765
+---** Se modificó TX del DNI: 06635304 **--- 07/08/2008 09:09:12 a.m. --- 5765
+---** Se modificó TX del DNI: 40615078 **--- 07/08/2008 09:09:12 a.m. --- 5765
+---** Se modificó TX del DNI: 40671548 **--- 07/08/2008 09:09:12 a.m. --- 5765
+---** Se modificó TX del DNI: 43382191 **--- 07/08/2008 09:09:12 a.m. --- 5765
+---** Se modificó TX del DNI: 42723079 **--- 07/08/2008 09:09:12 a.m. --- 5765
+---** Se modificó TX del DNI: 40671548 **--- 07/08/2008 09:09:12 a.m. --- 5765
+---** Se modificó TX del DNI: 25856218 **--- 07/08/2008 09:09:12 a.m. --- 5765
+---** Se modificó TX del DNI: 06635304 **--- 07/08/2008 09:09:12 a.m. --- 5765
+---** Se modificó TX del DNI: 40671549 **--- 07/08/2008 09:09:12 a.m. --- 5765
+---** Se modificó TX del DNI: 40587114 **--- 07/08/2008 09:09:12 a.m. --- 5765
+---** Se modificó TX del DNI: 43377472 **--- 07/08/2008 09:09:12 a.m. --- 5765
+---** Se modificó TX del DNI: 44165413 **--- 07/08/2008 09:09:12 a.m. --- 5765
+---** Se modificó TX del DNI: 44165413 **--- 07/08/2008 09:09:12 a.m. --- 5765
+---** Se modificó TX del DNI: 44382637 **--- 07/08/2008 09:09:12 a.m. --- 5765
+---** Se modificó TX del DNI: 40757960 **--- 07/08/2008 09:09:12 a.m. --- 5765
+---** Se modificó TX del DNI: 42618641 **--- 07/08/2008 09:09:12 a.m. --- 5765
+---** Se modificó TX del DNI: 02636068 **--- 07/08/2008 09:09:12 a.m. --- 5765
+---** Se modificó TX del DNI: 44382637 **--- 07/08/2008 09:09:12 a.m. --- 5765
+---** Se modificó TX del DNI: 02636068 **--- 07/08/2008 09:09:13 a.m. --- 5765
+---** Se modificó TX del DNI: 41057375 **--- 07/08/2008 09:09:13 a.m. --- 5765
+---** Se modificó TX del DNI: 41057375 **--- 07/08/2008 09:09:13 a.m. --- 5765
+---** Se modificó TX del DNI: 42618641 **--- 07/08/2008 09:09:13 a.m. --- 5765
+---** Se modificó TX del DNI: 43377472 **--- 07/08/2008 09:09:13 a.m. --- 5765
+---** Se modificó TX del DNI: 41335705 **--- 07/08/2008 09:09:13 a.m. --- 5765
+---** CARGA OK: Se añadieron 0 nuevos registros de 46 leidos.\nSe actualizaron los tiempos de : 46 registros **--- 07/08/2008 09:09:13 a.m. --- 5765

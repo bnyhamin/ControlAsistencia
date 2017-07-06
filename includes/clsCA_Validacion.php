@@ -1,0 +1,391 @@
+<?php
+//require_once(PathIncludes() . "mantenimiento.php");
+class ca_validacion extends mantenimiento{
+var $empleado_codigo='';
+var $asistencia_codigo='';
+var $responsable_codigo='';
+var $fecha='';
+var $indica = 'GS';
+
+function Listar_mi_grupo($emp){
+    $rpta="OK";
+    $lista="";
+    $bgcolor="#33CCCC";
+    $cn=$this->getMyConexionADO();
+    $ssql="exec spca_listar_migrupo " . $this->responsable_codigo .", '" . $this->fecha ."'";
+    $rs = $cn->Execute($ssql);
+    
+    if(!$rs->EOF) {
+        $reg="";
+        $inc="";
+        while(!$rs->EOF){	
+            if ($rs->fields[9]==1){
+                $reg = "<tr class='CA_DataTD' onMouseout=this.style.backgroundColor='' onMouseover=this.style.backgroundColor='#F4F4F4'>";
+                $reg .="<td align='center' >";
+
+                if($emp==$rs->fields[0]) $reg .=" <input type='radio' id='rdo' name='rdo' value='" . $rs->fields[0]. "_" .$rs->fields[1]."_1_".$this->indica."' style='cursor:hand' onclick='asistencias(this.value)' title='Gestionar Asistencias' checked>";
+                else $reg .="<input type='radio' id='rdo' name='rdo' value='" . $rs->fields[0]. "_" .$rs->fields[1]."_1_".$this->indica."' style='cursor:hand' onclick='asistencias(this.value)' title='Gestionar Asistencias' >";
+                
+                $reg .="</td>";
+                $reg .="<td  align='center'";
+                if($rs->fields[2]==1){
+                    if($rs->fields[3]==1){
+                        if($rs->fields[4]==1) $reg .=" bgcolor='#e8cc91' "; 
+                        else $reg .=" bgcolor='#00CCCC' "; 
+                    }else $reg .=" class='CA_ConDataTD'";
+                }else{
+                  $reg .="   "; 
+                }
+                $reg .="    >";
+                $reg .=" " . $rs->fields[0]."";
+                $reg .= "	  </td>";
+                $reg .="    <td align='left'>";
+                $reg .=" " . $rs->fields[1]."";
+                $reg .= "	   </td>";
+                $reg .="    <td align='left'";
+                if($rs->fields[5]==1) $reg .=" bgcolor='#FFFF00'>"; 
+                else $reg .=" >"; 
+                $reg .= "&nbsp;</td>\n";
+                $lista .= $reg;
+                $reg ="	     <td  align='left'>&nbsp;&nbsp;\n</td>\n";
+                $reg .="  </tr>\n";
+                $rs->MoveNext();
+            }
+            if (!$rs->EOF){
+                if ($rs->fields[9]==2){
+                    $reg ="<td  align='center'>";
+                    while (!$rs->EOF && $rs->fields[9]==2){
+                        if($rs->fields[8] !=""){
+                            $reg .="     <img  src='../images/" . $rs->fields[8]. "' width='15' height='15' border='0' alt='" . $rs->fields[7]. "'>";
+                        }else{
+                            $reg .="     <img  src='../images/stop_hand.png' width='15' height='15' border='0' alt='" . $rs->fields[7]. "'>";
+                        }
+                        //$reg .="     <img  src='../Images/" . $rs->fields[5]->value. "' width='15' height='15' border='0'  alt='" . $rs->fields[4]->value. "'>";
+                        $reg .="&nbsp;&nbsp;\n";
+                        $rs->MoveNext();
+                    } // end while
+                    $reg .="  </tr>\n";
+                } // end if
+             }
+             $lista .= $reg;	
+             //$rs->MoveNext();
+            } // end while
+                
+      }else{
+		$lista = "<tr >\n";
+		$lista .="     <td align='center' class='Ca_DataTD' colspan='4'>\n";
+		$lista .="&nbsp;No tiene grupo de empleados asignados\n";
+		$lista .= "	   </td>\n";
+		$lista .= "</tr>\n";			
+      }
+  $rs->close();
+  $rs=null;
+  
+  return $lista;
+    
+}
+
+function Listar_Empleado_Area($emp){
+$rpta="OK";
+$lista="";
+$bgcolor="#33CCCC";
+$cn=$this->getMyConexionADO();
+//$cn->debug=true;
+$ssql="exec spCA_Listar_Ejecutivo_Area " . $emp .", '" . $this->fecha ."'";
+$rs = $cn->Execute($ssql);
+if(!$rs->EOF) {
+    $reg="";
+    $inc="";
+    while(!$rs->EOF){	
+        if ($rs->fields[9]==1){
+            $reg = "<tr class='CA_DataTD' onMouseout=this.style.backgroundColor='' onMouseover=this.style.backgroundColor='#F4F4F4'>";
+            $reg .="<td align='center' >";
+            $reg .="<input type='radio' id='rdo' name='rdo' value='" . $rs->fields[0]. "_" .$rs->fields[1]."_1_".$this->indica."' style='cursor:hand' onclick='asistencias(this.value)' title='Gestionar Asistencias' >";
+            $reg .="</td>";
+            $reg .="<td  align='center'";
+            if($rs->fields[2]==1){
+                if($rs->fields[3]==1){
+                    if($rs->fields[4]==1) $reg .=" bgcolor='#e8cc91' "; 
+                    else $reg .=" bgcolor='#00CCCC' "; 
+                }else $reg .=" class='CA_ConDataTD'";
+            }else{
+              $reg .="   "; 
+            }
+            $reg .="    >";
+            $reg .=" " . $rs->fields[0]."";
+            $reg .= "	  </td>";
+            $reg .="    <td align='left'>";
+            $reg .=" " . $rs->fields[1]."";
+            $reg .= "	   </td>";
+            $reg .="    <td align='left'";
+            if($rs->fields[5]==1) $reg .=" bgcolor='#FFFF00'>"; 
+            else $reg .=" >"; 
+            $reg .= "&nbsp;</td>\n";
+            $lista .= $reg;
+            $reg ="	     <td  align='left'>&nbsp;&nbsp;\n</td>\n";
+            $reg .="  </tr>\n";
+            $rs->MoveNext();
+        }
+        if (!$rs->EOF){
+            if ($rs->fields[9]==2){
+                $reg ="<td  align='center'>";
+                while (!$rs->EOF && $rs->fields[9]==2){
+                    if($rs->fields[8] !="") $reg .="     <img  src='../images/" . $rs->fields[8]. "' width='15' height='15' border='0' alt='" . $rs->fields[7]. "'>";
+                    else $reg .="     <img  src='../images/stop_hand.png' width='15' height='15' border='0' alt='" . $rs->fields[7]. "'>";
+                    $reg .="&nbsp;&nbsp;\n";
+                    $rs->MoveNext();
+                }
+                $reg .="  </tr>\n";
+            }
+         }
+         $lista .= $reg;
+    }           
+}
+$rs->close();
+$rs=null;  
+return $lista;
+}
+
+
+function Listar_otros($emp){
+/*$rpta="OK";
+$lista="";
+$bgcolor="#33CCCC";
+$rpta=$this->conectarme_ado();
+  if($rpta=="OK"){ 
+	$ssql="spca_listar_OtroGrupo " . $this->responsable_codigo .", '" . $this->fecha ."'";
+	//echo $ssql;
+	$rs = $this->cnnado->Execute($ssql);
+	if(!$rs->EOF()) {
+		$reg="";
+		$inc="";
+		while(!$rs->EOF()){
+			//echo $rs->fields[0]->value;
+			if ($rs->fields[9]->value==1){
+				$reg = "<tr class='CA_DataTD' onMouseout=this.style.backgroundColor='' onMouseover=this.style.backgroundColor='#F4F4F4'>\n";
+				$reg .="    <td align='center' >\n";
+				if($emp==$rs->fields[0]->value) $reg .=" <input type='radio' id='rdo' name='rdo' value='" . $rs->fields[0]->value . "_" .$rs->fields[1]->value."_1' style='cursor:hand' onclick='asistencias(this.value)' title='Gestionar Asistencias' checked>\n";
+				else $reg .="	    <input type='radio' id='rdo' name='rdo' value='" . $rs->fields[0]->value . "_" .$rs->fields[1]->value."_1' style='cursor:hand' onclick='asistencias(this.value)' title='Gestionar Asistencias' >\n";
+				$reg .="	  </td>\n";
+				$reg .="    <td  align='center' ";
+				if($rs->fields[2]->value==1){
+				    if($rs->fields[3]->value==1){
+					 if($rs->fields[4]->value==1) $reg .=" bgcolor='#e8cc91' "; 
+					  else $reg .=" bgcolor='#00CCCC' "; 
+					  }else $reg .=" class='CA_ConDataTD'";
+				  }  
+				else{  
+				  $reg .="   "; 
+				}
+				$reg .="    >\n";
+				$reg .=" " . $rs->fields[0]->value. "\n";
+				$reg .= "	  </td>\n";
+				$reg .="    <td    align='left'>\n";
+				$reg .=" " . $rs->fields[1]->value. "\n";
+				$reg .= "	   </td>\n";
+				$reg .="    <td    align='left'\n";
+				if($rs->fields[5]->value==1) $reg .=" bgcolor='#FFFF00'>"; 
+				else $reg .=" >"; 
+				$reg .= "&nbsp;</td>\n";
+				$lista .= $reg;
+				$reg ="	     <td  align='left'>&nbsp;&nbsp;\n</td>\n";
+				$reg .="  </tr>\n";
+				$rs->MoveNext();
+			}
+			if (!$rs->EOF()){
+				if ($rs->fields[9]->value==2){
+					$reg ="<td  align='center'>\n";
+					while (!$rs->EOF() && $rs->fields[9]->value==2){
+						 if($rs->fields[8]->value !=""){
+							$reg .="     <img  src='../Images/" . $rs->fields[8]->value. "' width='15' height='15' border='0' alt='" . $rs->fields[7]->value. "'>";
+						}else{
+			    		   $reg .="     <img  src='../Images/stop_hand.png' width='15' height='15' border='0' alt='" . $rs->fields[7]->value. "'>";
+						}
+						//$reg .="     <img  src='../Images/" . $rs->fields[5]->value. "' width='15' height='15' border='0'  alt='" . $rs->fields[4]->value. "'>";
+						$reg .="&nbsp;&nbsp;\n";
+						$rs->MoveNext();
+					} // end while
+					$reg .="  </tr>\n";
+				} // end if
+			 }
+			 $lista .= $reg;	
+			 //$rs->MoveNext();
+		} // end while
+		
+	  }
+  $rs->close();
+  $rs=null;
+  	  
+  }
+  return $lista;
+  */
+  
+    $rpta="OK";
+    $lista="";
+    $bgcolor="#33CCCC";
+    $cn=$this->getMyConexionADO();
+    //$cn->debug=true;
+    $ssql="exec spca_listar_OtroGrupo " . $this->responsable_codigo .", '" . $this->fecha ."'";
+	//echo $ssql;
+    $rs = $cn->Execute($ssql);
+    if(!$rs->EOF) {
+        $reg="";
+        $inc="";
+        while(!$rs->EOF){
+            
+            if ($rs->fields[9]==1){
+                $reg = "<tr class='CA_DataTD' onMouseout=this.style.backgroundColor='' onMouseover=this.style.backgroundColor='#F4F4F4'>\n";
+                $reg .="<td align='center' >\n";
+                if($emp==$rs->fields[0]) $reg .=" <input type='radio' id='rdo' name='rdo' value='" . $rs->fields[0] . "_" .$rs->fields[1]."_1' style='cursor:hand' onclick='asistencias(this.value)' title='Gestionar Asistencias' checked>\n";
+                else $reg .="	    <input type='radio' id='rdo' name='rdo' value='" . $rs->fields[0] . "_" .$rs->fields[1]."_1' style='cursor:hand' onclick='asistencias(this.value)' title='Gestionar Asistencias' >\n";
+                $reg .="	  </td>\n";
+                $reg .="    <td  align='center' ";
+                if($rs->fields[2]==1){
+                    if($rs->fields[3]==1){
+                        if($rs->fields[4]==1) $reg .=" bgcolor='#e8cc91' "; 
+                        else $reg .=" bgcolor='#00CCCC' "; 
+                    }else $reg .=" class='CA_ConDataTD'";
+                }else{
+                    $reg .="   "; 
+                }
+                $reg .="    >\n";
+                $reg .=" " . $rs->fields[0]. "\n";
+                $reg .= "	  </td>\n";
+                $reg .="    <td    align='left'>\n";
+                $reg .=" " . $rs->fields[1]. "\n";
+                $reg .= "	   </td>\n";
+                $reg .="    <td    align='left'\n";
+                if($rs->fields[5]==1) $reg .=" bgcolor='#FFFF00'>"; 
+                else $reg .=" >"; 
+                $reg .= "&nbsp;</td>\n";
+                $lista .= $reg;
+                $reg ="	     <td  align='left'>&nbsp;&nbsp;\n</td>\n";
+                $reg .="  </tr>\n";
+                $rs->MoveNext();
+            }
+            if (!$rs->EOF){
+                if ($rs->fields[9]==2){
+                    $reg ="<td  align='center'>\n";
+                    while (!$rs->EOF && $rs->fields[9]==2){
+                        if($rs->fields[8] !=""){
+                            $reg .="     <img  src='../Images/" . $rs->fields[8]. "' width='15' height='15' border='0' alt='" . $rs->fields[7]. "'>";
+                        }else{
+                            $reg .="     <img  src='../Images/stop_hand.png' width='15' height='15' border='0' alt='" . $rs->fields[7]. "'>";
+                        }
+                        //$reg .="     <img  src='../Images/" . $rs->fields[5]->value. "' width='15' height='15' border='0'  alt='" . $rs->fields[4]->value. "'>";
+                            $reg .="&nbsp;&nbsp;\n";
+                            $rs->MoveNext();
+                    } // end while
+                    $reg .="  </tr>\n";
+                } // end if
+             }
+             $lista .= $reg;	
+			 //$rs->MoveNext();
+        } // end while
+		
+    }
+  $rs->close();
+  $rs=null;
+  
+  return $lista;
+  
+}
+
+function Listar_cesados($emp){
+/*$rpta="OK";
+$lista="";
+$reg="";
+$bgcolor="#33CCCC";
+$rpta=$this->conectarme_ado();
+  if($rpta=="OK"){ 
+	$ssql ="SELECT     dbo.Empleados.Empleado_Codigo,dbo.Empleados.Empleado_Apellido_Paterno + ' ' + "; 
+    $ssql .="                ' ' + dbo.Empleados.Empleado_Apellido_Materno + ' ' + dbo.Empleados.Empleado_Nombres as empleado"; 
+	$ssql .=" FROM         dbo.CA_Asistencias WITH (nolock) INNER JOIN "; 
+    $ssql .="                  dbo.Empleados ON dbo.CA_Asistencias.Empleado_Codigo = dbo.Empleados.Empleado_Codigo INNER JOIN "; 
+    $ssql .="                  dbo.CA_Asistencia_Responsables ON dbo.CA_Asistencias.Empleado_Codigo = dbo.CA_Asistencia_Responsables.Empleado_Codigo AND "; 
+    $ssql .="                  dbo.CA_Asistencias.Asistencia_codigo = dbo.CA_Asistencia_Responsables.Asistencia_codigo "; 
+	$ssql .=" WHERE     (dbo.Empleados.Estado_Codigo = 2) AND (dbo.CA_Asistencia_Responsables.responsable_codigo = " . $this->responsable_codigo .") AND "; 
+    $ssql .="                  (dbo.CA_Asistencias.Asistencia_fecha = CONVERT(DATETIME,'" . $this->fecha ."', 103)) AND dbo.CA_Asistencias.ca_estado_codigo=1"; 
+	$ssql .=" order by empleado ";
+	
+	//echo $ssql;
+	$rs = $this->cnnado->Execute($ssql);
+	if(!$rs->EOF()) {
+
+		while(!$rs->EOF()){
+			//echo $rs->fields[0]->value;
+				$reg .= "<tr class='CA_DataTD' onMouseout=this.style.backgroundColor='' onMouseover=this.style.backgroundColor='#F4F4F4'>\n";
+				$reg .="    <td align='center' >\n";
+				if($emp==$rs->fields[0]->value) $reg .=" <input type='radio' id='rdo' name='rdo' value='" . $rs->fields[0]->value . "_" .$rs->fields[1]->value."_1' style='cursor:hand' onclick='asistencias(this.value)' title='Gestionar Asistencias' checked>\n";
+				else $reg .="	    <input type='radio' id='rdo' name='rdo' value='" . $rs->fields[0]->value . "_" .$rs->fields[1]->value."_1' style='cursor:hand' onclick='asistencias(this.value)' title='Gestionar Asistencias' >\n";
+				$reg .="	  </td>\n";
+				$reg .="    <td  align='center' ";
+				$reg .=" class='CA_ConDataTD'";
+				$reg .="    >\n";
+				$reg .=" " . $rs->fields[0]->value. "\n";
+				$reg .= "	  </td>\n";
+				$reg .="    <td    align='left'>\n";
+				$reg .=" " . $rs->fields[1]->value. "\n";
+				$reg .= "	   </td>\n";
+				$reg .="  </tr>\n";
+				$rs->MoveNext();	
+			 //$rs->MoveNext();
+		} // end while
+	  }
+  $lista .= $reg;
+
+  $rs->close();
+  $rs=null;
+  	  
+  }
+  return $lista;*/
+  
+    $rpta="OK";
+    $lista="";
+    $reg="";
+    $bgcolor="#33CCCC";
+    $cn=$this->getMyConexionADO();
+
+    $ssql ="SELECT     dbo.Empleados.Empleado_Codigo,dbo.Empleados.Empleado_Apellido_Paterno + ' ' + "; 
+    $ssql .="                ' ' + dbo.Empleados.Empleado_Apellido_Materno + ' ' + dbo.Empleados.Empleado_Nombres as empleado"; 
+    $ssql .=" FROM         dbo.CA_Asistencias WITH (nolock) INNER JOIN "; 
+    $ssql .="                  dbo.Empleados ON dbo.CA_Asistencias.Empleado_Codigo = dbo.Empleados.Empleado_Codigo INNER JOIN "; 
+    $ssql .="                  dbo.CA_Asistencia_Responsables ON dbo.CA_Asistencias.Empleado_Codigo = dbo.CA_Asistencia_Responsables.Empleado_Codigo AND "; 
+    $ssql .="                  dbo.CA_Asistencias.Asistencia_codigo = dbo.CA_Asistencia_Responsables.Asistencia_codigo "; 
+    $ssql .=" WHERE     (dbo.Empleados.Estado_Codigo = 2) AND (dbo.CA_Asistencia_Responsables.responsable_codigo = " . $this->responsable_codigo .") AND "; 
+    $ssql .="                  (dbo.CA_Asistencias.Asistencia_fecha = CONVERT(DATETIME,'" . $this->fecha ."', 103)) AND dbo.CA_Asistencias.ca_estado_codigo=1"; 
+    $ssql .=" order by empleado ";
+	
+    $rs = $cn->Execute($ssql);
+    if(!$rs->EOF) {
+        while(!$rs->EOF){
+            
+            $reg .= "<tr class='CA_DataTD' onMouseout=this.style.backgroundColor='' onMouseover=this.style.backgroundColor='#F4F4F4'>\n";
+            $reg .="    <td align='center' >\n";
+            if($emp==$rs->fields[0]) $reg .=" <input type='radio' id='rdo' name='rdo' value='" . $rs->fields[0] . "_" .$rs->fields[1]."_1' style='cursor:hand' onclick='asistencias(this.value)' title='Gestionar Asistencias' checked>\n";
+            else $reg .="	    <input type='radio' id='rdo' name='rdo' value='" . $rs->fields[0] . "_" .$rs->fields[1]."_1' style='cursor:hand' onclick='asistencias(this.value)' title='Gestionar Asistencias' >\n";
+            $reg .="</td>\n";
+            $reg .="    <td  align='center' ";
+            $reg .=" class='CA_ConDataTD'";
+            $reg .="    >\n";
+            $reg .=" " . $rs->fields[0]. "\n";
+            $reg .= "	  </td>\n";
+            $reg .="    <td    align='left'>\n";
+            $reg .=" " . $rs->fields[1]. "\n";
+            $reg .= "	   </td>\n";
+            $reg .="  </tr>\n";
+            $rs->MoveNext();	
+            //$rs->MoveNext();
+        } // end while
+      }
+  $lista .= $reg;
+  $rs->close();
+  $rs=null;
+  return $lista;
+    
+}
+
+
+  
+}
+?>

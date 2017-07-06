@@ -1,0 +1,755 @@
+--- ****************** Inicio ************************* ---
+Carga de Tiempos de Conexion con Fecha: 28/09/2010 02:20:19 p.m.
+ Usuario: 3300
+ Archivo: septiembre 2010_289_142018
+ Código Proceso: 7690
+---** El dato de DNI Nro. 41094781  no encontrado. Verificar **--- 28/09/2010 02:20:21 p.m. --- 7690
+---** El dato de DNI Nro. 44972087  no encontrado. Verificar **--- 28/09/2010 02:20:21 p.m. --- 7690
+---** El dato de DNI Nro. 43334046  no encontrado. Verificar **--- 28/09/2010 02:20:21 p.m. --- 7690
+---** El dato de DNI Nro. 42675122  no encontrado. Verificar **--- 28/09/2010 02:20:21 p.m. --- 7690
+---** Se registró TX del DNI: 09615881 **--- 28/09/2010 02:20:21 p.m. --- 7690
+---** El dato de DNI Nro. 10689626  no encontrado. Verificar **--- 28/09/2010 02:20:21 p.m. --- 7690
+---** El dato de DNI Nro. 45064901  no encontrado. Verificar **--- 28/09/2010 02:20:21 p.m. --- 7690
+---** El dato de DNI Nro. 41301611  no encontrado. Verificar **--- 28/09/2010 02:20:21 p.m. --- 7690
+---** El dato de DNI Nro. 40902412  no encontrado. Verificar **--- 28/09/2010 02:20:21 p.m. --- 7690
+---** Se registró TX del DNI: 45240920 **--- 28/09/2010 02:20:22 p.m. --- 7690
+---** El dato de DNI Nro. 09859336  no encontrado. Verificar **--- 28/09/2010 02:20:22 p.m. --- 7690
+---** El dato de DNI Nro. 42835975  no encontrado. Verificar **--- 28/09/2010 02:20:22 p.m. --- 7690
+---** El dato de DNI Nro. 45297644  no encontrado. Verificar **--- 28/09/2010 02:20:22 p.m. --- 7690
+---** Se registró TX del DNI: 08113547 **--- 28/09/2010 02:20:22 p.m. --- 7690
+---** El dato de DNI Nro. 09795758  no encontrado. Verificar **--- 28/09/2010 02:20:22 p.m. --- 7690
+---** Se registró TX del DNI: 42958548 **--- 28/09/2010 02:20:22 p.m. --- 7690
+---** El dato de DNI Nro. 09790667  no encontrado. Verificar **--- 28/09/2010 02:20:22 p.m. --- 7690
+---** El dato de DNI Nro. 44986352  no encontrado. Verificar **--- 28/09/2010 02:20:22 p.m. --- 7690
+---** El dato de DNI Nro. 43082121  no encontrado. Verificar **--- 28/09/2010 02:20:22 p.m. --- 7690
+---** El dato de DNI Nro. 45992110  no encontrado. Verificar **--- 28/09/2010 02:20:22 p.m. --- 7690
+---** El dato de DNI Nro. 42068659  no encontrado. Verificar **--- 28/09/2010 02:20:22 p.m. --- 7690
+---** El dato de DNI Nro. 09606671  no encontrado. Verificar **--- 28/09/2010 02:20:22 p.m. --- 7690
+---** El dato de DNI Nro. 41598808  no encontrado. Verificar **--- 28/09/2010 02:20:22 p.m. --- 7690
+---** El dato de DNI Nro. 10719199  no encontrado. Verificar **--- 28/09/2010 02:20:22 p.m. --- 7690
+---** El dato de DNI Nro. 47098190  no encontrado. Verificar **--- 28/09/2010 02:20:23 p.m. --- 7690
+---** El dato de DNI Nro. 10399564  no encontrado. Verificar **--- 28/09/2010 02:20:23 p.m. --- 7690
+---** El dato de DNI Nro. 45269363  no encontrado. Verificar **--- 28/09/2010 02:20:23 p.m. --- 7690
+---** El dato de DNI Nro. 43319632  no encontrado. Verificar **--- 28/09/2010 02:20:23 p.m. --- 7690
+---** El dato de DNI Nro. 15850280  no encontrado. Verificar **--- 28/09/2010 02:20:23 p.m. --- 7690
+---** El dato de DNI Nro. 40855720  no encontrado. Verificar **--- 28/09/2010 02:20:23 p.m. --- 7690
+---** El dato de DNI Nro. 40676993  no encontrado. Verificar **--- 28/09/2010 02:20:23 p.m. --- 7690
+---** El dato de DNI Nro. 42335770  no encontrado. Verificar **--- 28/09/2010 02:20:23 p.m. --- 7690
+---** El dato de DNI Nro. 46123514  no encontrado. Verificar **--- 28/09/2010 02:20:23 p.m. --- 7690
+---** Se registró TX del DNI: 43863842 **--- 28/09/2010 02:20:23 p.m. --- 7690
+---** El dato de DNI Nro. 47463134  no encontrado. Verificar **--- 28/09/2010 02:20:23 p.m. --- 7690
+---** El dato de DNI Nro. 45558843  no encontrado. Verificar **--- 28/09/2010 02:20:23 p.m. --- 7690
+---** El dato de DNI Nro. 46265607  no encontrado. Verificar **--- 28/09/2010 02:20:23 p.m. --- 7690
+---** El dato de DNI Nro. 44631961  no encontrado. Verificar **--- 28/09/2010 02:20:23 p.m. --- 7690
+---** Se registró TX del DNI: 45150496 **--- 28/09/2010 02:20:23 p.m. --- 7690
+---** El dato de DNI Nro. 40215468  no encontrado. Verificar **--- 28/09/2010 02:20:23 p.m. --- 7690
+---** El dato de DNI Nro. 42688639  no encontrado. Verificar **--- 28/09/2010 02:20:24 p.m. --- 7690
+---** El dato de DNI Nro. 46195716  no encontrado. Verificar **--- 28/09/2010 02:20:24 p.m. --- 7690
+---** El dato de DNI Nro. 09634718  no encontrado. Verificar **--- 28/09/2010 02:20:24 p.m. --- 7690
+---** El dato de DNI Nro. 45103200  no encontrado. Verificar **--- 28/09/2010 02:20:24 p.m. --- 7690
+---** El dato de DNI Nro. 44647875  no encontrado. Verificar **--- 28/09/2010 02:20:24 p.m. --- 7690
+---** El dato de DNI Nro. 40911943  no encontrado. Verificar **--- 28/09/2010 02:20:24 p.m. --- 7690
+---** El dato de DNI Nro. 40601858  no encontrado. Verificar **--- 28/09/2010 02:20:24 p.m. --- 7690
+---** El dato de DNI Nro. 46869343  no encontrado. Verificar **--- 28/09/2010 02:20:24 p.m. --- 7690
+---** El dato de DNI Nro. 45788174  no encontrado. Verificar **--- 28/09/2010 02:20:24 p.m. --- 7690
+---** El dato de DNI Nro. 44083235  no encontrado. Verificar **--- 28/09/2010 02:20:24 p.m. --- 7690
+---** El dato de DNI Nro. 10199808  no encontrado. Verificar **--- 28/09/2010 02:20:24 p.m. --- 7690
+---** El dato de DNI Nro. 41577580  no encontrado. Verificar **--- 28/09/2010 02:20:24 p.m. --- 7690
+---** El dato de DNI Nro. 40640189  no encontrado. Verificar **--- 28/09/2010 02:20:24 p.m. --- 7690
+---** El dato de DNI Nro. 41063245  no encontrado. Verificar **--- 28/09/2010 02:20:24 p.m. --- 7690
+---** El dato de DNI Nro. 47085491  no encontrado. Verificar **--- 28/09/2010 02:20:24 p.m. --- 7690
+---** El dato de DNI Nro. 47088773  no encontrado. Verificar **--- 28/09/2010 02:20:24 p.m. --- 7690
+---** El dato de DNI Nro. 10542535  no encontrado. Verificar **--- 28/09/2010 02:20:24 p.m. --- 7690
+---** El dato de DNI Nro. 41743344  no encontrado. Verificar **--- 28/09/2010 02:20:24 p.m. --- 7690
+---** Se registró TX del DNI: 09624024 **--- 28/09/2010 02:20:24 p.m. --- 7690
+---** Se registró TX del DNI: 10618516 **--- 28/09/2010 02:20:25 p.m. --- 7690
+---** Se registró TX del DNI: 10190390 **--- 28/09/2010 02:20:25 p.m. --- 7690
+---** El dato de DNI Nro. 47333267  no encontrado. Verificar **--- 28/09/2010 02:20:25 p.m. --- 7690
+---** El dato de DNI Nro. 72638741  no encontrado. Verificar **--- 28/09/2010 02:20:25 p.m. --- 7690
+---** El dato de DNI Nro. 46438789  no encontrado. Verificar **--- 28/09/2010 02:20:25 p.m. --- 7690
+---** El dato de DNI Nro. 45112287  no encontrado. Verificar **--- 28/09/2010 02:20:25 p.m. --- 7690
+---** El dato de DNI Nro. 09543702  no encontrado. Verificar **--- 28/09/2010 02:20:25 p.m. --- 7690
+---** El dato de DNI Nro. 46599118  no encontrado. Verificar **--- 28/09/2010 02:20:25 p.m. --- 7690
+---** El dato de DNI Nro. 47523003  no encontrado. Verificar **--- 28/09/2010 02:20:25 p.m. --- 7690
+---** El dato de DNI Nro. 46715899  no encontrado. Verificar **--- 28/09/2010 02:20:25 p.m. --- 7690
+---** El dato de DNI Nro. 45925832  no encontrado. Verificar **--- 28/09/2010 02:20:25 p.m. --- 7690
+---** El dato de DNI Nro. 43147178  no encontrado. Verificar **--- 28/09/2010 02:20:25 p.m. --- 7690
+---** El dato de DNI Nro. 44634994  no encontrado. Verificar **--- 28/09/2010 02:20:25 p.m. --- 7690
+---** El dato de DNI Nro. 10587811  no encontrado. Verificar **--- 28/09/2010 02:20:25 p.m. --- 7690
+---** El dato de DNI Nro. 45932457  no encontrado. Verificar **--- 28/09/2010 02:20:25 p.m. --- 7690
+---** El dato de DNI Nro. 44307035  no encontrado. Verificar **--- 28/09/2010 02:20:25 p.m. --- 7690
+---** El dato de DNI Nro. 41094781  no encontrado. Verificar **--- 28/09/2010 02:20:25 p.m. --- 7690
+---** El dato de DNI Nro. 44972087  no encontrado. Verificar **--- 28/09/2010 02:20:26 p.m. --- 7690
+---** El dato de DNI Nro. 43334046  no encontrado. Verificar **--- 28/09/2010 02:20:26 p.m. --- 7690
+---** El dato de DNI Nro. 42675122  no encontrado. Verificar **--- 28/09/2010 02:20:26 p.m. --- 7690
+---** Se registró TX del DNI: 09615881 **--- 28/09/2010 02:20:26 p.m. --- 7690
+---** El dato de DNI Nro. 10689626  no encontrado. Verificar **--- 28/09/2010 02:20:26 p.m. --- 7690
+---** El dato de DNI Nro. 45064901  no encontrado. Verificar **--- 28/09/2010 02:20:26 p.m. --- 7690
+---** El dato de DNI Nro. 41301611  no encontrado. Verificar **--- 28/09/2010 02:20:26 p.m. --- 7690
+---** El dato de DNI Nro. 40902412  no encontrado. Verificar **--- 28/09/2010 02:20:26 p.m. --- 7690
+---** Se registró TX del DNI: 45240920 **--- 28/09/2010 02:20:26 p.m. --- 7690
+---** El dato de DNI Nro. 09859336  no encontrado. Verificar **--- 28/09/2010 02:20:26 p.m. --- 7690
+---** El dato de DNI Nro. 45726167  no encontrado. Verificar **--- 28/09/2010 02:20:26 p.m. --- 7690
+---** El dato de DNI Nro. 42835975  no encontrado. Verificar **--- 28/09/2010 02:20:26 p.m. --- 7690
+---** Se registró TX del DNI: 08113547 **--- 28/09/2010 02:20:26 p.m. --- 7690
+---** El dato de DNI Nro. 09795758  no encontrado. Verificar **--- 28/09/2010 02:20:26 p.m. --- 7690
+---** Se registró TX del DNI: 42958548 **--- 28/09/2010 02:20:26 p.m. --- 7690
+---** El dato de DNI Nro. 09790667  no encontrado. Verificar **--- 28/09/2010 02:20:26 p.m. --- 7690
+---** El dato de DNI Nro. 44986352  no encontrado. Verificar **--- 28/09/2010 02:20:26 p.m. --- 7690
+---** El dato de DNI Nro. 43082121  no encontrado. Verificar **--- 28/09/2010 02:20:26 p.m. --- 7690
+---** El dato de DNI Nro. 45992110  no encontrado. Verificar **--- 28/09/2010 02:20:26 p.m. --- 7690
+---** El dato de DNI Nro. 42068659  no encontrado. Verificar **--- 28/09/2010 02:20:26 p.m. --- 7690
+---** El dato de DNI Nro. 09606671  no encontrado. Verificar **--- 28/09/2010 02:20:26 p.m. --- 7690
+---** El dato de DNI Nro. 41598808  no encontrado. Verificar **--- 28/09/2010 02:20:26 p.m. --- 7690
+---** El dato de DNI Nro. 10719199  no encontrado. Verificar **--- 28/09/2010 02:20:26 p.m. --- 7690
+---** El dato de DNI Nro. 47098190  no encontrado. Verificar **--- 28/09/2010 02:20:27 p.m. --- 7690
+---** El dato de DNI Nro. 10399564  no encontrado. Verificar **--- 28/09/2010 02:20:27 p.m. --- 7690
+---** El dato de DNI Nro. 45269363  no encontrado. Verificar **--- 28/09/2010 02:20:27 p.m. --- 7690
+---** El dato de DNI Nro. 43319632  no encontrado. Verificar **--- 28/09/2010 02:20:27 p.m. --- 7690
+---** El dato de DNI Nro. 15850280  no encontrado. Verificar **--- 28/09/2010 02:20:27 p.m. --- 7690
+---** El dato de DNI Nro. 40676993  no encontrado. Verificar **--- 28/09/2010 02:20:27 p.m. --- 7690
+---** El dato de DNI Nro. 42335770  no encontrado. Verificar **--- 28/09/2010 02:20:27 p.m. --- 7690
+---** El dato de DNI Nro. 46123514  no encontrado. Verificar **--- 28/09/2010 02:20:27 p.m. --- 7690
+---** Se registró TX del DNI: 43863842 **--- 28/09/2010 02:20:27 p.m. --- 7690
+---** El dato de DNI Nro. 47463134  no encontrado. Verificar **--- 28/09/2010 02:20:27 p.m. --- 7690
+---** El dato de DNI Nro. 45558843  no encontrado. Verificar **--- 28/09/2010 02:20:27 p.m. --- 7690
+---** El dato de DNI Nro. 46265607  no encontrado. Verificar **--- 28/09/2010 02:20:27 p.m. --- 7690
+---** El dato de DNI Nro. 44631961  no encontrado. Verificar **--- 28/09/2010 02:20:27 p.m. --- 7690
+---** Se registró TX del DNI: 45150496 **--- 28/09/2010 02:20:27 p.m. --- 7690
+---** El dato de DNI Nro. 40215468  no encontrado. Verificar **--- 28/09/2010 02:20:27 p.m. --- 7690
+---** El dato de DNI Nro. 42688639  no encontrado. Verificar **--- 28/09/2010 02:20:27 p.m. --- 7690
+---** El dato de DNI Nro. 46195716  no encontrado. Verificar **--- 28/09/2010 02:20:27 p.m. --- 7690
+---** El dato de DNI Nro. 09634718  no encontrado. Verificar **--- 28/09/2010 02:20:27 p.m. --- 7690
+---** El dato de DNI Nro. 45103200  no encontrado. Verificar **--- 28/09/2010 02:20:27 p.m. --- 7690
+---** El dato de DNI Nro. 44647875  no encontrado. Verificar **--- 28/09/2010 02:20:27 p.m. --- 7690
+---** El dato de DNI Nro. 40911943  no encontrado. Verificar **--- 28/09/2010 02:20:27 p.m. --- 7690
+---** El dato de DNI Nro. 40601858  no encontrado. Verificar **--- 28/09/2010 02:20:27 p.m. --- 7690
+---** El dato de DNI Nro. 46869343  no encontrado. Verificar **--- 28/09/2010 02:20:27 p.m. --- 7690
+---** El dato de DNI Nro. 45788174  no encontrado. Verificar **--- 28/09/2010 02:20:27 p.m. --- 7690
+---** El dato de DNI Nro. 44083235  no encontrado. Verificar **--- 28/09/2010 02:20:27 p.m. --- 7690
+---** El dato de DNI Nro. 10199808  no encontrado. Verificar **--- 28/09/2010 02:20:27 p.m. --- 7690
+---** El dato de DNI Nro. 40640189  no encontrado. Verificar **--- 28/09/2010 02:20:27 p.m. --- 7690
+---** El dato de DNI Nro. 41063245  no encontrado. Verificar **--- 28/09/2010 02:20:28 p.m. --- 7690
+---** El dato de DNI Nro. 47085491  no encontrado. Verificar **--- 28/09/2010 02:20:28 p.m. --- 7690
+---** El dato de DNI Nro. 47088773  no encontrado. Verificar **--- 28/09/2010 02:20:28 p.m. --- 7690
+---** El dato de DNI Nro. 10542535  no encontrado. Verificar **--- 28/09/2010 02:20:28 p.m. --- 7690
+---** El dato de DNI Nro. 41743344  no encontrado. Verificar **--- 28/09/2010 02:20:28 p.m. --- 7690
+---** Se registró TX del DNI: 09624024 **--- 28/09/2010 02:20:28 p.m. --- 7690
+---** Se registró TX del DNI: 10618516 **--- 28/09/2010 02:20:28 p.m. --- 7690
+---** Se registró TX del DNI: 10190390 **--- 28/09/2010 02:20:28 p.m. --- 7690
+---** El dato de DNI Nro. 47333267  no encontrado. Verificar **--- 28/09/2010 02:20:28 p.m. --- 7690
+---** El dato de DNI Nro. 72638741  no encontrado. Verificar **--- 28/09/2010 02:20:28 p.m. --- 7690
+---** El dato de DNI Nro. 46438789  no encontrado. Verificar **--- 28/09/2010 02:20:28 p.m. --- 7690
+---** El dato de DNI Nro. 45112287  no encontrado. Verificar **--- 28/09/2010 02:20:28 p.m. --- 7690
+---** El dato de DNI Nro. 09543702  no encontrado. Verificar **--- 28/09/2010 02:20:28 p.m. --- 7690
+---** El dato de DNI Nro. 46599118  no encontrado. Verificar **--- 28/09/2010 02:20:28 p.m. --- 7690
+---** El dato de DNI Nro. 47523003  no encontrado. Verificar **--- 28/09/2010 02:20:28 p.m. --- 7690
+---** El dato de DNI Nro. 46715899  no encontrado. Verificar **--- 28/09/2010 02:20:28 p.m. --- 7690
+---** El dato de DNI Nro. 45925832  no encontrado. Verificar **--- 28/09/2010 02:20:28 p.m. --- 7690
+---** El dato de DNI Nro. 43147178  no encontrado. Verificar **--- 28/09/2010 02:20:28 p.m. --- 7690
+---** El dato de DNI Nro. 44634994  no encontrado. Verificar **--- 28/09/2010 02:20:28 p.m. --- 7690
+---** El dato de DNI Nro. 10587811  no encontrado. Verificar **--- 28/09/2010 02:20:28 p.m. --- 7690
+---** El dato de DNI Nro. 45932457  no encontrado. Verificar **--- 28/09/2010 02:20:28 p.m. --- 7690
+---** El dato de DNI Nro. 44307035  no encontrado. Verificar **--- 28/09/2010 02:20:28 p.m. --- 7690
+---** El dato de DNI Nro. 41094781  no encontrado. Verificar **--- 28/09/2010 02:20:28 p.m. --- 7690
+---** El dato de DNI Nro. 44972087  no encontrado. Verificar **--- 28/09/2010 02:20:29 p.m. --- 7690
+---** El dato de DNI Nro. 43334046  no encontrado. Verificar **--- 28/09/2010 02:20:29 p.m. --- 7690
+---** El dato de DNI Nro. 42675122  no encontrado. Verificar **--- 28/09/2010 02:20:29 p.m. --- 7690
+---** Se registró TX del DNI: 09615881 **--- 28/09/2010 02:20:29 p.m. --- 7690
+---** El dato de DNI Nro. 10689626  no encontrado. Verificar **--- 28/09/2010 02:20:29 p.m. --- 7690
+---** El dato de DNI Nro. 45064901  no encontrado. Verificar **--- 28/09/2010 02:20:29 p.m. --- 7690
+---** El dato de DNI Nro. 40902412  no encontrado. Verificar **--- 28/09/2010 02:20:29 p.m. --- 7690
+---** Se registró TX del DNI: 45240920 **--- 28/09/2010 02:20:29 p.m. --- 7690
+---** El dato de DNI Nro. 09859336  no encontrado. Verificar **--- 28/09/2010 02:20:29 p.m. --- 7690
+---** El dato de DNI Nro. 45726167  no encontrado. Verificar **--- 28/09/2010 02:20:29 p.m. --- 7690
+---** El dato de DNI Nro. 42835975  no encontrado. Verificar **--- 28/09/2010 02:20:29 p.m. --- 7690
+---** Se registró TX del DNI: 08113547 **--- 28/09/2010 02:20:29 p.m. --- 7690
+---** El dato de DNI Nro. 09795758  no encontrado. Verificar **--- 28/09/2010 02:20:29 p.m. --- 7690
+---** Se registró TX del DNI: 42958548 **--- 28/09/2010 02:20:29 p.m. --- 7690
+---** El dato de DNI Nro. 09790667  no encontrado. Verificar **--- 28/09/2010 02:20:29 p.m. --- 7690
+---** El dato de DNI Nro. 44986352  no encontrado. Verificar **--- 28/09/2010 02:20:29 p.m. --- 7690
+---** El dato de DNI Nro. 43082121  no encontrado. Verificar **--- 28/09/2010 02:20:29 p.m. --- 7690
+---** El dato de DNI Nro. 45992110  no encontrado. Verificar **--- 28/09/2010 02:20:29 p.m. --- 7690
+---** El dato de DNI Nro. 42068659  no encontrado. Verificar **--- 28/09/2010 02:20:29 p.m. --- 7690
+---** El dato de DNI Nro. 09606671  no encontrado. Verificar **--- 28/09/2010 02:20:29 p.m. --- 7690
+---** El dato de DNI Nro. 41598808  no encontrado. Verificar **--- 28/09/2010 02:20:30 p.m. --- 7690
+---** El dato de DNI Nro. 10719199  no encontrado. Verificar **--- 28/09/2010 02:20:30 p.m. --- 7690
+---** El dato de DNI Nro. 45269363  no encontrado. Verificar **--- 28/09/2010 02:20:30 p.m. --- 7690
+---** El dato de DNI Nro. 43319632  no encontrado. Verificar **--- 28/09/2010 02:20:30 p.m. --- 7690
+---** El dato de DNI Nro. 15850280  no encontrado. Verificar **--- 28/09/2010 02:20:30 p.m. --- 7690
+---** El dato de DNI Nro. 40676993  no encontrado. Verificar **--- 28/09/2010 02:20:30 p.m. --- 7690
+---** El dato de DNI Nro. 42335770  no encontrado. Verificar **--- 28/09/2010 02:20:30 p.m. --- 7690
+---** El dato de DNI Nro. 46123514  no encontrado. Verificar **--- 28/09/2010 02:20:30 p.m. --- 7690
+---** Se registró TX del DNI: 43863842 **--- 28/09/2010 02:20:30 p.m. --- 7690
+---** El dato de DNI Nro. 47463134  no encontrado. Verificar **--- 28/09/2010 02:20:30 p.m. --- 7690
+---** El dato de DNI Nro. 45558843  no encontrado. Verificar **--- 28/09/2010 02:20:30 p.m. --- 7690
+---** El dato de DNI Nro. 46265607  no encontrado. Verificar **--- 28/09/2010 02:20:30 p.m. --- 7690
+---** El dato de DNI Nro. 44631961  no encontrado. Verificar **--- 28/09/2010 02:20:30 p.m. --- 7690
+---** El dato de DNI Nro. 40215468  no encontrado. Verificar **--- 28/09/2010 02:20:30 p.m. --- 7690
+---** El dato de DNI Nro. 42688639  no encontrado. Verificar **--- 28/09/2010 02:20:30 p.m. --- 7690
+---** El dato de DNI Nro. 46195716  no encontrado. Verificar **--- 28/09/2010 02:20:30 p.m. --- 7690
+---** El dato de DNI Nro. 09634718  no encontrado. Verificar **--- 28/09/2010 02:20:30 p.m. --- 7690
+---** El dato de DNI Nro. 45103200  no encontrado. Verificar **--- 28/09/2010 02:20:30 p.m. --- 7690
+---** El dato de DNI Nro. 44647875  no encontrado. Verificar **--- 28/09/2010 02:20:31 p.m. --- 7690
+---** El dato de DNI Nro. 40911943  no encontrado. Verificar **--- 28/09/2010 02:20:31 p.m. --- 7690
+---** El dato de DNI Nro. 40601858  no encontrado. Verificar **--- 28/09/2010 02:20:31 p.m. --- 7690
+---** El dato de DNI Nro. 46869343  no encontrado. Verificar **--- 28/09/2010 02:20:31 p.m. --- 7690
+---** El dato de DNI Nro. 45788174  no encontrado. Verificar **--- 28/09/2010 02:20:31 p.m. --- 7690
+---** El dato de DNI Nro. 44083235  no encontrado. Verificar **--- 28/09/2010 02:20:31 p.m. --- 7690
+---** El dato de DNI Nro. 10199808  no encontrado. Verificar **--- 28/09/2010 02:20:31 p.m. --- 7690
+---** El dato de DNI Nro. 40640189  no encontrado. Verificar **--- 28/09/2010 02:20:31 p.m. --- 7690
+---** El dato de DNI Nro. 41063245  no encontrado. Verificar **--- 28/09/2010 02:20:31 p.m. --- 7690
+---** El dato de DNI Nro. 47085491  no encontrado. Verificar **--- 28/09/2010 02:20:31 p.m. --- 7690
+---** El dato de DNI Nro. 10542535  no encontrado. Verificar **--- 28/09/2010 02:20:31 p.m. --- 7690
+---** El dato de DNI Nro. 41743344  no encontrado. Verificar **--- 28/09/2010 02:20:31 p.m. --- 7690
+---** Se registró TX del DNI: 09624024 **--- 28/09/2010 02:20:31 p.m. --- 7690
+---** Se registró TX del DNI: 10618516 **--- 28/09/2010 02:20:31 p.m. --- 7690
+---** Se registró TX del DNI: 10190390 **--- 28/09/2010 02:20:31 p.m. --- 7690
+---** El dato de DNI Nro. 47333267  no encontrado. Verificar **--- 28/09/2010 02:20:31 p.m. --- 7690
+---** El dato de DNI Nro. 72638741  no encontrado. Verificar **--- 28/09/2010 02:20:31 p.m. --- 7690
+---** El dato de DNI Nro. 46438789  no encontrado. Verificar **--- 28/09/2010 02:20:31 p.m. --- 7690
+---** El dato de DNI Nro. 45112287  no encontrado. Verificar **--- 28/09/2010 02:20:31 p.m. --- 7690
+---** El dato de DNI Nro. 09543702  no encontrado. Verificar **--- 28/09/2010 02:20:31 p.m. --- 7690
+---** El dato de DNI Nro. 46599118  no encontrado. Verificar **--- 28/09/2010 02:20:31 p.m. --- 7690
+---** El dato de DNI Nro. 47523003  no encontrado. Verificar **--- 28/09/2010 02:20:31 p.m. --- 7690
+---** El dato de DNI Nro. 46715899  no encontrado. Verificar **--- 28/09/2010 02:20:31 p.m. --- 7690
+---** El dato de DNI Nro. 45925832  no encontrado. Verificar **--- 28/09/2010 02:20:31 p.m. --- 7690
+---** El dato de DNI Nro. 43147178  no encontrado. Verificar **--- 28/09/2010 02:20:31 p.m. --- 7690
+---** El dato de DNI Nro. 44634994  no encontrado. Verificar **--- 28/09/2010 02:20:32 p.m. --- 7690
+---** El dato de DNI Nro. 10587811  no encontrado. Verificar **--- 28/09/2010 02:20:32 p.m. --- 7690
+---** El dato de DNI Nro. 44307035  no encontrado. Verificar **--- 28/09/2010 02:20:32 p.m. --- 7690
+---** El dato de DNI Nro. 41094781  no encontrado. Verificar **--- 28/09/2010 02:20:32 p.m. --- 7690
+---** El dato de DNI Nro. 44972087  no encontrado. Verificar **--- 28/09/2010 02:20:32 p.m. --- 7690
+---** El dato de DNI Nro. 43334046  no encontrado. Verificar **--- 28/09/2010 02:20:32 p.m. --- 7690
+---** El dato de DNI Nro. 42675122  no encontrado. Verificar **--- 28/09/2010 02:20:32 p.m. --- 7690
+---** Se registró TX del DNI: 09615881 **--- 28/09/2010 02:20:32 p.m. --- 7690
+---** El dato de DNI Nro. 45064901  no encontrado. Verificar **--- 28/09/2010 02:20:32 p.m. --- 7690
+---** El dato de DNI Nro. 40902412  no encontrado. Verificar **--- 28/09/2010 02:20:32 p.m. --- 7690
+---** Se registró TX del DNI: 45240920 **--- 28/09/2010 02:20:32 p.m. --- 7690
+---** El dato de DNI Nro. 09859336  no encontrado. Verificar **--- 28/09/2010 02:20:32 p.m. --- 7690
+---** El dato de DNI Nro. 45726167  no encontrado. Verificar **--- 28/09/2010 02:20:32 p.m. --- 7690
+---** El dato de DNI Nro. 42835975  no encontrado. Verificar **--- 28/09/2010 02:20:32 p.m. --- 7690
+---** Se registró TX del DNI: 08113547 **--- 28/09/2010 02:20:32 p.m. --- 7690
+---** El dato de DNI Nro. 09795758  no encontrado. Verificar **--- 28/09/2010 02:20:32 p.m. --- 7690
+---** El dato de DNI Nro. 09790667  no encontrado. Verificar **--- 28/09/2010 02:20:32 p.m. --- 7690
+---** El dato de DNI Nro. 44986352  no encontrado. Verificar **--- 28/09/2010 02:20:32 p.m. --- 7690
+---** El dato de DNI Nro. 43082121  no encontrado. Verificar **--- 28/09/2010 02:20:32 p.m. --- 7690
+---** El dato de DNI Nro. 45992110  no encontrado. Verificar **--- 28/09/2010 02:20:32 p.m. --- 7690
+---** El dato de DNI Nro. 42068659  no encontrado. Verificar **--- 28/09/2010 02:20:32 p.m. --- 7690
+---** El dato de DNI Nro. 09606671  no encontrado. Verificar **--- 28/09/2010 02:20:32 p.m. --- 7690
+---** El dato de DNI Nro. 41598808  no encontrado. Verificar **--- 28/09/2010 02:20:32 p.m. --- 7690
+---** El dato de DNI Nro. 10719199  no encontrado. Verificar **--- 28/09/2010 02:20:32 p.m. --- 7690
+---** El dato de DNI Nro. 45269363  no encontrado. Verificar **--- 28/09/2010 02:20:32 p.m. --- 7690
+---** El dato de DNI Nro. 43319632  no encontrado. Verificar **--- 28/09/2010 02:20:32 p.m. --- 7690
+---** El dato de DNI Nro. 15850280  no encontrado. Verificar **--- 28/09/2010 02:20:33 p.m. --- 7690
+---** El dato de DNI Nro. 40676993  no encontrado. Verificar **--- 28/09/2010 02:20:33 p.m. --- 7690
+---** El dato de DNI Nro. 42335770  no encontrado. Verificar **--- 28/09/2010 02:20:33 p.m. --- 7690
+---** El dato de DNI Nro. 46123514  no encontrado. Verificar **--- 28/09/2010 02:20:33 p.m. --- 7690
+---** Se registró TX del DNI: 43863842 **--- 28/09/2010 02:20:33 p.m. --- 7690
+---** El dato de DNI Nro. 47463134  no encontrado. Verificar **--- 28/09/2010 02:20:33 p.m. --- 7690
+---** El dato de DNI Nro. 45558843  no encontrado. Verificar **--- 28/09/2010 02:20:33 p.m. --- 7690
+---** El dato de DNI Nro. 46265607  no encontrado. Verificar **--- 28/09/2010 02:20:33 p.m. --- 7690
+---** El dato de DNI Nro. 44631961  no encontrado. Verificar **--- 28/09/2010 02:20:33 p.m. --- 7690
+---** El dato de DNI Nro. 40215468  no encontrado. Verificar **--- 28/09/2010 02:20:33 p.m. --- 7690
+---** El dato de DNI Nro. 42688639  no encontrado. Verificar **--- 28/09/2010 02:20:33 p.m. --- 7690
+---** El dato de DNI Nro. 46195716  no encontrado. Verificar **--- 28/09/2010 02:20:33 p.m. --- 7690
+---** El dato de DNI Nro. 09634718  no encontrado. Verificar **--- 28/09/2010 02:20:33 p.m. --- 7690
+---** El dato de DNI Nro. 45103200  no encontrado. Verificar **--- 28/09/2010 02:20:33 p.m. --- 7690
+---** El dato de DNI Nro. 44647875  no encontrado. Verificar **--- 28/09/2010 02:20:33 p.m. --- 7690
+---** El dato de DNI Nro. 40911943  no encontrado. Verificar **--- 28/09/2010 02:20:33 p.m. --- 7690
+---** El dato de DNI Nro. 46869343  no encontrado. Verificar **--- 28/09/2010 02:20:33 p.m. --- 7690
+---** El dato de DNI Nro. 45788174  no encontrado. Verificar **--- 28/09/2010 02:20:33 p.m. --- 7690
+---** El dato de DNI Nro. 44083235  no encontrado. Verificar **--- 28/09/2010 02:20:33 p.m. --- 7690
+---** El dato de DNI Nro. 10199808  no encontrado. Verificar **--- 28/09/2010 02:20:33 p.m. --- 7690
+---** El dato de DNI Nro. 40640189  no encontrado. Verificar **--- 28/09/2010 02:20:33 p.m. --- 7690
+---** El dato de DNI Nro. 41063245  no encontrado. Verificar **--- 28/09/2010 02:20:33 p.m. --- 7690
+---** El dato de DNI Nro. 47085491  no encontrado. Verificar **--- 28/09/2010 02:20:33 p.m. --- 7690
+---** El dato de DNI Nro. 10542535  no encontrado. Verificar **--- 28/09/2010 02:20:33 p.m. --- 7690
+---** El dato de DNI Nro. 41743344  no encontrado. Verificar **--- 28/09/2010 02:20:33 p.m. --- 7690
+---** Se registró TX del DNI: 09624024 **--- 28/09/2010 02:20:33 p.m. --- 7690
+---** Se registró TX del DNI: 10618516 **--- 28/09/2010 02:20:34 p.m. --- 7690
+---** Se registró TX del DNI: 10190390 **--- 28/09/2010 02:20:34 p.m. --- 7690
+---** El dato de DNI Nro. 47333267  no encontrado. Verificar **--- 28/09/2010 02:20:34 p.m. --- 7690
+---** El dato de DNI Nro. 72638741  no encontrado. Verificar **--- 28/09/2010 02:20:34 p.m. --- 7690
+---** El dato de DNI Nro. 46438789  no encontrado. Verificar **--- 28/09/2010 02:20:34 p.m. --- 7690
+---** El dato de DNI Nro. 45112287  no encontrado. Verificar **--- 28/09/2010 02:20:34 p.m. --- 7690
+---** El dato de DNI Nro. 09543702  no encontrado. Verificar **--- 28/09/2010 02:20:34 p.m. --- 7690
+---** El dato de DNI Nro. 46599118  no encontrado. Verificar **--- 28/09/2010 02:20:34 p.m. --- 7690
+---** El dato de DNI Nro. 47523003  no encontrado. Verificar **--- 28/09/2010 02:20:34 p.m. --- 7690
+---** El dato de DNI Nro. 46715899  no encontrado. Verificar **--- 28/09/2010 02:20:34 p.m. --- 7690
+---** El dato de DNI Nro. 45925832  no encontrado. Verificar **--- 28/09/2010 02:20:34 p.m. --- 7690
+---** El dato de DNI Nro. 10587811  no encontrado. Verificar **--- 28/09/2010 02:20:34 p.m. --- 7690
+---** El dato de DNI Nro. 44307035  no encontrado. Verificar **--- 28/09/2010 02:20:34 p.m. --- 7690
+---** El dato de DNI Nro. 41094781  no encontrado. Verificar **--- 28/09/2010 02:20:34 p.m. --- 7690
+---** El dato de DNI Nro. 44972087  no encontrado. Verificar **--- 28/09/2010 02:20:34 p.m. --- 7690
+---** El dato de DNI Nro. 43334046  no encontrado. Verificar **--- 28/09/2010 02:20:34 p.m. --- 7690
+---** El dato de DNI Nro. 42675122  no encontrado. Verificar **--- 28/09/2010 02:20:34 p.m. --- 7690
+---** Se registró TX del DNI: 09615881 **--- 28/09/2010 02:20:34 p.m. --- 7690
+---** El dato de DNI Nro. 10689626  no encontrado. Verificar **--- 28/09/2010 02:20:34 p.m. --- 7690
+---** El dato de DNI Nro. 45064901  no encontrado. Verificar **--- 28/09/2010 02:20:34 p.m. --- 7690
+---** El dato de DNI Nro. 40902412  no encontrado. Verificar **--- 28/09/2010 02:20:34 p.m. --- 7690
+---** Se registró TX del DNI: 45240920 **--- 28/09/2010 02:20:35 p.m. --- 7690
+---** El dato de DNI Nro. 09859336  no encontrado. Verificar **--- 28/09/2010 02:20:35 p.m. --- 7690
+---** El dato de DNI Nro. 45726167  no encontrado. Verificar **--- 28/09/2010 02:20:35 p.m. --- 7690
+---** El dato de DNI Nro. 42835975  no encontrado. Verificar **--- 28/09/2010 02:20:35 p.m. --- 7690
+---** Se registró TX del DNI: 08113547 **--- 28/09/2010 02:20:35 p.m. --- 7690
+---** Se registró TX del DNI: 42958548 **--- 28/09/2010 02:20:35 p.m. --- 7690
+---** El dato de DNI Nro. 09790667  no encontrado. Verificar **--- 28/09/2010 02:20:35 p.m. --- 7690
+---** El dato de DNI Nro. 44986352  no encontrado. Verificar **--- 28/09/2010 02:20:35 p.m. --- 7690
+---** El dato de DNI Nro. 43082121  no encontrado. Verificar **--- 28/09/2010 02:20:35 p.m. --- 7690
+---** El dato de DNI Nro. 45992110  no encontrado. Verificar **--- 28/09/2010 02:20:35 p.m. --- 7690
+---** El dato de DNI Nro. 42068659  no encontrado. Verificar **--- 28/09/2010 02:20:35 p.m. --- 7690
+---** El dato de DNI Nro. 09606671  no encontrado. Verificar **--- 28/09/2010 02:20:35 p.m. --- 7690
+---** El dato de DNI Nro. 41598808  no encontrado. Verificar **--- 28/09/2010 02:20:35 p.m. --- 7690
+---** El dato de DNI Nro. 10719199  no encontrado. Verificar **--- 28/09/2010 02:20:35 p.m. --- 7690
+---** El dato de DNI Nro. 10399564  no encontrado. Verificar **--- 28/09/2010 02:20:35 p.m. --- 7690
+---** El dato de DNI Nro. 43319632  no encontrado. Verificar **--- 28/09/2010 02:20:35 p.m. --- 7690
+---** El dato de DNI Nro. 15850280  no encontrado. Verificar **--- 28/09/2010 02:20:35 p.m. --- 7690
+---** El dato de DNI Nro. 40676993  no encontrado. Verificar **--- 28/09/2010 02:20:35 p.m. --- 7690
+---** El dato de DNI Nro. 43938142  no encontrado. Verificar **--- 28/09/2010 02:20:36 p.m. --- 7690
+---** El dato de DNI Nro. 42335770  no encontrado. Verificar **--- 28/09/2010 02:20:36 p.m. --- 7690
+---** El dato de DNI Nro. 46123514  no encontrado. Verificar **--- 28/09/2010 02:20:36 p.m. --- 7690
+---** El dato de DNI Nro. 47463134  no encontrado. Verificar **--- 28/09/2010 02:20:36 p.m. --- 7690
+---** El dato de DNI Nro. 45558843  no encontrado. Verificar **--- 28/09/2010 02:20:36 p.m. --- 7690
+---** El dato de DNI Nro. 44631961  no encontrado. Verificar **--- 28/09/2010 02:20:36 p.m. --- 7690
+---** El dato de DNI Nro. 40215468  no encontrado. Verificar **--- 28/09/2010 02:20:36 p.m. --- 7690
+---** El dato de DNI Nro. 42688639  no encontrado. Verificar **--- 28/09/2010 02:20:36 p.m. --- 7690
+---** El dato de DNI Nro. 46195716  no encontrado. Verificar **--- 28/09/2010 02:20:36 p.m. --- 7690
+---** El dato de DNI Nro. 09634718  no encontrado. Verificar **--- 28/09/2010 02:20:36 p.m. --- 7690
+---** El dato de DNI Nro. 45103200  no encontrado. Verificar **--- 28/09/2010 02:20:36 p.m. --- 7690
+---** El dato de DNI Nro. 44647875  no encontrado. Verificar **--- 28/09/2010 02:20:36 p.m. --- 7690
+---** El dato de DNI Nro. 40911943  no encontrado. Verificar **--- 28/09/2010 02:20:36 p.m. --- 7690
+---** El dato de DNI Nro. 40601858  no encontrado. Verificar **--- 28/09/2010 02:20:36 p.m. --- 7690
+---** El dato de DNI Nro. 46869343  no encontrado. Verificar **--- 28/09/2010 02:20:36 p.m. --- 7690
+---** El dato de DNI Nro. 45788174  no encontrado. Verificar **--- 28/09/2010 02:20:36 p.m. --- 7690
+---** El dato de DNI Nro. 44083235  no encontrado. Verificar **--- 28/09/2010 02:20:36 p.m. --- 7690
+---** El dato de DNI Nro. 10199808  no encontrado. Verificar **--- 28/09/2010 02:20:36 p.m. --- 7690
+---** El dato de DNI Nro. 40640189  no encontrado. Verificar **--- 28/09/2010 02:20:36 p.m. --- 7690
+---** El dato de DNI Nro. 41063245  no encontrado. Verificar **--- 28/09/2010 02:20:36 p.m. --- 7690
+---** El dato de DNI Nro. 47085491  no encontrado. Verificar **--- 28/09/2010 02:20:36 p.m. --- 7690
+---** El dato de DNI Nro. 10542535  no encontrado. Verificar **--- 28/09/2010 02:20:36 p.m. --- 7690
+---** Se registró TX del DNI: 09624024 **--- 28/09/2010 02:20:36 p.m. --- 7690
+---** Se registró TX del DNI: 10618516 **--- 28/09/2010 02:20:36 p.m. --- 7690
+---** Se registró TX del DNI: 10190390 **--- 28/09/2010 02:20:36 p.m. --- 7690
+---** El dato de DNI Nro. 47333267  no encontrado. Verificar **--- 28/09/2010 02:20:37 p.m. --- 7690
+---** El dato de DNI Nro. 72638741  no encontrado. Verificar **--- 28/09/2010 02:20:37 p.m. --- 7690
+---** El dato de DNI Nro. 46438789  no encontrado. Verificar **--- 28/09/2010 02:20:37 p.m. --- 7690
+---** El dato de DNI Nro. 09543702  no encontrado. Verificar **--- 28/09/2010 02:20:37 p.m. --- 7690
+---** El dato de DNI Nro. 47523003  no encontrado. Verificar **--- 28/09/2010 02:20:37 p.m. --- 7690
+---** El dato de DNI Nro. 46715899  no encontrado. Verificar **--- 28/09/2010 02:20:37 p.m. --- 7690
+---** El dato de DNI Nro. 43147178  no encontrado. Verificar **--- 28/09/2010 02:20:37 p.m. --- 7690
+---** El dato de DNI Nro. 44634994  no encontrado. Verificar **--- 28/09/2010 02:20:37 p.m. --- 7690
+---** El dato de DNI Nro. 41094781  no encontrado. Verificar **--- 28/09/2010 02:20:37 p.m. --- 7690
+---** El dato de DNI Nro. 44972087  no encontrado. Verificar **--- 28/09/2010 02:20:37 p.m. --- 7690
+---** El dato de DNI Nro. 43334046  no encontrado. Verificar **--- 28/09/2010 02:20:37 p.m. --- 7690
+---** El dato de DNI Nro. 42675122  no encontrado. Verificar **--- 28/09/2010 02:20:37 p.m. --- 7690
+---** Se registró TX del DNI: 09615881 **--- 28/09/2010 02:20:37 p.m. --- 7690
+---** El dato de DNI Nro. 10689626  no encontrado. Verificar **--- 28/09/2010 02:20:37 p.m. --- 7690
+---** El dato de DNI Nro. 45064901  no encontrado. Verificar **--- 28/09/2010 02:20:37 p.m. --- 7690
+---** El dato de DNI Nro. 40902412  no encontrado. Verificar **--- 28/09/2010 02:20:37 p.m. --- 7690
+---** Se registró TX del DNI: 45240920 **--- 28/09/2010 02:20:37 p.m. --- 7690
+---** El dato de DNI Nro. 09859336  no encontrado. Verificar **--- 28/09/2010 02:20:37 p.m. --- 7690
+---** El dato de DNI Nro. 45726167  no encontrado. Verificar **--- 28/09/2010 02:20:37 p.m. --- 7690
+---** El dato de DNI Nro. 42835975  no encontrado. Verificar **--- 28/09/2010 02:20:37 p.m. --- 7690
+---** Se registró TX del DNI: 08113547 **--- 28/09/2010 02:20:37 p.m. --- 7690
+---** Se registró TX del DNI: 42958548 **--- 28/09/2010 02:20:37 p.m. --- 7690
+---** El dato de DNI Nro. 09790667  no encontrado. Verificar **--- 28/09/2010 02:20:37 p.m. --- 7690
+---** El dato de DNI Nro. 44986352  no encontrado. Verificar **--- 28/09/2010 02:20:37 p.m. --- 7690
+---** El dato de DNI Nro. 43082121  no encontrado. Verificar **--- 28/09/2010 02:20:37 p.m. --- 7690
+---** El dato de DNI Nro. 45992110  no encontrado. Verificar **--- 28/09/2010 02:20:37 p.m. --- 7690
+---** El dato de DNI Nro. 42068659  no encontrado. Verificar **--- 28/09/2010 02:20:37 p.m. --- 7690
+---** El dato de DNI Nro. 09606671  no encontrado. Verificar **--- 28/09/2010 02:20:37 p.m. --- 7690
+---** El dato de DNI Nro. 41598808  no encontrado. Verificar **--- 28/09/2010 02:20:38 p.m. --- 7690
+---** El dato de DNI Nro. 10719199  no encontrado. Verificar **--- 28/09/2010 02:20:38 p.m. --- 7690
+---** El dato de DNI Nro. 10399564  no encontrado. Verificar **--- 28/09/2010 02:20:38 p.m. --- 7690
+---** El dato de DNI Nro. 43319632  no encontrado. Verificar **--- 28/09/2010 02:20:38 p.m. --- 7690
+---** El dato de DNI Nro. 15850280  no encontrado. Verificar **--- 28/09/2010 02:20:38 p.m. --- 7690
+---** El dato de DNI Nro. 40676993  no encontrado. Verificar **--- 28/09/2010 02:20:38 p.m. --- 7690
+---** El dato de DNI Nro. 43938142  no encontrado. Verificar **--- 28/09/2010 02:20:38 p.m. --- 7690
+---** El dato de DNI Nro. 42335770  no encontrado. Verificar **--- 28/09/2010 02:20:38 p.m. --- 7690
+---** El dato de DNI Nro. 46123514  no encontrado. Verificar **--- 28/09/2010 02:20:38 p.m. --- 7690
+---** El dato de DNI Nro. 47463134  no encontrado. Verificar **--- 28/09/2010 02:20:38 p.m. --- 7690
+---** El dato de DNI Nro. 45558843  no encontrado. Verificar **--- 28/09/2010 02:20:38 p.m. --- 7690
+---** El dato de DNI Nro. 44631961  no encontrado. Verificar **--- 28/09/2010 02:20:38 p.m. --- 7690
+---** El dato de DNI Nro. 40215468  no encontrado. Verificar **--- 28/09/2010 02:20:38 p.m. --- 7690
+---** El dato de DNI Nro. 42688639  no encontrado. Verificar **--- 28/09/2010 02:20:38 p.m. --- 7690
+---** El dato de DNI Nro. 46195716  no encontrado. Verificar **--- 28/09/2010 02:20:38 p.m. --- 7690
+---** El dato de DNI Nro. 09634718  no encontrado. Verificar **--- 28/09/2010 02:20:38 p.m. --- 7690
+---** El dato de DNI Nro. 45103200  no encontrado. Verificar **--- 28/09/2010 02:20:38 p.m. --- 7690
+---** El dato de DNI Nro. 44647875  no encontrado. Verificar **--- 28/09/2010 02:20:38 p.m. --- 7690
+---** El dato de DNI Nro. 40911943  no encontrado. Verificar **--- 28/09/2010 02:20:38 p.m. --- 7690
+---** El dato de DNI Nro. 40601858  no encontrado. Verificar **--- 28/09/2010 02:20:38 p.m. --- 7690
+---** El dato de DNI Nro. 46869343  no encontrado. Verificar **--- 28/09/2010 02:20:38 p.m. --- 7690
+---** El dato de DNI Nro. 45788174  no encontrado. Verificar **--- 28/09/2010 02:20:38 p.m. --- 7690
+---** El dato de DNI Nro. 44083235  no encontrado. Verificar **--- 28/09/2010 02:20:38 p.m. --- 7690
+---** El dato de DNI Nro. 10199808  no encontrado. Verificar **--- 28/09/2010 02:20:38 p.m. --- 7690
+---** El dato de DNI Nro. 40640189  no encontrado. Verificar **--- 28/09/2010 02:20:38 p.m. --- 7690
+---** El dato de DNI Nro. 41063245  no encontrado. Verificar **--- 28/09/2010 02:20:38 p.m. --- 7690
+---** El dato de DNI Nro. 47085491  no encontrado. Verificar **--- 28/09/2010 02:20:39 p.m. --- 7690
+---** El dato de DNI Nro. 10542535  no encontrado. Verificar **--- 28/09/2010 02:20:39 p.m. --- 7690
+---** Se registró TX del DNI: 09624024 **--- 28/09/2010 02:20:39 p.m. --- 7690
+---** Se registró TX del DNI: 10618516 **--- 28/09/2010 02:20:39 p.m. --- 7690
+---** Se registró TX del DNI: 10190390 **--- 28/09/2010 02:20:39 p.m. --- 7690
+---** El dato de DNI Nro. 47333267  no encontrado. Verificar **--- 28/09/2010 02:20:39 p.m. --- 7690
+---** El dato de DNI Nro. 46438789  no encontrado. Verificar **--- 28/09/2010 02:20:39 p.m. --- 7690
+---** El dato de DNI Nro. 09543702  no encontrado. Verificar **--- 28/09/2010 02:20:39 p.m. --- 7690
+---** El dato de DNI Nro. 47523003  no encontrado. Verificar **--- 28/09/2010 02:20:39 p.m. --- 7690
+---** El dato de DNI Nro. 46715899  no encontrado. Verificar **--- 28/09/2010 02:20:39 p.m. --- 7690
+---** El dato de DNI Nro. 45925832  no encontrado. Verificar **--- 28/09/2010 02:20:39 p.m. --- 7690
+---** El dato de DNI Nro. 43147178  no encontrado. Verificar **--- 28/09/2010 02:20:39 p.m. --- 7690
+---** El dato de DNI Nro. 44634994  no encontrado. Verificar **--- 28/09/2010 02:20:39 p.m. --- 7690
+---** El dato de DNI Nro. 10587811  no encontrado. Verificar **--- 28/09/2010 02:20:39 p.m. --- 7690
+---** El dato de DNI Nro. 44307035  no encontrado. Verificar **--- 28/09/2010 02:20:39 p.m. --- 7690
+---** El dato de DNI Nro. 41094781  no encontrado. Verificar **--- 28/09/2010 02:20:39 p.m. --- 7690
+---** El dato de DNI Nro. 44972087  no encontrado. Verificar **--- 28/09/2010 02:20:39 p.m. --- 7690
+---** El dato de DNI Nro. 43334046  no encontrado. Verificar **--- 28/09/2010 02:20:39 p.m. --- 7690
+---** El dato de DNI Nro. 42675122  no encontrado. Verificar **--- 28/09/2010 02:20:39 p.m. --- 7690
+---** Se registró TX del DNI: 09615881 **--- 28/09/2010 02:20:39 p.m. --- 7690
+---** El dato de DNI Nro. 10689626  no encontrado. Verificar **--- 28/09/2010 02:20:39 p.m. --- 7690
+---** El dato de DNI Nro. 45064901  no encontrado. Verificar **--- 28/09/2010 02:20:39 p.m. --- 7690
+---** El dato de DNI Nro. 40902412  no encontrado. Verificar **--- 28/09/2010 02:20:39 p.m. --- 7690
+---** El dato de DNI Nro. 09859336  no encontrado. Verificar **--- 28/09/2010 02:20:40 p.m. --- 7690
+---** El dato de DNI Nro. 45726167  no encontrado. Verificar **--- 28/09/2010 02:20:40 p.m. --- 7690
+---** El dato de DNI Nro. 42835975  no encontrado. Verificar **--- 28/09/2010 02:20:40 p.m. --- 7690
+---** Se registró TX del DNI: 08113547 **--- 28/09/2010 02:20:40 p.m. --- 7690
+---** Se registró TX del DNI: 42958548 **--- 28/09/2010 02:20:40 p.m. --- 7690
+---** El dato de DNI Nro. 09790667  no encontrado. Verificar **--- 28/09/2010 02:20:40 p.m. --- 7690
+---** El dato de DNI Nro. 44986352  no encontrado. Verificar **--- 28/09/2010 02:20:40 p.m. --- 7690
+---** El dato de DNI Nro. 43082121  no encontrado. Verificar **--- 28/09/2010 02:20:40 p.m. --- 7690
+---** El dato de DNI Nro. 45992110  no encontrado. Verificar **--- 28/09/2010 02:20:40 p.m. --- 7690
+---** El dato de DNI Nro. 42068659  no encontrado. Verificar **--- 28/09/2010 02:20:40 p.m. --- 7690
+---** El dato de DNI Nro. 09606671  no encontrado. Verificar **--- 28/09/2010 02:20:40 p.m. --- 7690
+---** El dato de DNI Nro. 41598808  no encontrado. Verificar **--- 28/09/2010 02:20:40 p.m. --- 7690
+---** El dato de DNI Nro. 10719199  no encontrado. Verificar **--- 28/09/2010 02:20:40 p.m. --- 7690
+---** El dato de DNI Nro. 43319632  no encontrado. Verificar **--- 28/09/2010 02:20:40 p.m. --- 7690
+---** El dato de DNI Nro. 15850280  no encontrado. Verificar **--- 28/09/2010 02:20:40 p.m. --- 7690
+---** El dato de DNI Nro. 40676993  no encontrado. Verificar **--- 28/09/2010 02:20:40 p.m. --- 7690
+---** El dato de DNI Nro. 43938142  no encontrado. Verificar **--- 28/09/2010 02:20:40 p.m. --- 7690
+---** El dato de DNI Nro. 42335770  no encontrado. Verificar **--- 28/09/2010 02:20:41 p.m. --- 7690
+---** El dato de DNI Nro. 46123514  no encontrado. Verificar **--- 28/09/2010 02:20:41 p.m. --- 7690
+---** El dato de DNI Nro. 47463134  no encontrado. Verificar **--- 28/09/2010 02:20:41 p.m. --- 7690
+---** El dato de DNI Nro. 45558843  no encontrado. Verificar **--- 28/09/2010 02:20:41 p.m. --- 7690
+---** El dato de DNI Nro. 44631961  no encontrado. Verificar **--- 28/09/2010 02:20:41 p.m. --- 7690
+---** El dato de DNI Nro. 40215468  no encontrado. Verificar **--- 28/09/2010 02:20:41 p.m. --- 7690
+---** El dato de DNI Nro. 42688639  no encontrado. Verificar **--- 28/09/2010 02:20:41 p.m. --- 7690
+---** El dato de DNI Nro. 46195716  no encontrado. Verificar **--- 28/09/2010 02:20:41 p.m. --- 7690
+---** El dato de DNI Nro. 09634718  no encontrado. Verificar **--- 28/09/2010 02:20:41 p.m. --- 7690
+---** El dato de DNI Nro. 45103200  no encontrado. Verificar **--- 28/09/2010 02:20:41 p.m. --- 7690
+---** El dato de DNI Nro. 44647875  no encontrado. Verificar **--- 28/09/2010 02:20:41 p.m. --- 7690
+---** El dato de DNI Nro. 40911943  no encontrado. Verificar **--- 28/09/2010 02:20:41 p.m. --- 7690
+---** El dato de DNI Nro. 40601858  no encontrado. Verificar **--- 28/09/2010 02:20:41 p.m. --- 7690
+---** El dato de DNI Nro. 46869343  no encontrado. Verificar **--- 28/09/2010 02:20:41 p.m. --- 7690
+---** El dato de DNI Nro. 45788174  no encontrado. Verificar **--- 28/09/2010 02:20:41 p.m. --- 7690
+---** El dato de DNI Nro. 44083235  no encontrado. Verificar **--- 28/09/2010 02:20:41 p.m. --- 7690
+---** El dato de DNI Nro. 10199808  no encontrado. Verificar **--- 28/09/2010 02:20:41 p.m. --- 7690
+---** El dato de DNI Nro. 40640189  no encontrado. Verificar **--- 28/09/2010 02:20:41 p.m. --- 7690
+---** El dato de DNI Nro. 41063245  no encontrado. Verificar **--- 28/09/2010 02:20:41 p.m. --- 7690
+---** El dato de DNI Nro. 47085491  no encontrado. Verificar **--- 28/09/2010 02:20:41 p.m. --- 7690
+---** El dato de DNI Nro. 10542535  no encontrado. Verificar **--- 28/09/2010 02:20:41 p.m. --- 7690
+---** Se registró TX del DNI: 09624024 **--- 28/09/2010 02:20:41 p.m. --- 7690
+---** Se registró TX del DNI: 10618516 **--- 28/09/2010 02:20:41 p.m. --- 7690
+---** Se registró TX del DNI: 10190390 **--- 28/09/2010 02:20:41 p.m. --- 7690
+---** El dato de DNI Nro. 47333267  no encontrado. Verificar **--- 28/09/2010 02:20:41 p.m. --- 7690
+---** El dato de DNI Nro. 72638741  no encontrado. Verificar **--- 28/09/2010 02:20:41 p.m. --- 7690
+---** El dato de DNI Nro. 46438789  no encontrado. Verificar **--- 28/09/2010 02:20:41 p.m. --- 7690
+---** El dato de DNI Nro. 09543702  no encontrado. Verificar **--- 28/09/2010 02:20:42 p.m. --- 7690
+---** El dato de DNI Nro. 47523003  no encontrado. Verificar **--- 28/09/2010 02:20:42 p.m. --- 7690
+---** El dato de DNI Nro. 45925832  no encontrado. Verificar **--- 28/09/2010 02:20:42 p.m. --- 7690
+---** El dato de DNI Nro. 43147178  no encontrado. Verificar **--- 28/09/2010 02:20:42 p.m. --- 7690
+---** El dato de DNI Nro. 44634994  no encontrado. Verificar **--- 28/09/2010 02:20:42 p.m. --- 7690
+---** El dato de DNI Nro. 10587811  no encontrado. Verificar **--- 28/09/2010 02:20:42 p.m. --- 7690
+---** El dato de DNI Nro. 44307035  no encontrado. Verificar **--- 28/09/2010 02:20:42 p.m. --- 7690
+---** El dato de DNI Nro. 41094781  no encontrado. Verificar **--- 28/09/2010 02:20:42 p.m. --- 7690
+---** El dato de DNI Nro. 44972087  no encontrado. Verificar **--- 28/09/2010 02:20:42 p.m. --- 7690
+---** El dato de DNI Nro. 43334046  no encontrado. Verificar **--- 28/09/2010 02:20:42 p.m. --- 7690
+---** El dato de DNI Nro. 42675122  no encontrado. Verificar **--- 28/09/2010 02:20:42 p.m. --- 7690
+---** Se registró TX del DNI: 09615881 **--- 28/09/2010 02:20:42 p.m. --- 7690
+---** El dato de DNI Nro. 10689626  no encontrado. Verificar **--- 28/09/2010 02:20:42 p.m. --- 7690
+---** El dato de DNI Nro. 45064901  no encontrado. Verificar **--- 28/09/2010 02:20:42 p.m. --- 7690
+---** El dato de DNI Nro. 40902412  no encontrado. Verificar **--- 28/09/2010 02:20:42 p.m. --- 7690
+---** Se registró TX del DNI: 45240920 **--- 28/09/2010 02:20:42 p.m. --- 7690
+---** El dato de DNI Nro. 09859336  no encontrado. Verificar **--- 28/09/2010 02:20:42 p.m. --- 7690
+---** El dato de DNI Nro. 45726167  no encontrado. Verificar **--- 28/09/2010 02:20:42 p.m. --- 7690
+---** El dato de DNI Nro. 42835975  no encontrado. Verificar **--- 28/09/2010 02:20:42 p.m. --- 7690
+---** Se registró TX del DNI: 08113547 **--- 28/09/2010 02:20:42 p.m. --- 7690
+---** Se registró TX del DNI: 42958548 **--- 28/09/2010 02:20:42 p.m. --- 7690
+---** El dato de DNI Nro. 09790667  no encontrado. Verificar **--- 28/09/2010 02:20:42 p.m. --- 7690
+---** El dato de DNI Nro. 44986352  no encontrado. Verificar **--- 28/09/2010 02:20:42 p.m. --- 7690
+---** El dato de DNI Nro. 43082121  no encontrado. Verificar **--- 28/09/2010 02:20:42 p.m. --- 7690
+---** El dato de DNI Nro. 45992110  no encontrado. Verificar **--- 28/09/2010 02:20:42 p.m. --- 7690
+---** El dato de DNI Nro. 42068659  no encontrado. Verificar **--- 28/09/2010 02:20:42 p.m. --- 7690
+---** El dato de DNI Nro. 09606671  no encontrado. Verificar **--- 28/09/2010 02:20:42 p.m. --- 7690
+---** El dato de DNI Nro. 41598808  no encontrado. Verificar **--- 28/09/2010 02:20:43 p.m. --- 7690
+---** El dato de DNI Nro. 10719199  no encontrado. Verificar **--- 28/09/2010 02:20:43 p.m. --- 7690
+---** El dato de DNI Nro. 10399564  no encontrado. Verificar **--- 28/09/2010 02:20:43 p.m. --- 7690
+---** El dato de DNI Nro. 43319632  no encontrado. Verificar **--- 28/09/2010 02:20:43 p.m. --- 7690
+---** El dato de DNI Nro. 40676993  no encontrado. Verificar **--- 28/09/2010 02:20:43 p.m. --- 7690
+---** El dato de DNI Nro. 43938142  no encontrado. Verificar **--- 28/09/2010 02:20:43 p.m. --- 7690
+---** El dato de DNI Nro. 42335770  no encontrado. Verificar **--- 28/09/2010 02:20:43 p.m. --- 7690
+---** El dato de DNI Nro. 46123514  no encontrado. Verificar **--- 28/09/2010 02:20:43 p.m. --- 7690
+---** El dato de DNI Nro. 47463134  no encontrado. Verificar **--- 28/09/2010 02:20:43 p.m. --- 7690
+---** El dato de DNI Nro. 45558843  no encontrado. Verificar **--- 28/09/2010 02:20:43 p.m. --- 7690
+---** El dato de DNI Nro. 44631961  no encontrado. Verificar **--- 28/09/2010 02:20:43 p.m. --- 7690
+---** El dato de DNI Nro. 40215468  no encontrado. Verificar **--- 28/09/2010 02:20:43 p.m. --- 7690
+---** El dato de DNI Nro. 42688639  no encontrado. Verificar **--- 28/09/2010 02:20:43 p.m. --- 7690
+---** El dato de DNI Nro. 46195716  no encontrado. Verificar **--- 28/09/2010 02:20:43 p.m. --- 7690
+---** El dato de DNI Nro. 09634718  no encontrado. Verificar **--- 28/09/2010 02:20:43 p.m. --- 7690
+---** El dato de DNI Nro. 45103200  no encontrado. Verificar **--- 28/09/2010 02:20:43 p.m. --- 7690
+---** El dato de DNI Nro. 44647875  no encontrado. Verificar **--- 28/09/2010 02:20:43 p.m. --- 7690
+---** El dato de DNI Nro. 40911943  no encontrado. Verificar **--- 28/09/2010 02:20:43 p.m. --- 7690
+---** El dato de DNI Nro. 40601858  no encontrado. Verificar **--- 28/09/2010 02:20:43 p.m. --- 7690
+---** El dato de DNI Nro. 46869343  no encontrado. Verificar **--- 28/09/2010 02:20:43 p.m. --- 7690
+---** El dato de DNI Nro. 44083235  no encontrado. Verificar **--- 28/09/2010 02:20:43 p.m. --- 7690
+---** El dato de DNI Nro. 10199808  no encontrado. Verificar **--- 28/09/2010 02:20:43 p.m. --- 7690
+---** El dato de DNI Nro. 40640189  no encontrado. Verificar **--- 28/09/2010 02:20:43 p.m. --- 7690
+---** El dato de DNI Nro. 41063245  no encontrado. Verificar **--- 28/09/2010 02:20:43 p.m. --- 7690
+---** El dato de DNI Nro. 47085491  no encontrado. Verificar **--- 28/09/2010 02:20:43 p.m. --- 7690
+---** El dato de DNI Nro. 10542535  no encontrado. Verificar **--- 28/09/2010 02:20:43 p.m. --- 7690
+---** Se registró TX del DNI: 09624024 **--- 28/09/2010 02:20:44 p.m. --- 7690
+---** Se registró TX del DNI: 10618516 **--- 28/09/2010 02:20:44 p.m. --- 7690
+---** Se registró TX del DNI: 10190390 **--- 28/09/2010 02:20:44 p.m. --- 7690
+---** El dato de DNI Nro. 47333267  no encontrado. Verificar **--- 28/09/2010 02:20:44 p.m. --- 7690
+---** El dato de DNI Nro. 72638741  no encontrado. Verificar **--- 28/09/2010 02:20:44 p.m. --- 7690
+---** El dato de DNI Nro. 46438789  no encontrado. Verificar **--- 28/09/2010 02:20:44 p.m. --- 7690
+---** El dato de DNI Nro. 09543702  no encontrado. Verificar **--- 28/09/2010 02:20:44 p.m. --- 7690
+---** El dato de DNI Nro. 47523003  no encontrado. Verificar **--- 28/09/2010 02:20:44 p.m. --- 7690
+---** El dato de DNI Nro. 46715899  no encontrado. Verificar **--- 28/09/2010 02:20:44 p.m. --- 7690
+---** El dato de DNI Nro. 45925832  no encontrado. Verificar **--- 28/09/2010 02:20:44 p.m. --- 7690
+---** El dato de DNI Nro. 43147178  no encontrado. Verificar **--- 28/09/2010 02:20:44 p.m. --- 7690
+---** El dato de DNI Nro. 44634994  no encontrado. Verificar **--- 28/09/2010 02:20:44 p.m. --- 7690
+---** El dato de DNI Nro. 10587811  no encontrado. Verificar **--- 28/09/2010 02:20:44 p.m. --- 7690
+---** El dato de DNI Nro. 44307035  no encontrado. Verificar **--- 28/09/2010 02:20:44 p.m. --- 7690
+---** El dato de DNI Nro. 41094781  no encontrado. Verificar **--- 28/09/2010 02:20:44 p.m. --- 7690
+---** El dato de DNI Nro. 44972087  no encontrado. Verificar **--- 28/09/2010 02:20:44 p.m. --- 7690
+---** El dato de DNI Nro. 43334046  no encontrado. Verificar **--- 28/09/2010 02:20:44 p.m. --- 7690
+---** El dato de DNI Nro. 42675122  no encontrado. Verificar **--- 28/09/2010 02:20:44 p.m. --- 7690
+---** Se registró TX del DNI: 09615881 **--- 28/09/2010 02:20:44 p.m. --- 7690
+---** El dato de DNI Nro. 10689626  no encontrado. Verificar **--- 28/09/2010 02:20:44 p.m. --- 7690
+---** El dato de DNI Nro. 45064901  no encontrado. Verificar **--- 28/09/2010 02:20:44 p.m. --- 7690
+---** El dato de DNI Nro. 40902412  no encontrado. Verificar **--- 28/09/2010 02:20:44 p.m. --- 7690
+---** Se registró TX del DNI: 45240920 **--- 28/09/2010 02:20:45 p.m. --- 7690
+---** El dato de DNI Nro. 09859336  no encontrado. Verificar **--- 28/09/2010 02:20:45 p.m. --- 7690
+---** El dato de DNI Nro. 45726167  no encontrado. Verificar **--- 28/09/2010 02:20:45 p.m. --- 7690
+---** El dato de DNI Nro. 42835975  no encontrado. Verificar **--- 28/09/2010 02:20:45 p.m. --- 7690
+---** Se registró TX del DNI: 08113547 **--- 28/09/2010 02:20:45 p.m. --- 7690
+---** Se registró TX del DNI: 42958548 **--- 28/09/2010 02:20:45 p.m. --- 7690
+---** El dato de DNI Nro. 09790667  no encontrado. Verificar **--- 28/09/2010 02:20:45 p.m. --- 7690
+---** El dato de DNI Nro. 44986352  no encontrado. Verificar **--- 28/09/2010 02:20:45 p.m. --- 7690
+---** El dato de DNI Nro. 43082121  no encontrado. Verificar **--- 28/09/2010 02:20:45 p.m. --- 7690
+---** El dato de DNI Nro. 45992110  no encontrado. Verificar **--- 28/09/2010 02:20:45 p.m. --- 7690
+---** El dato de DNI Nro. 42068659  no encontrado. Verificar **--- 28/09/2010 02:20:45 p.m. --- 7690
+---** El dato de DNI Nro. 09606671  no encontrado. Verificar **--- 28/09/2010 02:20:45 p.m. --- 7690
+---** El dato de DNI Nro. 41598808  no encontrado. Verificar **--- 28/09/2010 02:20:45 p.m. --- 7690
+---** El dato de DNI Nro. 10719199  no encontrado. Verificar **--- 28/09/2010 02:20:45 p.m. --- 7690
+---** El dato de DNI Nro. 10399564  no encontrado. Verificar **--- 28/09/2010 02:20:45 p.m. --- 7690
+---** El dato de DNI Nro. 43319632  no encontrado. Verificar **--- 28/09/2010 02:20:45 p.m. --- 7690
+---** El dato de DNI Nro. 40676993  no encontrado. Verificar **--- 28/09/2010 02:20:45 p.m. --- 7690
+---** El dato de DNI Nro. 43938142  no encontrado. Verificar **--- 28/09/2010 02:20:45 p.m. --- 7690
+---** El dato de DNI Nro. 42335770  no encontrado. Verificar **--- 28/09/2010 02:20:45 p.m. --- 7690
+---** El dato de DNI Nro. 46123514  no encontrado. Verificar **--- 28/09/2010 02:20:46 p.m. --- 7690
+---** El dato de DNI Nro. 47463134  no encontrado. Verificar **--- 28/09/2010 02:20:46 p.m. --- 7690
+---** El dato de DNI Nro. 45558843  no encontrado. Verificar **--- 28/09/2010 02:20:46 p.m. --- 7690
+---** El dato de DNI Nro. 44631961  no encontrado. Verificar **--- 28/09/2010 02:20:46 p.m. --- 7690
+---** El dato de DNI Nro. 40215468  no encontrado. Verificar **--- 28/09/2010 02:20:46 p.m. --- 7690
+---** El dato de DNI Nro. 42688639  no encontrado. Verificar **--- 28/09/2010 02:20:46 p.m. --- 7690
+---** El dato de DNI Nro. 46195716  no encontrado. Verificar **--- 28/09/2010 02:20:46 p.m. --- 7690
+---** El dato de DNI Nro. 09634718  no encontrado. Verificar **--- 28/09/2010 02:20:46 p.m. --- 7690
+---** El dato de DNI Nro. 45103200  no encontrado. Verificar **--- 28/09/2010 02:20:46 p.m. --- 7690
+---** El dato de DNI Nro. 44647875  no encontrado. Verificar **--- 28/09/2010 02:20:46 p.m. --- 7690
+---** El dato de DNI Nro. 40601858  no encontrado. Verificar **--- 28/09/2010 02:20:46 p.m. --- 7690
+---** El dato de DNI Nro. 46869343  no encontrado. Verificar **--- 28/09/2010 02:20:46 p.m. --- 7690
+---** El dato de DNI Nro. 45788174  no encontrado. Verificar **--- 28/09/2010 02:20:46 p.m. --- 7690
+---** El dato de DNI Nro. 44083235  no encontrado. Verificar **--- 28/09/2010 02:20:46 p.m. --- 7690
+---** El dato de DNI Nro. 10199808  no encontrado. Verificar **--- 28/09/2010 02:20:46 p.m. --- 7690
+---** El dato de DNI Nro. 40640189  no encontrado. Verificar **--- 28/09/2010 02:20:46 p.m. --- 7690
+---** El dato de DNI Nro. 41063245  no encontrado. Verificar **--- 28/09/2010 02:20:46 p.m. --- 7690
+---** El dato de DNI Nro. 47085491  no encontrado. Verificar **--- 28/09/2010 02:20:46 p.m. --- 7690
+---** El dato de DNI Nro. 10542535  no encontrado. Verificar **--- 28/09/2010 02:20:46 p.m. --- 7690
+---** Se registró TX del DNI: 09624024 **--- 28/09/2010 02:20:46 p.m. --- 7690
+---** Se registró TX del DNI: 10618516 **--- 28/09/2010 02:20:46 p.m. --- 7690
+---** Se registró TX del DNI: 10190390 **--- 28/09/2010 02:20:46 p.m. --- 7690
+---** El dato de DNI Nro. 47333267  no encontrado. Verificar **--- 28/09/2010 02:20:46 p.m. --- 7690
+---** El dato de DNI Nro. 72638741  no encontrado. Verificar **--- 28/09/2010 02:20:46 p.m. --- 7690
+---** El dato de DNI Nro. 46438789  no encontrado. Verificar **--- 28/09/2010 02:20:46 p.m. --- 7690
+---** El dato de DNI Nro. 09543702  no encontrado. Verificar **--- 28/09/2010 02:20:47 p.m. --- 7690
+---** El dato de DNI Nro. 47523003  no encontrado. Verificar **--- 28/09/2010 02:20:47 p.m. --- 7690
+---** El dato de DNI Nro. 46715899  no encontrado. Verificar **--- 28/09/2010 02:20:47 p.m. --- 7690
+---** El dato de DNI Nro. 45925832  no encontrado. Verificar **--- 28/09/2010 02:20:47 p.m. --- 7690
+---** El dato de DNI Nro. 43147178  no encontrado. Verificar **--- 28/09/2010 02:20:47 p.m. --- 7690
+---** El dato de DNI Nro. 44634994  no encontrado. Verificar **--- 28/09/2010 02:20:47 p.m. --- 7690
+---** El dato de DNI Nro. 10587811  no encontrado. Verificar **--- 28/09/2010 02:20:47 p.m. --- 7690
+---** El dato de DNI Nro. 44307035  no encontrado. Verificar **--- 28/09/2010 02:20:47 p.m. --- 7690
+---** El dato de DNI Nro. 41094781  no encontrado. Verificar **--- 28/09/2010 02:20:47 p.m. --- 7690
+---** El dato de DNI Nro. 44972087  no encontrado. Verificar **--- 28/09/2010 02:20:47 p.m. --- 7690
+---** El dato de DNI Nro. 43334046  no encontrado. Verificar **--- 28/09/2010 02:20:47 p.m. --- 7690
+---** El dato de DNI Nro. 42675122  no encontrado. Verificar **--- 28/09/2010 02:20:47 p.m. --- 7690
+---** El dato de DNI Nro. 10689626  no encontrado. Verificar **--- 28/09/2010 02:20:47 p.m. --- 7690
+---** El dato de DNI Nro. 45064901  no encontrado. Verificar **--- 28/09/2010 02:20:47 p.m. --- 7690
+---** El dato de DNI Nro. 40902412  no encontrado. Verificar **--- 28/09/2010 02:20:47 p.m. --- 7690
+---** Se registró TX del DNI: 45240920 **--- 28/09/2010 02:20:47 p.m. --- 7690
+---** El dato de DNI Nro. 45726167  no encontrado. Verificar **--- 28/09/2010 02:20:47 p.m. --- 7690
+---** El dato de DNI Nro. 42835975  no encontrado. Verificar **--- 28/09/2010 02:20:47 p.m. --- 7690
+---** Se registró TX del DNI: 08113547 **--- 28/09/2010 02:20:47 p.m. --- 7690
+---** Se registró TX del DNI: 42958548 **--- 28/09/2010 02:20:47 p.m. --- 7690
+---** El dato de DNI Nro. 09790667  no encontrado. Verificar **--- 28/09/2010 02:20:47 p.m. --- 7690
+---** El dato de DNI Nro. 44986352  no encontrado. Verificar **--- 28/09/2010 02:20:47 p.m. --- 7690
+---** El dato de DNI Nro. 45992110  no encontrado. Verificar **--- 28/09/2010 02:20:47 p.m. --- 7690
+---** El dato de DNI Nro. 42068659  no encontrado. Verificar **--- 28/09/2010 02:20:47 p.m. --- 7690
+---** El dato de DNI Nro. 09606671  no encontrado. Verificar **--- 28/09/2010 02:20:47 p.m. --- 7690
+---** El dato de DNI Nro. 41598808  no encontrado. Verificar **--- 28/09/2010 02:20:47 p.m. --- 7690
+---** El dato de DNI Nro. 10719199  no encontrado. Verificar **--- 28/09/2010 02:20:48 p.m. --- 7690
+---** El dato de DNI Nro. 10399564  no encontrado. Verificar **--- 28/09/2010 02:20:48 p.m. --- 7690
+---** El dato de DNI Nro. 43319632  no encontrado. Verificar **--- 28/09/2010 02:20:48 p.m. --- 7690
+---** El dato de DNI Nro. 15850280  no encontrado. Verificar **--- 28/09/2010 02:20:48 p.m. --- 7690
+---** El dato de DNI Nro. 40676993  no encontrado. Verificar **--- 28/09/2010 02:20:48 p.m. --- 7690
+---** El dato de DNI Nro. 43938142  no encontrado. Verificar **--- 28/09/2010 02:20:48 p.m. --- 7690
+---** El dato de DNI Nro. 42335770  no encontrado. Verificar **--- 28/09/2010 02:20:48 p.m. --- 7690
+---** El dato de DNI Nro. 46123514  no encontrado. Verificar **--- 28/09/2010 02:20:48 p.m. --- 7690
+---** El dato de DNI Nro. 47463134  no encontrado. Verificar **--- 28/09/2010 02:20:48 p.m. --- 7690
+---** El dato de DNI Nro. 45558843  no encontrado. Verificar **--- 28/09/2010 02:20:48 p.m. --- 7690
+---** El dato de DNI Nro. 44631961  no encontrado. Verificar **--- 28/09/2010 02:20:48 p.m. --- 7690
+---** El dato de DNI Nro. 40215468  no encontrado. Verificar **--- 28/09/2010 02:20:48 p.m. --- 7690
+---** El dato de DNI Nro. 42688639  no encontrado. Verificar **--- 28/09/2010 02:20:48 p.m. --- 7690
+---** El dato de DNI Nro. 45103200  no encontrado. Verificar **--- 28/09/2010 02:20:48 p.m. --- 7690
+---** El dato de DNI Nro. 44647875  no encontrado. Verificar **--- 28/09/2010 02:20:48 p.m. --- 7690
+---** El dato de DNI Nro. 40911943  no encontrado. Verificar **--- 28/09/2010 02:20:48 p.m. --- 7690
+---** El dato de DNI Nro. 40601858  no encontrado. Verificar **--- 28/09/2010 02:20:48 p.m. --- 7690
+---** El dato de DNI Nro. 46869343  no encontrado. Verificar **--- 28/09/2010 02:20:48 p.m. --- 7690
+---** El dato de DNI Nro. 45788174  no encontrado. Verificar **--- 28/09/2010 02:20:48 p.m. --- 7690
+---** El dato de DNI Nro. 44083235  no encontrado. Verificar **--- 28/09/2010 02:20:48 p.m. --- 7690
+---** El dato de DNI Nro. 10199808  no encontrado. Verificar **--- 28/09/2010 02:20:48 p.m. --- 7690
+---** El dato de DNI Nro. 41063245  no encontrado. Verificar **--- 28/09/2010 02:20:48 p.m. --- 7690
+---** El dato de DNI Nro. 47085491  no encontrado. Verificar **--- 28/09/2010 02:20:48 p.m. --- 7690
+---** El dato de DNI Nro. 10542535  no encontrado. Verificar **--- 28/09/2010 02:20:48 p.m. --- 7690
+---** Se registró TX del DNI: 09624024 **--- 28/09/2010 02:20:48 p.m. --- 7690
+---** Se registró TX del DNI: 10618516 **--- 28/09/2010 02:20:48 p.m. --- 7690
+---** Se registró TX del DNI: 10190390 **--- 28/09/2010 02:20:48 p.m. --- 7690
+---** El dato de DNI Nro. 47333267  no encontrado. Verificar **--- 28/09/2010 02:20:49 p.m. --- 7690
+---** El dato de DNI Nro. 72638741  no encontrado. Verificar **--- 28/09/2010 02:20:49 p.m. --- 7690
+---** El dato de DNI Nro. 46438789  no encontrado. Verificar **--- 28/09/2010 02:20:49 p.m. --- 7690
+---** El dato de DNI Nro. 09543702  no encontrado. Verificar **--- 28/09/2010 02:20:49 p.m. --- 7690
+---** El dato de DNI Nro. 47523003  no encontrado. Verificar **--- 28/09/2010 02:20:49 p.m. --- 7690
+---** El dato de DNI Nro. 46715899  no encontrado. Verificar **--- 28/09/2010 02:20:49 p.m. --- 7690
+---** El dato de DNI Nro. 45925832  no encontrado. Verificar **--- 28/09/2010 02:20:49 p.m. --- 7690
+---** El dato de DNI Nro. 43147178  no encontrado. Verificar **--- 28/09/2010 02:20:49 p.m. --- 7690
+---** El dato de DNI Nro. 44634994  no encontrado. Verificar **--- 28/09/2010 02:20:49 p.m. --- 7690
+---** El dato de DNI Nro. 10587811  no encontrado. Verificar **--- 28/09/2010 02:20:49 p.m. --- 7690
+---** El dato de DNI Nro. 44307035  no encontrado. Verificar **--- 28/09/2010 02:20:49 p.m. --- 7690
+---** El dato de DNI Nro. 41094781  no encontrado. Verificar **--- 28/09/2010 02:20:49 p.m. --- 7690
+---** El dato de DNI Nro. 44972087  no encontrado. Verificar **--- 28/09/2010 02:20:49 p.m. --- 7690
+---** El dato de DNI Nro. 43334046  no encontrado. Verificar **--- 28/09/2010 02:20:49 p.m. --- 7690
+---** Se registró TX del DNI: 09615881 **--- 28/09/2010 02:20:49 p.m. --- 7690
+---** El dato de DNI Nro. 10689626  no encontrado. Verificar **--- 28/09/2010 02:20:49 p.m. --- 7690
+---** El dato de DNI Nro. 45064901  no encontrado. Verificar **--- 28/09/2010 02:20:49 p.m. --- 7690
+---** El dato de DNI Nro. 40902412  no encontrado. Verificar **--- 28/09/2010 02:20:49 p.m. --- 7690
+---** Se registró TX del DNI: 45240920 **--- 28/09/2010 02:20:49 p.m. --- 7690
+---** El dato de DNI Nro. 09859336  no encontrado. Verificar **--- 28/09/2010 02:20:49 p.m. --- 7690
+---** El dato de DNI Nro. 45726167  no encontrado. Verificar **--- 28/09/2010 02:20:49 p.m. --- 7690
+---** El dato de DNI Nro. 42835975  no encontrado. Verificar **--- 28/09/2010 02:20:50 p.m. --- 7690
+---** Se registró TX del DNI: 08113547 **--- 28/09/2010 02:20:50 p.m. --- 7690
+---** Se registró TX del DNI: 42958548 **--- 28/09/2010 02:20:50 p.m. --- 7690
+---** El dato de DNI Nro. 09790667  no encontrado. Verificar **--- 28/09/2010 02:20:50 p.m. --- 7690
+---** El dato de DNI Nro. 44986352  no encontrado. Verificar **--- 28/09/2010 02:20:50 p.m. --- 7690
+---** El dato de DNI Nro. 43082121  no encontrado. Verificar **--- 28/09/2010 02:20:50 p.m. --- 7690
+---** El dato de DNI Nro. 45992110  no encontrado. Verificar **--- 28/09/2010 02:20:50 p.m. --- 7690
+---** El dato de DNI Nro. 42068659  no encontrado. Verificar **--- 28/09/2010 02:20:50 p.m. --- 7690
+---** El dato de DNI Nro. 09606671  no encontrado. Verificar **--- 28/09/2010 02:20:50 p.m. --- 7690
+---** El dato de DNI Nro. 41598808  no encontrado. Verificar **--- 28/09/2010 02:20:50 p.m. --- 7690
+---** El dato de DNI Nro. 10719199  no encontrado. Verificar **--- 28/09/2010 02:20:50 p.m. --- 7690
+---** El dato de DNI Nro. 10399564  no encontrado. Verificar **--- 28/09/2010 02:20:50 p.m. --- 7690
+---** El dato de DNI Nro. 43319632  no encontrado. Verificar **--- 28/09/2010 02:20:50 p.m. --- 7690
+---** El dato de DNI Nro. 15850280  no encontrado. Verificar **--- 28/09/2010 02:20:50 p.m. --- 7690
+---** El dato de DNI Nro. 40676993  no encontrado. Verificar **--- 28/09/2010 02:20:50 p.m. --- 7690
+---** El dato de DNI Nro. 43938142  no encontrado. Verificar **--- 28/09/2010 02:20:50 p.m. --- 7690
+---** El dato de DNI Nro. 42335770  no encontrado. Verificar **--- 28/09/2010 02:20:50 p.m. --- 7690
+---** El dato de DNI Nro. 46123514  no encontrado. Verificar **--- 28/09/2010 02:20:50 p.m. --- 7690
+---** El dato de DNI Nro. 47463134  no encontrado. Verificar **--- 28/09/2010 02:20:51 p.m. --- 7690
+---** El dato de DNI Nro. 45558843  no encontrado. Verificar **--- 28/09/2010 02:20:51 p.m. --- 7690
+---** El dato de DNI Nro. 44631961  no encontrado. Verificar **--- 28/09/2010 02:20:51 p.m. --- 7690
+---** El dato de DNI Nro. 40215468  no encontrado. Verificar **--- 28/09/2010 02:20:51 p.m. --- 7690
+---** El dato de DNI Nro. 42688639  no encontrado. Verificar **--- 28/09/2010 02:20:51 p.m. --- 7690
+---** El dato de DNI Nro. 45103200  no encontrado. Verificar **--- 28/09/2010 02:20:51 p.m. --- 7690
+---** El dato de DNI Nro. 44647875  no encontrado. Verificar **--- 28/09/2010 02:20:51 p.m. --- 7690
+---** El dato de DNI Nro. 40911943  no encontrado. Verificar **--- 28/09/2010 02:20:51 p.m. --- 7690
+---** El dato de DNI Nro. 40601858  no encontrado. Verificar **--- 28/09/2010 02:20:51 p.m. --- 7690
+---** El dato de DNI Nro. 46869343  no encontrado. Verificar **--- 28/09/2010 02:20:51 p.m. --- 7690
+---** El dato de DNI Nro. 45788174  no encontrado. Verificar **--- 28/09/2010 02:20:51 p.m. --- 7690
+---** El dato de DNI Nro. 44083235  no encontrado. Verificar **--- 28/09/2010 02:20:51 p.m. --- 7690
+---** El dato de DNI Nro. 10199808  no encontrado. Verificar **--- 28/09/2010 02:20:51 p.m. --- 7690
+---** El dato de DNI Nro. 40640189  no encontrado. Verificar **--- 28/09/2010 02:20:51 p.m. --- 7690
+---** El dato de DNI Nro. 41063245  no encontrado. Verificar **--- 28/09/2010 02:20:51 p.m. --- 7690
+---** El dato de DNI Nro. 47085491  no encontrado. Verificar **--- 28/09/2010 02:20:51 p.m. --- 7690
+---** El dato de DNI Nro. 10542535  no encontrado. Verificar **--- 28/09/2010 02:20:51 p.m. --- 7690
+---** Se registró TX del DNI: 09624024 **--- 28/09/2010 02:20:51 p.m. --- 7690
+---** Se registró TX del DNI: 10618516 **--- 28/09/2010 02:20:51 p.m. --- 7690
+---** Se registró TX del DNI: 10190390 **--- 28/09/2010 02:20:51 p.m. --- 7690
+---** El dato de DNI Nro. 47333267  no encontrado. Verificar **--- 28/09/2010 02:20:51 p.m. --- 7690
+---** El dato de DNI Nro. 72638741  no encontrado. Verificar **--- 28/09/2010 02:20:51 p.m. --- 7690
+---** El dato de DNI Nro. 46438789  no encontrado. Verificar **--- 28/09/2010 02:20:51 p.m. --- 7690
+---** El dato de DNI Nro. 09543702  no encontrado. Verificar **--- 28/09/2010 02:20:51 p.m. --- 7690
+---** El dato de DNI Nro. 47523003  no encontrado. Verificar **--- 28/09/2010 02:20:51 p.m. --- 7690
+---** El dato de DNI Nro. 46715899  no encontrado. Verificar **--- 28/09/2010 02:20:51 p.m. --- 7690
+---** El dato de DNI Nro. 45925832  no encontrado. Verificar **--- 28/09/2010 02:20:52 p.m. --- 7690
+---** El dato de DNI Nro. 43147178  no encontrado. Verificar **--- 28/09/2010 02:20:52 p.m. --- 7690
+---** El dato de DNI Nro. 44634994  no encontrado. Verificar **--- 28/09/2010 02:20:52 p.m. --- 7690
+---** El dato de DNI Nro. 10587811  no encontrado. Verificar **--- 28/09/2010 02:20:52 p.m. --- 7690
+---** El dato de DNI Nro. 44307035  no encontrado. Verificar **--- 28/09/2010 02:20:52 p.m. --- 7690
+---** El dato de DNI Nro. 41094781  no encontrado. Verificar **--- 28/09/2010 02:20:52 p.m. --- 7690
+---** El dato de DNI Nro. 44972087  no encontrado. Verificar **--- 28/09/2010 02:20:52 p.m. --- 7690
+---** El dato de DNI Nro. 43334046  no encontrado. Verificar **--- 28/09/2010 02:20:52 p.m. --- 7690
+---** El dato de DNI Nro. 42675122  no encontrado. Verificar **--- 28/09/2010 02:20:52 p.m. --- 7690
+---** Se registró TX del DNI: 09615881 **--- 28/09/2010 02:20:52 p.m. --- 7690
+---** El dato de DNI Nro. 10689626  no encontrado. Verificar **--- 28/09/2010 02:20:52 p.m. --- 7690
+---** El dato de DNI Nro. 45064901  no encontrado. Verificar **--- 28/09/2010 02:20:52 p.m. --- 7690
+---** El dato de DNI Nro. 40902412  no encontrado. Verificar **--- 28/09/2010 02:20:52 p.m. --- 7690
+---** El dato de DNI Nro. 09859336  no encontrado. Verificar **--- 28/09/2010 02:20:52 p.m. --- 7690
+---** El dato de DNI Nro. 45726167  no encontrado. Verificar **--- 28/09/2010 02:20:52 p.m. --- 7690
+---** El dato de DNI Nro. 42835975  no encontrado. Verificar **--- 28/09/2010 02:20:52 p.m. --- 7690
+---** Se registró TX del DNI: 08113547 **--- 28/09/2010 02:20:52 p.m. --- 7690
+---** Se registró TX del DNI: 42958548 **--- 28/09/2010 02:20:52 p.m. --- 7690
+---** El dato de DNI Nro. 09790667  no encontrado. Verificar **--- 28/09/2010 02:20:52 p.m. --- 7690
+---** El dato de DNI Nro. 44986352  no encontrado. Verificar **--- 28/09/2010 02:20:52 p.m. --- 7690
+---** El dato de DNI Nro. 43082121  no encontrado. Verificar **--- 28/09/2010 02:20:52 p.m. --- 7690
+---** El dato de DNI Nro. 45992110  no encontrado. Verificar **--- 28/09/2010 02:20:52 p.m. --- 7690
+---** El dato de DNI Nro. 42068659  no encontrado. Verificar **--- 28/09/2010 02:20:52 p.m. --- 7690
+---** El dato de DNI Nro. 09606671  no encontrado. Verificar **--- 28/09/2010 02:20:52 p.m. --- 7690
+---** El dato de DNI Nro. 41598808  no encontrado. Verificar **--- 28/09/2010 02:20:52 p.m. --- 7690
+---** El dato de DNI Nro. 10719199  no encontrado. Verificar **--- 28/09/2010 02:20:53 p.m. --- 7690
+---** El dato de DNI Nro. 10399564  no encontrado. Verificar **--- 28/09/2010 02:20:53 p.m. --- 7690
+---** El dato de DNI Nro. 43319632  no encontrado. Verificar **--- 28/09/2010 02:20:53 p.m. --- 7690
+---** El dato de DNI Nro. 15850280  no encontrado. Verificar **--- 28/09/2010 02:20:53 p.m. --- 7690
+---** El dato de DNI Nro. 40676993  no encontrado. Verificar **--- 28/09/2010 02:20:53 p.m. --- 7690
+---** El dato de DNI Nro. 43938142  no encontrado. Verificar **--- 28/09/2010 02:20:53 p.m. --- 7690
+---** El dato de DNI Nro. 42335770  no encontrado. Verificar **--- 28/09/2010 02:20:53 p.m. --- 7690
+---** El dato de DNI Nro. 46123514  no encontrado. Verificar **--- 28/09/2010 02:20:53 p.m. --- 7690
+---** El dato de DNI Nro. 47463134  no encontrado. Verificar **--- 28/09/2010 02:20:53 p.m. --- 7690
+---** El dato de DNI Nro. 45558843  no encontrado. Verificar **--- 28/09/2010 02:20:53 p.m. --- 7690
+---** El dato de DNI Nro. 44631961  no encontrado. Verificar **--- 28/09/2010 02:20:53 p.m. --- 7690
+---** El dato de DNI Nro. 42688639  no encontrado. Verificar **--- 28/09/2010 02:20:53 p.m. --- 7690
+---** El dato de DNI Nro. 46195716  no encontrado. Verificar **--- 28/09/2010 02:20:53 p.m. --- 7690
+---** El dato de DNI Nro. 09634718  no encontrado. Verificar **--- 28/09/2010 02:20:53 p.m. --- 7690
+---** El dato de DNI Nro. 45103200  no encontrado. Verificar **--- 28/09/2010 02:20:53 p.m. --- 7690
+---** El dato de DNI Nro. 44647875  no encontrado. Verificar **--- 28/09/2010 02:20:53 p.m. --- 7690
+---** El dato de DNI Nro. 40911943  no encontrado. Verificar **--- 28/09/2010 02:20:53 p.m. --- 7690
+---** El dato de DNI Nro. 40601858  no encontrado. Verificar **--- 28/09/2010 02:20:53 p.m. --- 7690
+---** El dato de DNI Nro. 46869343  no encontrado. Verificar **--- 28/09/2010 02:20:53 p.m. --- 7690
+---** El dato de DNI Nro. 45788174  no encontrado. Verificar **--- 28/09/2010 02:20:53 p.m. --- 7690
+---** El dato de DNI Nro. 44083235  no encontrado. Verificar **--- 28/09/2010 02:20:53 p.m. --- 7690
+---** El dato de DNI Nro. 10199808  no encontrado. Verificar **--- 28/09/2010 02:20:53 p.m. --- 7690
+---** El dato de DNI Nro. 40640189  no encontrado. Verificar **--- 28/09/2010 02:20:53 p.m. --- 7690
+---** El dato de DNI Nro. 41063245  no encontrado. Verificar **--- 28/09/2010 02:20:53 p.m. --- 7690
+---** El dato de DNI Nro. 47085491  no encontrado. Verificar **--- 28/09/2010 02:20:53 p.m. --- 7690
+---** El dato de DNI Nro. 10542535  no encontrado. Verificar **--- 28/09/2010 02:20:53 p.m. --- 7690
+---** Se registró TX del DNI: 09624024 **--- 28/09/2010 02:20:53 p.m. --- 7690
+---** Se registró TX del DNI: 10190390 **--- 28/09/2010 02:20:54 p.m. --- 7690
+---** El dato de DNI Nro. 47333267  no encontrado. Verificar **--- 28/09/2010 02:20:54 p.m. --- 7690
+---** El dato de DNI Nro. 72638741  no encontrado. Verificar **--- 28/09/2010 02:20:54 p.m. --- 7690
+---** El dato de DNI Nro. 46438789  no encontrado. Verificar **--- 28/09/2010 02:20:54 p.m. --- 7690
+---** El dato de DNI Nro. 09543702  no encontrado. Verificar **--- 28/09/2010 02:20:54 p.m. --- 7690
+---** El dato de DNI Nro. 47523003  no encontrado. Verificar **--- 28/09/2010 02:20:54 p.m. --- 7690
+---** El dato de DNI Nro. 46715899  no encontrado. Verificar **--- 28/09/2010 02:20:54 p.m. --- 7690
+---** El dato de DNI Nro. 45925832  no encontrado. Verificar **--- 28/09/2010 02:20:54 p.m. --- 7690
+---** El dato de DNI Nro. 43147178  no encontrado. Verificar **--- 28/09/2010 02:20:54 p.m. --- 7690
+---** El dato de DNI Nro. 44634994  no encontrado. Verificar **--- 28/09/2010 02:20:54 p.m. --- 7690
+---** El dato de DNI Nro. 10587811  no encontrado. Verificar **--- 28/09/2010 02:20:54 p.m. --- 7690
+---** CARGA OK: Se añadieron 85 nuevos registros de 749 leidos.\nSe actualizaron los tiempos de : 0 registros **--- 28/09/2010 02:20:55 p.m. --- 7690

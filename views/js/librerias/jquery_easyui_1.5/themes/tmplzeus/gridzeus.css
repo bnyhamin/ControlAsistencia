@@ -1,0 +1,80 @@
+.datagrid-cell{
+    font-size: 10px;
+}
+body {
+    FONT-FAMILY: Verdana, Arial, Helvetica;
+}
+
+.datagrid-row-selected {
+  background: #ffe48d;
+  color: #000000;
+  font-weight: bold;
+}
+
+.datagrid-view{
+    background: #FFFFFF;
+}
+
+/*
+.datagrid-body .datagrid-cell{
+    word-wrap: break-word;
+    white-space: normal;
+}
+*/
+
+/*
+.datagrid-body .datagrid-cell{
+    word-wrap: normal;
+    white-space: nowrap;
+}
+*/
+/*
+.datagrid-body .datagrid-cell{
+    word-wrap: normal;
+    white-space: nowrap;
+}
+*/
+
+/*
+.datagrid-body .datagrid-cell{
+    word-wrap: normal;
+    white-space: normal;
+}
+*/
+/*
+.datagrid-row{
+    height:auto !important;
+    word-wrap: break-word !important;
+}
+*/
+/*
+.datagrid-body .datagrid-cell{
+    word-wrap: break-word;
+    white-space: normal;
+}
+*/
+/*
+.datagrid-body .datagrid-cell{
+    height: 40px;
+}
+*/
+/*
+.datagrid-row{
+    height:50px;
+}
+*/
+
+.datagrid-body{
+    /*height:auto !important;*/
+    /*padding-bottom: 5px;*/
+    /*z-index: 9999999;*/
+    overflow: scroll;
+}
+
+
+/*
+::-webkit-scrollbar-button{
+  width:8px;
+  height: 5px;
+}
+*/

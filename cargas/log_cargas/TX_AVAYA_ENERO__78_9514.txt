@@ -1,0 +1,20 @@
+--- ****************** Inicio ************************* ---
+Carga de Tiempos de Conexion con Fecha: 07/08/2008 09:05:14 a.m.
+ Usuario: 3300
+ Archivo: TX_AVAYA_ENERO__78_9514
+ Código Proceso: 4149
+---** Se modificó TX del DNI: 42614237 **--- 07/08/2008 09:05:14 a.m. --- 4149
+---** Se modificó TX del DNI: 40892717 **--- 07/08/2008 09:05:14 a.m. --- 4149
+---** El dato 4075045x de DNI esta en blanco o no es numerico **--- 07/08/2008 09:05:14 a.m. --- 4149
+---** Se modificó TX del DNI: 10719103 **--- 07/08/2008 09:05:14 a.m. --- 4149
+---** El Código de Unidad de Servicio Incorrecto del DNI Nro. 42541678. Verificar **--- 07/08/2008 09:05:14 a.m. --- 4149
+---** Se modificó TX del DNI: 42641439 **--- 07/08/2008 09:05:14 a.m. --- 4149
+---** Se modificó TX del DNI: 41522791 **--- 07/08/2008 09:05:14 a.m. --- 4149
+---** Se modificó TX del DNI: 40372270 **--- 07/08/2008 09:05:14 a.m. --- 4149
+---** Se modificó TX del DNI: 41452018 **--- 07/08/2008 09:05:14 a.m. --- 4149
+---** Se modificó TX del DNI: 41199546 **--- 07/08/2008 09:05:14 a.m. --- 4149
+---** Se modificó TX del DNI: 07648411 **--- 07/08/2008 09:05:14 a.m. --- 4149
+---** Se modificó TX del DNI: 10862179 **--- 07/08/2008 09:05:14 a.m. --- 4149
+---** Se modificó TX del DNI: 41573421 **--- 07/08/2008 09:05:14 a.m. --- 4149
+---** Se modificó TX del DNI: 40574734 **--- 07/08/2008 09:05:14 a.m. --- 4149
+---** CARGA OK: Se añadieron 0 nuevos registros de 14 leidos.\nSe actualizaron los tiempos de : 12 registros **--- 07/08/2008 09:05:14 a.m. --- 4149

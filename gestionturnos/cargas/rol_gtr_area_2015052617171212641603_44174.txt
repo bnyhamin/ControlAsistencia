@@ -1,0 +1,25 @@
+
+archivos modificados:
+/SisPersonal01/ControlAsistencia/gestionturnos/main_turnos_gestion_new.php
+/SisPersonal01/ControlAsistencia/gestionturnos/uploadFileg_new.php
+
+(1) crear el rol:
+17	GTR - Suplencia Diaria Area de Usuario	1
+(2) el rol GTR - Suplencia Diaria Area de Usuario debe tener las siguientes paginas
+/ControlAsistencia/cerrarc.php
+/ControlAsistencia/gestionturnos/main_turnos_gestion.php
+/ControlAsistencia/guia_gap.htm
+/ControlAsistencia/guia_rapida_gap.htm
+/ControlAsistencia/login.php
+/ControlAsistencia/menu.php
+ninguno
+(3) Asignar empleados al rol
+
+Solo para pruebas crear las paginas 
+/ControlAsistencia/gestionturnos/main_turnos_gestion_new.php
+/ControlAsistencia/gestionturnos/uploadFileg_new.php
+y asignarla a los roles GTR - Suplencia Diaria Toda la Empresa@GTR - Suplencia Diaria Area de Usuario
+
+
+
+http://172.30.194.39/SisPersonal01/ControlAsistencia/login.php?mensaje=Lo%20sentimos!!.%20Ud.%20no%20esta%20autorizado%20para%20acceder%20a%20esta%20pagina.%20Comuniquese%20con%20el%20administrador%20del%20sistema

@@ -1,0 +1,120 @@
+/* RockIt CCSTheme */
+BODY, TABLE, TH, TR, TD, UL, OL, LI, P, FONT, A, BLOCKQUOTE, LABEL { font-family: Verdana, Arial, Helvetica; font-size: 10px; }
+.PageBODY{ background-image:url(background8.gif);}
+.FormTABLE{ border: solid 1px #000000; }
+.FormHeaderFont{ color: #000000; font-size: 16px; font-weight: bold; }
+.CA_FormHeaderFont{ color:#330066; font-size: 13px; font-weight: bold; }
+.CA_SubFormHeaderFont{ color:#330066; font-size: 11px; font-weight: bold; }
+.redCA_SubFormHeaderFont{ color:#FF0000; font-size: 11px; font-weight: bold; }
+.FieldCaptionTD{ border-left: solid 1px #FFFFFF; border-right: solid 1px #AAA587; background-color:#E7E7D6; color: #000000; font-size: 10px;}
+.CA_FieldCaptionTD{ border-left: solid 1px #FFFFFF; border-right: solid 1px #AAA587; background-color: #E7E7D6; color: #000000; font-size: 10px;}
+.AltDataTD{ border-left: solid 1px #FFFFFF; border-right: solid 1px #AAA587; background-color:#E7E7D6; color: #000000; font-size: 10px; }
+.ColumnTD{ border-left: solid 1px #E7E7D6; border-top: solid 1px #E7E7D6; border-right: solid 1px #635D39; background-color: #E7E7D6; color: #000000; font-size: 10px; font-weight: bold}
+.DataTD{ border-left: solid 1px #FFFFFF; border-right: solid 1px #AAA587; background-color:#FFFFFF; color: #000000; font-size: 10px; }
+.CA_DataTD{ border-left: solid 1px #FFFFFF; border-right: solid 1px #AAA587; background-color:#FFFFFF; color: #000000; font-size: 10px; }
+.CA_ConDataTD{ border-left: solid 1px #FFFFFF; border-right: solid 1px #AAA587; background-color: #D8DAB4; color: #000000; font-size: 10px; }
+.CA1_DataTD{ border-left: solid 1px #FFFFFF; border-right: solid 1px #AAA587; background-color:#EAF4FF; color: #000000; font-size: 9px; }
+.SeparatorTD{ height: 2px; background-color: #FFFFFF; }
+.FooterTD{ border-left: solid 1px #E7E7D6; border-right: solid 1px #635D39; background-color:#FFF9F2; color: #FFFFFF; font-size: 10px; }
+a.SorterLink:link,a.SorterLink:visited{ color: #FFFFFF; font-size: ; text-decoration: underline; }
+a.SorterLink:hover,a.SorterLink:active{ color: #FFFFFF; font-size: ; text-decoration: none; }
+a.DataLink:link,a.DataLink:visited{ color: #000084; font-size: ; text-decoration: underline; }
+a.DataLink:hover,a.DataLink:active{ color: #000084; font-size: ; text-decoration: none; }
+a.NavigatorLink:link,a.NavigatorLink:visited{ color: #000000; font-size: 10px; text-decoration: underline; }
+a.NavigatorLink:hover,a.NavigatorLink:active{ color: #000000; font-size: 10px; text-decoration: none; }
+.Button { border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; border-top: 1px solid #000000; background-color:#F4F4F4 ; font-size: 10px; font-family: Verdana, Arial, Helvetica; font-weight: bold; }
+.Input { border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; border-top: 1px solid #000000; font-size: 10px; font-family: Verdana, Arial, Helvetica; }
+.CA_Input { border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; border-top: 1px solid #000000; font-size: 11px; font-family: Verdana, Arial, Helvetica;font-weight: bold}
+.Textarea { border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; border-top: 1px solid #000000; font-size: 10px; font-family: Verdana, Arial, Helvetica; }
+.Select { font-size: 10px; font-family: Verdana, Arial, Helvetica; }
+.lstselect {background-color:#E7E7D6; font-size: 11px; font-family: Verdana, Arial, Helvetica;}
+.CA_Select { font-size: 10px; font-family: Verdana, Arial, Helvetica; }
+.tablefondo{ background-image: url(../images/fondoGAP10.jpg);  background-position: 100%;  background-repeat: no-repeat;  background-attachment: fixed;    }
+.tablefondot{ background: url(../images/fondoGAP_2904_V.PNG) no-repeat top}
+.tablefondomain{ background-image: url(../images/fondomain.jpg);  background-position: 100%;  background-repeat: no-repeat;  background-attachment: fixed;    }
+.tablefondomaint{ background-image: url(../images/fondomenu_gap_v2.PNG);  background-repeat: no-repeat;}
+.tablefondomaint_mandos{ background-image: url(../images/fondomenu_gap_V_MANDOS.jpg); background-repeat: no-repeat;}
+
+.tableEstadisticas{border-left:1px solid #304B2B; border-right:1px solid #304B2B; border-top:1px solid #304B2B; border-bottom:1px solid #304B2B;}
+.filaHeaderTableEstadisticas{background-color:#304B2B; CURSOR:HAND;}
+.filaParTableEstadisticas{background-color:#FFF;}
+.filaImparTableEstadisticas{background-color:#D4EAEC; }
+.filaTardanzasTableEstadisticas{background-color:#F0F2CE; }
+.filaNoControlTableEstadisticas{background-color:#EBD6D1; }
+.colHeaderTableEstadisticas{color:#FFF; font-family:verdana; font-size:10px; font-weight:bolder; padding:4px 5px;}
+.colParTableEstadisticas{font-family:verdana; font-size:10px; font-style:normal; padding:2px 5px;}
+.colImparTableEstadisticas{ font-family:verdana; font-size:10px; font-style:normal; padding:2px 5px;}
+
+.FormTABLA{ border-top: solid 1px #DBDBDB; border-left: solid 1px #DBDBDB ;  border-right: solid 1px #DBDBDB ; }
+
+.titulo {
+
+FONT-SIZE: 10px;
+FONT-FAMILY: verdana;
+FONT-WEIGHT: bold;
+
+}
+
+.titulolegend {
+
+FONT-SIZE: 11px;
+FONT-FAMILY: verdana;
+FONT-WEIGHT: bold;
+COLOR: #3333FF;
+
+}
+
+.Columna{
+border-bottom: solid 1px #DBDBDB; border-right: solid 1px #ACACAC ; background-color: #e5e5e5; FONT-SIZE: 11px;
+FONT-FAMILY: Arial; height: 20px;
+
+}
+
+.fila{
+	
+border-bottom: solid 1px #DBDBDB; FONT-SIZE: 11px;
+FONT-FAMILY: Arial; height: 20px;
+
+}
+
+/* estilos para seccion estadisticas */
+.vinculosEstadisticasOff
+{
+	FONT-SIZE: 10px;
+	FONT-FAMILY: verdana;
+	FONT-WEIGHT: bold;
+	COLOR: #206384;
+	TEXT-DECORATION: none;
+	CURSOR: HAND;
+	MARGIN-LEFT: 10PX;
+}
+
+.vinculosEstadisticasOn
+{
+	FONT-SIZE: 10px;
+	FONT-FAMILY: verdana;
+	FONT-WEIGHT: bold;
+	COLOR: #B0240E;
+	TEXT-DECORATION: none;
+	CURSOR: HAND;
+	MARGIN-LEFT: 10PX;
+}
+
+.gridHeader
+{
+	FONT-SIZE: 10px;
+	FONT-FAMILY: verdana;
+	FONT-WEIGHT: bold;
+	COLOR: #175187;
+	CURSOR: HAND;
+}
+
+.Titlecabecera{ color: #000000; font-size: 14px; font-weight: bold; }
+.letra{
+  font-family: Verdana, Arial, Helvetica;
+}
+
+
+.thstyle{ border-left: solid 1px #FFFFFF; border-right: solid 1px #AAA587; background-color:#ECF3FF; color: #000000;}
+
+/*.btn-del{ background: red  }*/
